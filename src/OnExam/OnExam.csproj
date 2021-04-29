@@ -65,6 +65,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exams.Designer.cs">
+      <DependentUpon>Exams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
       <DependentUpon>TakeExam.cs</DependentUpon>
     </Compile>
     <Compile Include="UserManagement.cs" />
+    <EmbeddedResource Include="Exams.resx">
+      <DependentUpon>Exams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

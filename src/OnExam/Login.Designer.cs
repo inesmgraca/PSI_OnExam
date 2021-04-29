@@ -39,6 +39,7 @@ namespace OnExam
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblNoAccount = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -57,6 +58,7 @@ namespace OnExam
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.lblNoAccount, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnBack, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -178,6 +180,16 @@ namespace OnExam
             this.lblNoAccount.Text = "Ainda não tem conta?";
             this.lblNoAccount.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(3, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 17;
+            this.btnBack.Text = "Voltar";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -190,6 +202,7 @@ namespace OnExam
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "Login";
             this.Text = "OnExam - Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -210,5 +223,6 @@ namespace OnExam
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblNoAccount;
+        private System.Windows.Forms.Button btnBack;
     }
 }

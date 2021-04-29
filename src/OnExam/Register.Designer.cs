@@ -32,22 +32,23 @@ namespace OnExam
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblNome = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRegister = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblAccount = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -69,6 +70,7 @@ namespace OnExam
             this.tableLayoutPanel1.Controls.Add(this.lblUsername, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtUsername, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnBack, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -111,54 +113,6 @@ namespace OnExam
             this.txtNome.TabIndex = 2;
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPassword.Location = new System.Drawing.Point(148, 287);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(187, 41);
-            this.lblPassword.TabIndex = 1;
-            this.lblPassword.Text = "Password";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(148, 331);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(187, 21);
-            this.txtPassword.TabIndex = 3;
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.btnRegister, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(148, 474);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 35);
-            this.tableLayoutPanel2.TabIndex = 7;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRegister.Location = new System.Drawing.Point(40, 3);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(106, 29);
-            this.btnRegister.TabIndex = 4;
-            this.btnRegister.Text = "Registar";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -195,6 +149,54 @@ namespace OnExam
             this.lblAccount.Text = "Já tem conta?";
             this.lblAccount.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.btnRegister, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(148, 474);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 35);
+            this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegister.Location = new System.Drawing.Point(40, 3);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(106, 29);
+            this.btnRegister.TabIndex = 4;
+            this.btnRegister.Text = "Registar";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(148, 331);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(187, 21);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPassword.Location = new System.Drawing.Point(148, 287);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(187, 41);
+            this.lblPassword.TabIndex = 1;
+            this.lblPassword.Text = "Password";
+            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,7 +206,6 @@ namespace OnExam
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(187, 21);
             this.txtConfirmPassword.TabIndex = 10;
-            this.txtConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPassword_KeyDown);
             // 
             // lblConfirmPassword
             // 
@@ -257,6 +258,16 @@ namespace OnExam
             this.txtUsername.TabIndex = 15;
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(3, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 16;
+            this.btnBack.Text = "Voltar";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,10 +279,11 @@ namespace OnExam
             this.MinimumSize = new System.Drawing.Size(400, 600);
             this.Name = "Register";
             this.Text = "OnExam - Register";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Register_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -294,5 +306,6 @@ namespace OnExam
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Button btnBack;
     }
 }

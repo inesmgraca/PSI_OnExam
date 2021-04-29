@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static OnExam.UserManagement;
 
@@ -36,7 +29,9 @@ namespace OnExam
             {
                 if (UserLogin(txtUsername.Text, txtPassword.Text))
                 {
-                    //open gestão exames
+                    var exams = new Exams();
+                    exams.Show();
+                    Close();
                 }
                 else
                 {
@@ -64,6 +59,17 @@ namespace OnExam
             var register = new Register();
             register.Show();
             Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Close();
+            MainForm.mainForm.Show();
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

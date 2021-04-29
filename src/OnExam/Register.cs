@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static OnExam.UserManagement;
 
 namespace OnExam
 {
@@ -41,18 +35,29 @@ namespace OnExam
                 txtConfirmPassword.Focus();
         }
 
-        private void txtConfirmPassword_KeyDown(object sender, KeyEventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtNome.Text != "" && txtEmail.Text != "" && txtUsername.Text != ""
-                && txtPassword.Text != "" && txtConfirmPassword.Text != "")
+            if (txtNome.Text != "" && txtEmail.Text != "" && txtUsername.Text != "" && txtPassword.Text != ""
+                && txtConfirmPassword.Text != "" && txtPassword.Equals(txtConfirmPassword.Text))
             {
-                btnRegister_Click(sender, e);
+                if (UserRegister(txtNome.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
+                {
+                    var exams = new Exams();
+                    exams.Show();
+                    Close();
+                }
             }
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
+            Close();
+            MainForm.mainForm.Show();
+        }
 
+        private void Register_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
