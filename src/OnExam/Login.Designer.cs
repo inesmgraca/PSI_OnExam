@@ -29,6 +29,7 @@ namespace OnExam
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblUsernameEmail = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -40,9 +41,11 @@ namespace OnExam
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblNoAccount = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.providerError = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.providerError)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -92,7 +95,7 @@ namespace OnExam
             this.txtUsername.Location = new System.Drawing.Point(148, 85);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(187, 21);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // lblPassword
@@ -109,12 +112,12 @@ namespace OnExam
             // txtPassword
             // 
             this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(148, 167);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(187, 21);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // tableLayoutPanel2
@@ -138,7 +141,7 @@ namespace OnExam
             this.btnLogin.Location = new System.Drawing.Point(40, 3);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(106, 29);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -185,10 +188,15 @@ namespace OnExam
             this.btnBack.Location = new System.Drawing.Point(3, 3);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 17;
+            this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Voltar";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // providerError
+            // 
+            this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.providerError.ContainerControl = this;
             // 
             // Login
             // 
@@ -207,6 +215,7 @@ namespace OnExam
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.providerError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +233,6 @@ namespace OnExam
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblNoAccount;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ErrorProvider providerError;
     }
 }

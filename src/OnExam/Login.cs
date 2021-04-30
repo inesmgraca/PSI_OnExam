@@ -13,19 +13,19 @@ namespace OnExam
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtUsername.Text != "")
+            if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty)
                 txtPassword.Focus();
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtUsername.Text != "" && txtPassword.Text != "")
+            if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty)
                 btnLogin_Click(sender, e);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text != "" && txtPassword.Text != "")
+            if (txtUsername.Text != string.Empty && txtPassword.Text != string.Empty)
             {
                 if (UserLogin(txtUsername.Text, txtPassword.Text))
                 {
@@ -35,20 +35,16 @@ namespace OnExam
                 }
                 else
                 {
-                    txtPassword.Text = "";
+                    txtPassword.Text = string.Empty;
                 }
-            }
-            else if (txtUsername.Text == "" && txtPassword.Text != "")
-            {
-                // erro
-            }
-            else if (txtUsername.Text != "" && txtPassword.Text == "")
-            {
-                // erro
             }
             else
             {
-                // erro
+                if (txtUsername.Text == string.Empty)
+                    providerError.SetError(txtUsername, "Não pode estar vazio!");
+
+                if (txtPassword.Text == string.Empty)
+                    providerError.SetError(txtPassword, "Não pode estar vazio!");
             }
 
             txtUsername.Focus();
@@ -69,7 +65,7 @@ namespace OnExam
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }

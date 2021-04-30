@@ -114,8 +114,6 @@ namespace OnExam
 
         public static string HashWithSalt(string password)
         {
-            // medium.com/@mehanix/lets-talk-security-salted-password-hashing-in-c-5460be5c3aae
-
             // salt(16) + hash(20) = 36
             var salt = new byte[16];
             var hashSalt = new byte[36];
@@ -138,8 +136,6 @@ namespace OnExam
 
         public static bool PassCompare(string passOriginal, string passGiven)
         {
-            // medium.com/@mehanix/lets-talk-security-salted-password-hashing-in-c-5460be5c3aae
-
             // salt(16) + hash(20) = 36
             var salt = new byte[16];
             var passGiv = new byte[36];

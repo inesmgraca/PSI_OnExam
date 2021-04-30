@@ -11,10 +11,18 @@ namespace OnExam
             InitializeComponent();
         }
 
-        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtNome.Text != "")
+            if (e.KeyCode == Keys.Enter && txtName.Text != "")
                 txtEmail.Focus();
+        }
+
+        private void txtName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtName.Text == string.Empty)
+                providerError.SetError(txtName, "Não pode estar vazio!");
+            else
+                providerError.SetError(txtName, "");
         }
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
@@ -37,10 +45,10 @@ namespace OnExam
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text != "" && txtEmail.Text != "" && txtUsername.Text != "" && txtPassword.Text != ""
+            if (txtName.Text != "" && txtEmail.Text != "" && txtUsername.Text != "" && txtPassword.Text != ""
                 && txtConfirmPassword.Text != "" && txtPassword.Equals(txtConfirmPassword.Text))
             {
-                if (UserRegister(txtNome.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
+                if (UserRegister(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
                     var exams = new Exams();
                     exams.Show();
@@ -57,7 +65,8 @@ namespace OnExam
 
         private void Register_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //if (e.CloseReason == CloseReason.)
+            //Application.Exit();
         }
     }
 }
