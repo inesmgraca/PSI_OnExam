@@ -3,7 +3,7 @@ UserID int identity(1,1) not null,
 Nome varchar(100) not null,
 Email varchar(100) not null,
 Username varchar(50) not null,
-Password varchar(50) not null,
+Password char(36) not null,
 constraint Pk_Users_UserID primary key (UserID)
 );
 

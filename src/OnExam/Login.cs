@@ -29,6 +29,7 @@ namespace OnExam
             {
                 if (UserLogin(txtUsername.Text, txtPassword.Text))
                 {
+                    UserLoggedIn = txtUsername.Text;
                     var exams = new Exams();
                     exams.Show();
                     Close();
@@ -59,13 +60,14 @@ namespace OnExam
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Close();
             MainForm.mainForm.Show();
+            Close();
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Application.Exit();
+            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+                Application.Exit();
         }
     }
 }

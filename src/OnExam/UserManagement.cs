@@ -13,6 +13,43 @@ namespace OnExam
 {
     public static class UserManagement
     {
+        public static string UserLoggedIn { get; set; }
+
+        public static bool CheckUsername(string name)
+        {
+            try
+            {
+                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+                var conn = new SqlConnection(connString);
+
+                conn.Open();
+
+                var cmd = new SqlCommand("SearchUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param = new SqlParameter("@Name", name);
+                cmd.Parameters.Add(param);
+
+                var dr = cmd.ExecuteReader();
+
+                if (!dr.HasRows)
+                    return true;
+
+                conn.Close();
+                conn.Dispose();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
         public static bool UserLogin(string name, string pass)
         {
             try

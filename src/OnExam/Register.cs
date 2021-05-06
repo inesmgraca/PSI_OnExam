@@ -17,7 +17,7 @@ namespace OnExam
                 txtEmail.Focus();
         }
 
-        private void txtName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
             if (txtName.Text == string.Empty)
                 providerError.SetError(txtName, "Não pode estar vazio!");
@@ -31,10 +31,54 @@ namespace OnExam
                 txtUsername.Focus();
         }
 
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == string.Empty)
+                providerError.SetError(txtEmail, "Não pode estar vazio!");
+            else
+                providerError.SetError(txtEmail, "");
+        }
+
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && txtUsername.Text != "")
                 txtPassword.Focus();
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == string.Empty)
+            {
+                providerCorrect.SetError(txtUsername, "");
+                providerLoad.SetError(txtUsername, "");
+                providerError.SetError(txtUsername, "Não pode estar vazio!");
+            }
+            else
+            {
+                providerCorrect.SetError(txtUsername, "");
+                providerError.SetError(txtUsername, "");
+                providerLoad.SetError(txtUsername, "...");
+            }
+        }
+
+        private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            providerLoad.SetError(txtUsername, "");
+
+            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty)
+            {
+                providerError.SetError(txtUsername, "");
+                providerCorrect.SetError(txtUsername, "Disponível!");
+            }
+            else
+            {
+                providerCorrect.SetError(txtUsername, "");
+
+                if (txtUsername.Text == string.Empty)
+                    providerError.SetError(txtUsername, "Não pode estar vazio!");
+                else
+                    providerError.SetError(txtUsername, "Indisponível!");
+            }
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -43,13 +87,40 @@ namespace OnExam
                 txtConfirmPassword.Focus();
         }
 
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text.Equals(txtConfirmPassword.Text) && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
+            {
+                providerError.SetError(txtPassword, "");
+                providerError.SetError(txtConfirmPassword, "");
+            }
+            else if (txtPassword.Text == string.Empty && txtConfirmPassword.Text == string.Empty)
+            {
+                providerError.SetError(txtPassword, "Não pode estar vazio!");
+                providerError.SetError(txtConfirmPassword, "Não pode estar vazio!");
+            }
+            else
+            {
+                providerError.SetError(txtPassword, "Password não coincide!");
+                providerError.SetError(txtConfirmPassword, "Password não coincide!");
+            }
+        }
+
+        private void txtConfirmPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty
+                && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
+                btnRegister_Click(sender, e);
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtName.Text != "" && txtEmail.Text != "" && txtUsername.Text != "" && txtPassword.Text != ""
-                && txtConfirmPassword.Text != "" && txtPassword.Equals(txtConfirmPassword.Text))
+            if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
+                && txtConfirmPassword.Text != string.Empty && txtPassword.Equals(txtConfirmPassword.Text))
             {
                 if (UserRegister(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
+                    UserLoggedIn = txtUsername.Text;
                     var exams = new Exams();
                     exams.Show();
                     Close();
@@ -57,16 +128,23 @@ namespace OnExam
             }
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var login = new Login();
+            login.Show();
+            Close();
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Close();
             MainForm.mainForm.Show();
+            Close();
         }
 
         private void Register_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //if (e.CloseReason == CloseReason.)
-            //Application.Exit();
+            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+                Application.Exit();
         }
     }
 }

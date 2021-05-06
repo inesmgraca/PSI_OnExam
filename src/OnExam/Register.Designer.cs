@@ -48,10 +48,14 @@ namespace OnExam
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.providerError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.providerLoad = new System.Windows.Forms.ErrorProvider(this.components);
+            this.providerCorrect = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.providerError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.providerLoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.providerCorrect)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -114,8 +118,8 @@ namespace OnExam
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(187, 21);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
-            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // tableLayoutPanel3
             // 
@@ -141,6 +145,7 @@ namespace OnExam
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblAccount
             // 
@@ -188,6 +193,7 @@ namespace OnExam
             this.txtPassword.Size = new System.Drawing.Size(187, 21);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.Password_TextChanged);
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // lblPassword
@@ -210,6 +216,8 @@ namespace OnExam
             this.txtConfirmPassword.Size = new System.Drawing.Size(187, 21);
             this.txtConfirmPassword.TabIndex = 5;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            this.txtConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPassword_KeyDown);
             // 
             // lblConfirmPassword
             // 
@@ -251,6 +259,7 @@ namespace OnExam
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(187, 21);
             this.txtEmail.TabIndex = 2;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // txtUsername
@@ -260,7 +269,9 @@ namespace OnExam
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(187, 21);
             this.txtUsername.TabIndex = 3;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // btnBack
             // 
@@ -276,6 +287,16 @@ namespace OnExam
             // 
             this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
+            // 
+            // providerLoad
+            // 
+            this.providerLoad.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.providerLoad.ContainerControl = this;
+            // 
+            // providerCorrect
+            // 
+            this.providerCorrect.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.providerCorrect.ContainerControl = this;
             // 
             // Register
             // 
@@ -294,6 +315,8 @@ namespace OnExam
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.providerError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.providerLoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.providerCorrect)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,5 +341,7 @@ namespace OnExam
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ErrorProvider providerError;
+        private System.Windows.Forms.ErrorProvider providerLoad;
+        private System.Windows.Forms.ErrorProvider providerCorrect;
     }
 }
