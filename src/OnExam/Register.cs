@@ -116,7 +116,7 @@ namespace OnExam
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
-                && txtConfirmPassword.Text != string.Empty && txtPassword.Equals(txtConfirmPassword.Text))
+                && txtConfirmPassword.Text != string.Empty && CheckUsername(txtUsername.Text) && txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
                 if (UserRegister(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
