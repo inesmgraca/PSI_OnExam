@@ -69,7 +69,16 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
-                    if (PassCompare(dr["Password"].ToString(), pass))
+                    var passOriginal = new byte[36];
+
+                    while (dr.Read())
+                        passOriginal = (byte[])dr["Password"];
+
+                    //var passw = dr["Password"].ToString();
+                    //var encoding = Encoding.GetEncoding(passw);
+                    //var bytes = encoding.GetBytes(passw);
+
+                    if (PassCompare(passOriginal, pass))
                         return true;
                 }
                 else
@@ -98,11 +107,8 @@ namespace OnExam
                 var conn = new SqlConnection(connString);
 
                 conn.Open();
-                
-                var cmd = new SqlCommand();
-                cmd.Connection = conn;
 
-                cmd.CommandText = "select Email from Users where Email = @email;";
+                var cmd = new SqlCommand("select Email from Users where Email = @email;", conn);
                 cmd.Parameters.AddWithValue("@email", email);
 
                 var dr = cmd.ExecuteReader();
@@ -113,7 +119,7 @@ namespace OnExam
                 }
                 else
                 {
-                    cmd = new SqlCommand("AddUser");
+                    cmd = new SqlCommand("AddUser", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     var param = new SqlParameter("@Nome", nome);
@@ -127,6 +133,8 @@ namespace OnExam
 
                     param = new SqlParameter("@Password", HashWithSalt(password));
                     cmd.Parameters.Add(param);
+
+                    dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
                         return true;
@@ -149,7 +157,7 @@ namespace OnExam
             return false;
         }
 
-        public static string HashWithSalt(string password)
+        public static byte[] HashWithSalt(string password)
         {
             // salt(16) + hash(20) = 36
             var salt = new byte[16];
@@ -167,19 +175,17 @@ namespace OnExam
             Array.Copy(salt, 0, hashSalt, 0, 16);
             Array.Copy(hash, 0, hashSalt, 16, 20);
 
-            // converter o array para string
-            return Convert.ToString(hashSalt);
+            return hashSalt;
         }
 
-        public static bool PassCompare(string passOriginal, string passGiven)
+        public static bool PassCompare(byte[] passOriginal, string passGiven)
         {
             // salt(16) + hash(20) = 36
             var salt = new byte[16];
             var passGiv = new byte[36];
 
             // atribuir salt da password original
-            var passOrigin = Encoding.ASCII.GetBytes(passOriginal);
-            Array.Copy(passOrigin, 0, salt, 0, 16);
+            Array.Copy(passOriginal, 0, salt, 0, 16);
 
             // hashing da password dada
             var hashing = new Rfc2898DeriveBytes(passGiven, salt, 10000);
@@ -191,7 +197,7 @@ namespace OnExam
             Array.Copy(hash, 0, passGiv, 16, 20);
 
             // comparar passwords original e dada
-            if (passOrigin.Equals(passGiv))
+            if (passOriginal.Equals(passGiv))
                 return true;
             else
                 return false;

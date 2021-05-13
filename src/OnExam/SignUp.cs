@@ -4,9 +4,9 @@ using static OnExam.UserManagement;
 
 namespace OnExam
 {
-    public partial class Register : Form
+    public partial class SignUp : Form
     {
-        public Register()
+        public SignUp()
         {
             InitializeComponent();
         }
@@ -125,6 +125,10 @@ namespace OnExam
                     exams.Show();
                     Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

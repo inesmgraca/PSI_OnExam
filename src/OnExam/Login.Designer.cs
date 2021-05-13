@@ -30,6 +30,7 @@ namespace OnExam
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblUsernameEmail = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -50,10 +51,7 @@ namespace OnExam
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.lblUsernameEmail, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtUsername, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblPassword, 1, 2);
@@ -62,134 +60,99 @@ namespace OnExam
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.lblNoAccount, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.btnBack, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.providerError.SetError(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.Error"));
+            this.providerError.SetIconAlignment(this.tableLayoutPanel1, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("tableLayoutPanel1.IconAlignment"))));
+            this.providerError.SetIconPadding(this.tableLayoutPanel1, ((int)(resources.GetObject("tableLayoutPanel1.IconPadding"))));
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 411);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblUsernameEmail
             // 
-            this.lblUsernameEmail.AutoSize = true;
-            this.lblUsernameEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblUsernameEmail.Location = new System.Drawing.Point(148, 0);
+            resources.ApplyResources(this.lblUsernameEmail, "lblUsernameEmail");
+            this.providerError.SetError(this.lblUsernameEmail, resources.GetString("lblUsernameEmail.Error"));
+            this.providerError.SetIconAlignment(this.lblUsernameEmail, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("lblUsernameEmail.IconAlignment"))));
+            this.providerError.SetIconPadding(this.lblUsernameEmail, ((int)(resources.GetObject("lblUsernameEmail.IconPadding"))));
             this.lblUsernameEmail.Name = "lblUsernameEmail";
-            this.lblUsernameEmail.Size = new System.Drawing.Size(187, 82);
-            this.lblUsernameEmail.TabIndex = 0;
-            this.lblUsernameEmail.Text = "Username/Email";
-            this.lblUsernameEmail.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtUsername
             // 
-            this.txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUsername.Location = new System.Drawing.Point(148, 85);
+            resources.ApplyResources(this.txtUsername, "txtUsername");
+            this.providerError.SetError(this.txtUsername, resources.GetString("txtUsername.Error"));
+            this.providerError.SetIconAlignment(this.txtUsername, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("txtUsername.IconAlignment"))));
+            this.providerError.SetIconPadding(this.txtUsername, ((int)(resources.GetObject("txtUsername.IconPadding"))));
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(187, 21);
-            this.txtUsername.TabIndex = 1;
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPassword.Location = new System.Drawing.Point(148, 123);
+            resources.ApplyResources(this.lblPassword, "lblPassword");
+            this.providerError.SetError(this.lblPassword, resources.GetString("lblPassword.Error"));
+            this.providerError.SetIconAlignment(this.lblPassword, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("lblPassword.IconAlignment"))));
+            this.providerError.SetIconPadding(this.lblPassword, ((int)(resources.GetObject("lblPassword.IconPadding"))));
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(187, 41);
-            this.lblPassword.TabIndex = 1;
-            this.lblPassword.Text = "Password";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtPassword
             // 
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(148, 167);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
+            this.providerError.SetError(this.txtPassword, resources.GetString("txtPassword.Error"));
+            this.providerError.SetIconAlignment(this.txtPassword, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("txtPassword.IconAlignment"))));
+            this.providerError.SetIconPadding(this.txtPassword, ((int)(resources.GetObject("txtPassword.IconPadding"))));
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(187, 21);
-            this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Controls.Add(this.btnLogin, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(148, 228);
+            this.providerError.SetError(this.tableLayoutPanel2, resources.GetString("tableLayoutPanel2.Error"));
+            this.providerError.SetIconAlignment(this.tableLayoutPanel2, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("tableLayoutPanel2.IconAlignment"))));
+            this.providerError.SetIconPadding(this.tableLayoutPanel2, ((int)(resources.GetObject("tableLayoutPanel2.IconPadding"))));
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 35);
-            this.tableLayoutPanel2.TabIndex = 7;
             // 
             // btnLogin
             // 
-            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogin.Location = new System.Drawing.Point(40, 3);
+            resources.ApplyResources(this.btnLogin, "btnLogin");
+            this.providerError.SetError(this.btnLogin, resources.GetString("btnLogin.Error"));
+            this.providerError.SetIconAlignment(this.btnLogin, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnLogin.IconAlignment"))));
+            this.providerError.SetIconPadding(this.btnLogin, ((int)(resources.GetObject("btnLogin.IconPadding"))));
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(106, 29);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.btnRegister, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(148, 330);
+            this.providerError.SetError(this.tableLayoutPanel3, resources.GetString("tableLayoutPanel3.Error"));
+            this.providerError.SetIconAlignment(this.tableLayoutPanel3, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("tableLayoutPanel3.IconAlignment"))));
+            this.providerError.SetIconPadding(this.tableLayoutPanel3, ((int)(resources.GetObject("tableLayoutPanel3.IconPadding"))));
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(187, 35);
-            this.tableLayoutPanel3.TabIndex = 8;
             // 
             // btnRegister
             // 
-            this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRegister.Location = new System.Drawing.Point(40, 3);
+            resources.ApplyResources(this.btnRegister, "btnRegister");
+            this.providerError.SetError(this.btnRegister, resources.GetString("btnRegister.Error"));
+            this.providerError.SetIconAlignment(this.btnRegister, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnRegister.IconAlignment"))));
+            this.providerError.SetIconPadding(this.btnRegister, ((int)(resources.GetObject("btnRegister.IconPadding"))));
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(106, 29);
-            this.btnRegister.TabIndex = 4;
-            this.btnRegister.Text = "Registar";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // lblNoAccount
             // 
-            this.lblNoAccount.AutoSize = true;
-            this.lblNoAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNoAccount.Location = new System.Drawing.Point(148, 266);
+            resources.ApplyResources(this.lblNoAccount, "lblNoAccount");
+            this.providerError.SetError(this.lblNoAccount, resources.GetString("lblNoAccount.Error"));
+            this.providerError.SetIconAlignment(this.lblNoAccount, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("lblNoAccount.IconAlignment"))));
+            this.providerError.SetIconPadding(this.lblNoAccount, ((int)(resources.GetObject("lblNoAccount.IconPadding"))));
             this.lblNoAccount.Name = "lblNoAccount";
-            this.lblNoAccount.Size = new System.Drawing.Size(187, 61);
-            this.lblNoAccount.TabIndex = 9;
-            this.lblNoAccount.Text = "Ainda não tem conta?";
-            this.lblNoAccount.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.btnBack, "btnBack");
+            this.providerError.SetError(this.btnBack, resources.GetString("btnBack.Error"));
+            this.providerError.SetIconAlignment(this.btnBack, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnBack.IconAlignment"))));
+            this.providerError.SetIconPadding(this.btnBack, ((int)(resources.GetObject("btnBack.IconPadding"))));
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 5;
-            this.btnBack.Text = "Voltar";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -197,19 +160,15 @@ namespace OnExam
             // 
             this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
+            resources.ApplyResources(this.providerError, "providerError");
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(484, 411);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Arial", 9F);
-            this.MaximumSize = new System.Drawing.Size(700, 615);
-            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "Login";
-            this.Text = "OnExam - Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
 using System.Windows.Forms;
 
 namespace OnExam
@@ -19,8 +23,8 @@ namespace OnExam
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var register = new Register();
-            register.Show();
+            var signup = new SignUp();
+            signup.Show();
             Hide();
         }
 

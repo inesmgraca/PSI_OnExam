@@ -53,8 +53,8 @@ namespace OnExam
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var register = new Register();
-            register.Show();
+            var signup = new SignUp();
+            signup.Show();
             Close();
         }
 
