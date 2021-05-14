@@ -69,14 +69,10 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
-                    var passOriginal = new byte[36];
+                    var passOriginal = "";
 
                     while (dr.Read())
-                        passOriginal = (byte[])dr["Password"];
-
-                    //var passw = dr["Password"].ToString();
-                    //var encoding = Encoding.GetEncoding(passw);
-                    //var bytes = encoding.GetBytes(passw);
+                        passOriginal = dr["Password"].ToString();
 
                     if (PassCompare(passOriginal, pass))
                         return true;
@@ -178,14 +174,15 @@ namespace OnExam
             return hashSalt;
         }
 
-        public static bool PassCompare(byte[] passOriginal, string passGiven)
+        public static bool PassCompare(string passOriginal, string passGiven)
         {
             // salt(16) + hash(20) = 36
             var salt = new byte[16];
             var passGiv = new byte[36];
 
             // atribuir salt da password original
-            Array.Copy(passOriginal, 0, salt, 0, 16);
+            var passOrig = Convert.FromBase64String(passOriginal);
+            Array.Copy(passOrig, 0, salt, 0, 16);
 
             // hashing da password dada
             var hashing = new Rfc2898DeriveBytes(passGiven, salt, 10000);
@@ -197,7 +194,7 @@ namespace OnExam
             Array.Copy(hash, 0, passGiv, 16, 20);
 
             // comparar passwords original e dada
-            if (passOriginal.Equals(passGiv))
+            if (passOrig.Equals(passGiv))
                 return true;
             else
                 return false;
