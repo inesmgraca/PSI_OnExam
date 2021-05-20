@@ -118,7 +118,7 @@ namespace OnExam
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
                 && txtConfirmPassword.Text != string.Empty && CheckUsername(txtUsername.Text) && txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
-                if (UserRegister(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
+                if (UserSignUp(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
                     UserLoggedIn = txtUsername.Text;
                     var exams = new Exams();

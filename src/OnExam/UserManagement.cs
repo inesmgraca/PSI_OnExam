@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OnExam
@@ -70,11 +68,15 @@ namespace OnExam
                 if (dr.HasRows)
                 {
                     var passOriginal = "";
+                    var saltOriginal = "";
 
                     while (dr.Read())
+                    {
                         passOriginal = dr["Password"].ToString();
+                        saltOriginal = dr["Salt"].ToString();
+                    }
 
-                    if (PassCompare(passOriginal, pass))
+                    if (PassCompare(passOriginal, saltOriginal, pass))
                         return true;
                 }
                 else
@@ -95,7 +97,7 @@ namespace OnExam
             return false;
         }
 
-        public static bool UserRegister(string nome, string email, string username, string password)
+        public static bool UserSignUp(string nome, string email, string username, string password)
         {
             try
             {
@@ -118,7 +120,7 @@ namespace OnExam
                     cmd = new SqlCommand("AddUser", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    var param = new SqlParameter("@Nome", nome);
+                    var param = new SqlParameter("@Name", nome);
                     cmd.Parameters.Add(param);
 
                     param = new SqlParameter("@Email", email);
@@ -127,7 +129,12 @@ namespace OnExam
                     param = new SqlParameter("@Username", username);
                     cmd.Parameters.Add(param);
 
-                    param = new SqlParameter("@Password", HashWithSalt(password));
+                    var pass = HashWithSalt(password);
+
+                    param = new SqlParameter("@Password", pass.Hash);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@Salt", pass.Salt);
                     cmd.Parameters.Add(param);
 
                     dr.Close();
@@ -153,51 +160,50 @@ namespace OnExam
             return false;
         }
 
-        public static byte[] HashWithSalt(string password)
+        public static HashSalt HashWithSalt(string password)
         {
-            // salt(16) + hash(20) = 36
             var salt = new byte[16];
-            var hashSalt = new byte[36];
-
-            // gerar salt para hash, RNG gera números aleatórios
+            var pass = Encoding.UTF8.GetBytes(password);
             new RNGCryptoServiceProvider().GetBytes(salt);
 
-            // 10000 - nº de vezes que é feito o hashing
-            var hashing = new Rfc2898DeriveBytes(password, salt, 10000);
+            var passSalt = new List<byte>();
+            passSalt.AddRange(pass);
+            passSalt.AddRange(salt);
 
-            var hash = hashing.GetBytes(20);
+            var sha256 = SHA256.Create();
+            var hash = sha256.ComputeHash(passSalt.ToArray());
 
-            // pôr hash e salt no array de bytes hashSalt
-            Array.Copy(salt, 0, hashSalt, 0, 16);
-            Array.Copy(hash, 0, hashSalt, 16, 20);
-
-            return hashSalt;
+            return new HashSalt(Convert.ToBase64String(salt), Convert.ToBase64String(hash));
         }
 
-        public static bool PassCompare(string passOriginal, string passGiven)
+        public static bool PassCompare(string passOrig, string saltOrig, string password)
         {
-            // salt(16) + hash(20) = 36
-            var salt = new byte[16];
-            var passGiv = new byte[36];
+            var salt = Convert.FromBase64String(saltOrig);
+            var pass = Encoding.UTF8.GetBytes(password);
 
-            // atribuir salt da password original
-            var passOrig = Convert.FromBase64String(passOriginal);
-            Array.Copy(passOrig, 0, salt, 0, 16);
+            var passSalt = new List<byte>();
+            passSalt.AddRange(pass);
+            passSalt.AddRange(salt);
 
-            // hashing da password dada
-            var hashing = new Rfc2898DeriveBytes(passGiven, salt, 10000);
+            var sha256 = SHA256.Create();
+            var hash = sha256.ComputeHash(passSalt.ToArray());
 
-            var hash = hashing.GetBytes(20);
-
-            // pôr hash e salt no array de bytes hashSalt
-            Array.Copy(salt, 0, passGiv, 0, 16);
-            Array.Copy(hash, 0, passGiv, 16, 20);
-
-            // comparar passwords original e dada
-            if (passOrig.Equals(passGiv))
+            if (passOrig.Equals(Convert.ToBase64String(hash)))
                 return true;
             else
                 return false;
+        }
+    }
+
+    public class HashSalt
+    {
+        public string Salt { get; }
+        public string Hash { get; set; }
+
+        public HashSalt(string salt, string hash)
+        {
+            Salt = salt;
+            Hash = hash;
         }
     }
 }

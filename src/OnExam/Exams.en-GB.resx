@@ -117,34 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExameID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Duracao.HeaderText" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="IsRandom.HeaderText" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="Estado.HeaderText" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="btnNew.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="btnOpen.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>OnExam - Registar</value>
-  </data>
-  <data name="lblName.Text" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="btnLogin.Text" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="lblAccount.Text" xml:space="preserve">
-    <value>Já tem conta?</value>
-  </data>
-  <data name="btnRegister.Text" xml:space="preserve">
-    <value>Registar</value>
-  </data>
-  <data name="lblPassword.Text" xml:space="preserve">
-    <value>Password </value>
-  </data>
-  <data name="lblConfirmPassword.Text" xml:space="preserve">
-    <value>Confirmar Password</value>
-  </data>
-  <data name="lblEmail.Text" xml:space="preserve">
-    <value>Email </value>
-  </data>
-  <data name="lblUsername.Text" xml:space="preserve">
-    <value>Username </value>
-  </data>
-  <data name="btnBack.Text" xml:space="preserve">
-    <value>Voltar</value>
+    <value>OnExam - Exams</value>
   </data>
 </root>

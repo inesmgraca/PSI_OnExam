@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblUsernameEmail.Text" xml:space="preserve">
-    <value>Username / Email</value>
-  </data>
-  <data name="lblPassword.Text" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="btnLogin.Text" xml:space="preserve">
-    <value>Log In</value>
-  </data>
-  <data name="btnRegister.Text" xml:space="preserve">
-    <value>Sign Up</value>
-  </data>
-  <data name="lblNoAccount.Text" xml:space="preserve">
-    <value>No account?</value>
-  </data>
-  <data name="btnBack.Text" xml:space="preserve">
-    <value>Back</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>OnExam - Log In</value>
   </data>
 </root>

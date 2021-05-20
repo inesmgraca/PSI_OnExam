@@ -65,6 +65,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExamManagement.cs" />
     <Compile Include="Exams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,12 @@
       <DependentUpon>TakeExam.cs</DependentUpon>
     </Compile>
     <Compile Include="UserManagement.cs" />
+    <EmbeddedResource Include="Exams.en-GB.resx">
+      <DependentUpon>Exams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exams.pt-PT.resx">
+      <DependentUpon>Exams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Exams.resx">
       <DependentUpon>Exams.cs</DependentUpon>
     </EmbeddedResource>

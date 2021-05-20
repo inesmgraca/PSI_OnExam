@@ -1,29 +1,31 @@
 create table Users(
 UserID int identity(1,1) not null,
-Nome varchar(100) not null,
+Name varchar(100) not null,
 Email varchar(100) not null,
 Username varchar(50) not null,
-Password binary(36) not null,
+Password varchar(100) not null,
+Salt varchar(50) not null,
 constraint Pk_Users_UserID primary key (UserID)
 );
 
-create table Exames(
-ExameID int identity(1,1) not null,
+create table Exams(
+ExamID int identity(1,1) not null,
 UserID int not null,
-Duracao int not null,
-IsRandom bit not null,
-constraint Pk_Exames_ExameID primary key (ExameID),
-constraint Fk_Exames_Users foreign key (UserID) references Users (UserID)
+Name varchar(20) null,
+Duration int not null,
+isRandom bit not null,
+constraint Pk_Exams_ExamID primary key (ExamID),
+constraint Fk_Exams_Users foreign key (UserID) references Users (UserID)
 );
 
 create table Perguntas(
 PerguntaID int identity(1,1) not null,
-ExameID int not null,
+ExamID int not null,
 Tipo int not null,
 Enunciado varchar(1000) not null,
 Notas varchar(500) not null,
 constraint Pk_Perguntas_PerguntaID primary key (PerguntaID),
-constraint Fk_Perguntas_Exames foreign key (ExameID) references Exames (ExameID)
+constraint Fk_Perguntas_Exams foreign key (ExamID) references Exams (ExamID)
 );
 
 create table DetalhesPergunta(
@@ -38,11 +40,11 @@ constraint Fk_DetalhesPergunta_Perguntas foreign key (PerguntaID) references Per
 
 create table Avaliados(
 AvaliadoID int identity(1,1) not null,
-ExameID int not null,
+ExamID int not null,
 Nome varchar(100) not null,
 Info varchar(500) not null,
 constraint Pk_Avaliados_AvaliadoID primary key (AvaliadoID),
-constraint Fk_Avaliados_Exames foreign key (ExameID) references Exames (ExameID)
+constraint Fk_Avaliados_Exams foreign key (ExamID) references Exams (ExamID)
 );
 
 create table Respostas(
