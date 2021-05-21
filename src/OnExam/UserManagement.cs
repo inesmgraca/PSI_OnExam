@@ -13,6 +13,10 @@ namespace OnExam
     {
         public static string UserLoggedIn { get; set; }
 
+        public static string UserName { get; set; }
+
+        public static string UserEmail { get; set; }
+
         public static bool CheckUsername(string name)
         {
             try
@@ -143,6 +147,103 @@ namespace OnExam
                         return true;
                     else
                         MessageBox.Show("Não foi possível realizar o registo!", "Erro ao registar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                conn.Close();
+                conn.Dispose();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
+        public static bool UserGetProfile()
+        {
+            try
+            {
+                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+                var conn = new SqlConnection(connString);
+
+                conn.Open();
+
+                var cmd = new SqlCommand("GetUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param = new SqlParameter("@Username", UserLoggedIn);
+                cmd.Parameters.Add(param);
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    UserName = dr["Name"].ToString();
+                    UserEmail = dr["Email"].ToString();
+                }
+
+                conn.Close();
+                conn.Dispose();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
+        public static bool UserUpdateProfile(string nome, string email, string username)
+        {
+            try
+            {
+                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+                var conn = new SqlConnection(connString);
+
+                conn.Open();
+
+                var cmd = new SqlCommand("select Email from Users where Email = @email and Username != @username;", conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@username", username);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    MessageBox.Show("Já existe um utilizador com este email!", "Email incorreto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    cmd = new SqlCommand("UpdateUser", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    var param = new SqlParameter("@Name", nome);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@Email", email);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@UsernameOld", UserLoggedIn);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@UsernameNew", username);
+                    cmd.Parameters.Add(param);
+
+                    dr.Close();
+
+                    if (cmd.ExecuteNonQuery() == 1)
+                        return true;
+                    else
+                        MessageBox.Show("Não foi possível atualizar!", "Erro ao atualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 conn.Close();

@@ -7,30 +7,30 @@ using System.Windows.Forms;
 
 namespace OnExam
 {
-    public partial class Main : Form
+    public partial class frmMain : Form
     {
-        public Main()
+        public frmMain()
         {
             InitializeComponent();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var login = new Login();
+            var login = new frmLogin();
             login.Show();
             Hide();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var signup = new SignUp();
+            var signup = new frmSignUp();
             signup.Show();
             Hide();
         }
 
         private void btnTakeExam_Click(object sender, EventArgs e)
         {
-            var takeExam = new TakeExam();
+            var takeExam = new frmTakeExam();
             takeExam.Show();
             Hide();
         }
@@ -38,14 +38,14 @@ namespace OnExam
 
     public class MainForm
     {
-        private static Main _mainForm;
+        private static frmMain _mainForm;
 
-        public static Main mainForm
+        public static frmMain mainForm
         {
             get
             {
                 if (_mainForm == null)
-                    _mainForm = new Main();
+                    _mainForm = new frmMain();
 
                 return _mainForm;
             }

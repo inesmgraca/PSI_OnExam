@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OnExam
 {
-    public partial class TakeExam : Form
+    public partial class frmTakeExam : Form
     {
-        public TakeExam()
+        public frmTakeExam()
         {
             InitializeComponent();
         }

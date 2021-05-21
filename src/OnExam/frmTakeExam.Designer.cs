@@ -1,7 +1,7 @@
 ﻿
 namespace OnExam
 {
-    partial class TakeExam
+    partial class frmTakeExam
     {
         /// <summary>
         /// Required designer variable.

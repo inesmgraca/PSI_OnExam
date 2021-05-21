@@ -4,9 +4,9 @@ using static OnExam.UserManagement;
 
 namespace OnExam
 {
-    public partial class Login : Form
+    public partial class frmLogin : Form
     {
-        public Login()
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace OnExam
                 if (UserLogin(txtUsername.Text, txtPassword.Text))
                 {
                     UserLoggedIn = txtUsername.Text;
-                    var exams = new Exams();
+                    var exams = new frmViewExams();
                     exams.Show();
                     Close();
                 }
@@ -53,7 +53,7 @@ namespace OnExam
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var signup = new SignUp();
+            var signup = new frmSignUp();
             signup.Show();
             Close();
         }

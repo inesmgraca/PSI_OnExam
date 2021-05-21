@@ -4,9 +4,9 @@ using static OnExam.UserManagement;
 
 namespace OnExam
 {
-    public partial class SignUp : Form
+    public partial class frmSignUp : Form
     {
-        public SignUp()
+        public frmSignUp()
         {
             InitializeComponent();
         }
@@ -47,18 +47,13 @@ namespace OnExam
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
+            providerCorrect.SetError(txtUsername, "");
+            providerLoad.SetError(txtUsername, "");
+
             if (txtUsername.Text == string.Empty)
-            {
-                providerCorrect.SetError(txtUsername, "");
-                providerLoad.SetError(txtUsername, "");
                 providerError.SetError(txtUsername, "Não pode estar vazio!");
-            }
             else
-            {
-                providerCorrect.SetError(txtUsername, "");
-                providerError.SetError(txtUsername, "");
                 providerLoad.SetError(txtUsername, "...");
-            }
         }
 
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -121,7 +116,7 @@ namespace OnExam
                 if (UserSignUp(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
                     UserLoggedIn = txtUsername.Text;
-                    var exams = new Exams();
+                    var exams = new frmViewExams();
                     exams.Show();
                     Close();
                 }
@@ -134,7 +129,7 @@ namespace OnExam
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var login = new Login();
+            var login = new frmLogin();
             login.Show();
             Close();
         }

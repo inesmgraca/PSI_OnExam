@@ -11,9 +11,9 @@ using static OnExam.ExamManagement;
 
 namespace OnExam
 {
-    public partial class Exams : Form
+    public partial class frmViewExams : Form
     {
-        public Exams()
+        public frmViewExams()
         {
             InitializeComponent();
             var ds = ExamsView();
@@ -32,13 +32,26 @@ namespace OnExam
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("You must select only one row.", "Selected rows!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Exams_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
                 Application.Exit();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            var profile = new frmProfile();
+            profile.Show();
         }
     }
 }

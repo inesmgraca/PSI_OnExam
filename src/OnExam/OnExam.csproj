@@ -65,66 +65,90 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExam.Designer.cs">
+      <DependentUpon>frmExam.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExamManagement.cs" />
-    <Compile Include="Exams.cs">
+    <Compile Include="frmProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exams.Designer.cs">
-      <DependentUpon>Exams.cs</DependentUpon>
+    <Compile Include="frmProfile.Designer.cs">
+      <DependentUpon>frmProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="frmViewExams.Designer.cs">
+      <DependentUpon>frmViewExams.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignUp.cs">
+    <Compile Include="frmSignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SignUp.Designer.cs">
-      <DependentUpon>SignUp.cs</DependentUpon>
+    <Compile Include="frmSignUp.Designer.cs">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="TakeExam.cs">
+    <Compile Include="frmTakeExam.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TakeExam.Designer.cs">
-      <DependentUpon>TakeExam.cs</DependentUpon>
+    <Compile Include="frmTakeExam.Designer.cs">
+      <DependentUpon>frmTakeExam.cs</DependentUpon>
     </Compile>
     <Compile Include="UserManagement.cs" />
-    <EmbeddedResource Include="Exams.en-GB.resx">
-      <DependentUpon>Exams.cs</DependentUpon>
+    <EmbeddedResource Include="frmExam.en-GB.resx">
+      <DependentUpon>frmExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exams.pt-PT.resx">
-      <DependentUpon>Exams.cs</DependentUpon>
+    <EmbeddedResource Include="frmExam.pt-PT.resx">
+      <DependentUpon>frmExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exams.resx">
-      <DependentUpon>Exams.cs</DependentUpon>
+    <EmbeddedResource Include="frmExam.resx">
+      <DependentUpon>frmExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.en-GB.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="frmProfile.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.pt-PT.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="frmViewExams.en-GB.resx">
+      <DependentUpon>frmViewExams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="frmViewExams.pt-PT.resx">
+      <DependentUpon>frmViewExams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.en-GB.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="frmViewExams.resx">
+      <DependentUpon>frmViewExams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.pt-PT.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.en-GB.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.pt-PT.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.en-GB.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.pt-PT.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,17 +159,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SignUp.en-GB.resx">
-      <DependentUpon>SignUp.cs</DependentUpon>
+    <EmbeddedResource Include="frmSignUp.en-GB.resx">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUp.pt-PT.resx">
-      <DependentUpon>SignUp.cs</DependentUpon>
+    <EmbeddedResource Include="frmSignUp.pt-PT.resx">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUp.resx">
-      <DependentUpon>SignUp.cs</DependentUpon>
+    <EmbeddedResource Include="frmSignUp.resx">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TakeExam.resx">
-      <DependentUpon>TakeExam.cs</DependentUpon>
+    <EmbeddedResource Include="frmTakeExam.resx">
+      <DependentUpon>frmTakeExam.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

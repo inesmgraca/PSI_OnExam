@@ -130,7 +130,7 @@
     <value>148, 0</value>
   </data>
   <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 82</value>
+    <value>187, 66</value>
   </data>
   <data name="lblName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -157,7 +157,7 @@
     <value>Fill</value>
   </data>
   <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 85</value>
+    <value>148, 69</value>
   </data>
   <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -187,7 +187,7 @@
     <value>40, 3</value>
   </data>
   <data name="btnLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 29</value>
+    <value>106, 34</value>
   </data>
   <data name="btnLogin.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -211,13 +211,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 576</value>
+    <value>148, 581</value>
   </data>
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 35</value>
+    <value>187, 40</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -244,10 +244,10 @@
     <value>Fill</value>
   </data>
   <data name="lblAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 512</value>
+    <value>148, 539</value>
   </data>
   <data name="lblAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 61</value>
+    <value>187, 39</value>
   </data>
   <data name="lblAccount.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -280,7 +280,7 @@
     <value>40, 3</value>
   </data>
   <data name="btnRegister.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 29</value>
+    <value>106, 34</value>
   </data>
   <data name="btnRegister.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -304,13 +304,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 474</value>
+    <value>148, 496</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 35</value>
+    <value>187, 40</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -337,7 +337,7 @@
     <value>Arial, 9pt</value>
   </data>
   <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 331</value>
+    <value>148, 345</value>
   </data>
   <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -364,10 +364,10 @@
     <value>Fill</value>
   </data>
   <data name="lblPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 287</value>
+    <value>148, 283</value>
   </data>
   <data name="lblPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 41</value>
+    <value>187, 59</value>
   </data>
   <data name="lblPassword.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -397,7 +397,7 @@
     <value>Arial, 9pt</value>
   </data>
   <data name="txtConfirmPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 413</value>
+    <value>148, 437</value>
   </data>
   <data name="txtConfirmPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -424,10 +424,10 @@
     <value>Fill</value>
   </data>
   <data name="lblConfirmPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 369</value>
+    <value>148, 375</value>
   </data>
   <data name="lblConfirmPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 41</value>
+    <value>187, 59</value>
   </data>
   <data name="lblConfirmPassword.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -457,10 +457,10 @@
     <value>Fill</value>
   </data>
   <data name="lblEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 123</value>
+    <value>148, 99</value>
   </data>
   <data name="lblEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 41</value>
+    <value>187, 59</value>
   </data>
   <data name="lblEmail.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -490,10 +490,10 @@
     <value>Fill</value>
   </data>
   <data name="lblUsername.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 205</value>
+    <value>148, 191</value>
   </data>
   <data name="lblUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 41</value>
+    <value>187, 59</value>
   </data>
   <data name="lblUsername.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -520,7 +520,7 @@
     <value>Fill</value>
   </data>
   <data name="txtEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 167</value>
+    <value>148, 161</value>
   </data>
   <data name="txtEmail.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -544,7 +544,7 @@
     <value>Fill</value>
   </data>
   <data name="txtUsername.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 249</value>
+    <value>148, 253</value>
   </data>
   <data name="txtUsername.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 21</value>
@@ -616,7 +616,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtName" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="13" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblAccount" Row="12" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel2" Row="11" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtPassword" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblPassword" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtConfirmPassword" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblConfirmPassword" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblEmail" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblUsername" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtEmail" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtUsername" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBack" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,30,Percent,40,Percent,30" /&gt;&lt;Rows Styles="Percent,12,5,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,6,25,Percent,3,125,Percent,6,25,Percent,9,375,Percent,6,25,Percent,6,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtName" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="13" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblAccount" Row="12" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel2" Row="11" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtPassword" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblPassword" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtConfirmPassword" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblConfirmPassword" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblEmail" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblUsername" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtEmail" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtUsername" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBack" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,30,Percent,40,Percent,30" /&gt;&lt;Rows Styles="Percent,10,Percent,5,Percent,9,Percent,5,Percent,9,Percent,5,Percent,9,Percent,5,Percent,9,Percent,5,Percent,4,Percent,7,Percent,6,Percent,7,Percent,5" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="providerError.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -661,7 +661,7 @@
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SignUp</value>
+    <value>frmSignUp</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
