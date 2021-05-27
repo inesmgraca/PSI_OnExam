@@ -58,6 +58,12 @@ namespace OnExam
             }
         }
 
+        private void btnPassword_Click(object sender, EventArgs e)
+        {
+            var profilePass = new frmProfilePass();
+            profilePass.Show();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty

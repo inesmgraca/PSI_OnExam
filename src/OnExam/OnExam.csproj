@@ -78,6 +78,12 @@
     <Compile Include="frmProfile.Designer.cs">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProfilePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProfilePass.Designer.cs">
+      <DependentUpon>frmProfilePass.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfilePass.resx">
+      <DependentUpon>frmProfilePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewExams.en-GB.resx">
       <DependentUpon>frmViewExams.cs</DependentUpon>

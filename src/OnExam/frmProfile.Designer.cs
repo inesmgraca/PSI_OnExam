@@ -178,6 +178,7 @@ namespace OnExam
             this.btnPassword.TabIndex = 14;
             this.btnPassword.Text = "Change Pass";
             this.btnPassword.UseVisualStyleBackColor = true;
+            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
             // 
             // btnSave
             // 
