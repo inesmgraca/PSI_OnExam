@@ -30,6 +30,7 @@ namespace OnExam
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProfile));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -52,10 +53,7 @@ namespace OnExam
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.lblName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtPassword, 1, 7);
@@ -66,155 +64,91 @@ namespace OnExam
             this.tableLayoutPanel1.Controls.Add(this.txtUsername, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnPassword, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 10);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 12;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 561);
-            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // lblName
             // 
-            this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblName.Location = new System.Drawing.Point(148, 0);
+            resources.ApplyResources(this.lblName, "lblName");
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(187, 67);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtName
             // 
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtName.Location = new System.Drawing.Point(148, 70);
+            resources.ApplyResources(this.txtName, "txtName");
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(187, 21);
-            this.txtName.TabIndex = 1;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtPassword
             // 
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Enabled = false;
-            this.txtPassword.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtPassword.Location = new System.Drawing.Point(148, 337);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(187, 21);
-            this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPassword.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPassword.Location = new System.Drawing.Point(148, 284);
+            resources.ApplyResources(this.lblPassword, "lblPassword");
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(187, 50);
-            this.lblPassword.TabIndex = 1;
-            this.lblPassword.Text = "Password";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblEmail
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblEmail.Location = new System.Drawing.Point(148, 106);
+            resources.ApplyResources(this.lblEmail, "lblEmail");
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(187, 50);
-            this.lblEmail.TabIndex = 12;
-            this.lblEmail.Text = "Email";
-            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblUsername.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblUsername.Location = new System.Drawing.Point(148, 195);
+            resources.ApplyResources(this.lblUsername, "lblUsername");
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(187, 50);
-            this.lblUsername.TabIndex = 13;
-            this.lblUsername.Text = "Username";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtEmail
             // 
-            this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmail.Location = new System.Drawing.Point(148, 159);
+            resources.ApplyResources(this.txtEmail, "txtEmail");
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 21);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // txtUsername
             // 
-            this.txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUsername.Location = new System.Drawing.Point(148, 248);
+            resources.ApplyResources(this.txtUsername, "txtUsername");
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(187, 21);
-            this.txtUsername.TabIndex = 3;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // btnPassword
             // 
-            this.btnPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPassword.Location = new System.Drawing.Point(148, 381);
+            resources.ApplyResources(this.btnPassword, "btnPassword");
             this.btnPassword.Name = "btnPassword";
-            this.btnPassword.Size = new System.Drawing.Size(187, 38);
-            this.btnPassword.TabIndex = 14;
-            this.btnPassword.Text = "Change Pass";
             this.btnPassword.UseVisualStyleBackColor = true;
             this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(148, 464);
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(187, 38);
-            this.btnSave.TabIndex = 15;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // providerError
             // 
+            this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
             // 
             // providerLoad
             // 
+            this.providerLoad.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerLoad.ContainerControl = this;
             // 
             // providerCorrect
             // 
+            this.providerCorrect.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerCorrect.ContainerControl = this;
             // 
             // frmProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 561);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Arial", 9F);
-            this.MaximumSize = new System.Drawing.Size(700, 700);
-            this.MinimumSize = new System.Drawing.Size(400, 600);
             this.Name = "frmProfile";
-            this.Text = "frmProfile";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProfile_FormClosed);
+            this.Load += new System.EventHandler(this.frmProfile_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.providerError)).EndInit();

@@ -120,9 +120,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>OnExam - Login</value>
   </data>
-  <data name="lblUsernameEmail.Error" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblUsernameEmail.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -131,17 +128,11 @@
   <data name="lblUsernameEmail.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="txtUsername.Error" xml:space="preserve">
-    <value />
-  </data>
   <data name="txtUsername.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
   <data name="txtUsername.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="lblPassword.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="lblPassword.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -152,17 +143,11 @@
   <data name="lblPassword.Text" xml:space="preserve">
     <value>Palavra-passe</value>
   </data>
-  <data name="txtPassword.Error" xml:space="preserve">
-    <value />
-  </data>
   <data name="txtPassword.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
   <data name="txtPassword.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="btnLogin.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="btnLogin.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -173,17 +158,11 @@
   <data name="btnLogin.Text" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="tableLayoutPanel2.Error" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
   <data name="tableLayoutPanel2.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="btnRegister.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="btnRegister.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -191,20 +170,14 @@
   <data name="btnRegister.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="btnRegister.Text" xml:space="preserve">
+  <data name="btnSignUp.Text" xml:space="preserve">
     <value>Registar</value>
-  </data>
-  <data name="tableLayoutPanel3.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel3.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
   <data name="tableLayoutPanel3.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="lblNoAccount.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="lblNoAccount.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -215,9 +188,6 @@
   <data name="lblNoAccount.Text" xml:space="preserve">
     <value>Não tem conta?</value>
   </data>
-  <data name="btnBack.Error" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnBack.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
@@ -226,9 +196,6 @@
   </data>
   <data name="btnBack.Text" xml:space="preserve">
     <value>Voltar</value>
-  </data>
-  <data name="tableLayoutPanel1.Error" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>

@@ -11,19 +11,57 @@ namespace OnExam
 {
     public static class UserManagement
     {
+        private static string _error;
+        public static string error
+        {
+            get
+            {
+                return _error;
+            }
+            set
+            {
+                _error = Properties.Resources.ResourceManager.GetString("error");
+            }
+        }
+
+        private static string _errorDB;
+        public static string errorDB
+        {
+            get
+            {
+                return _errorDB;
+            }
+            set
+            {
+                _errorDB = Properties.Resources.ResourceManager.GetString("errorDB");
+            }
+        }
+
+        private static string _errorMessage;
+        public static string errorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = Properties.Resources.ResourceManager.GetString("errorMessage");
+            }
+        }
+
         public static string UserLoggedIn { get; set; }
-
         public static string UserName { get; set; }
-
         public static string UserEmail { get; set; }
 
         public static bool CheckUsername(string name)
         {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
             try
             {
-                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
-                var conn = new SqlConnection(connString);
-
                 conn.Open();
 
                 var cmd = new SqlCommand("SearchUser", conn);
@@ -35,30 +73,36 @@ namespace OnExam
                 var dr = cmd.ExecuteReader();
 
                 if (!dr.HasRows)
-                    return true;
-
-                conn.Close();
-                conn.Dispose();
+                    result = true;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
 
-            return false;
+            return result;
         }
 
         public static bool UserLogin(string name, string pass)
         {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
             try
             {
-                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
-                var conn = new SqlConnection(connString);
-
                 conn.Open();
 
                 var cmd = new SqlCommand("SearchUser", conn);
@@ -71,43 +115,54 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
+                    var username = "";
                     var passOriginal = "";
                     var saltOriginal = "";
 
                     while (dr.Read())
                     {
+                        username = dr["Username"].ToString();
                         passOriginal = dr["Password"].ToString();
                         saltOriginal = dr["Salt"].ToString();
                     }
 
                     if (PassCompare(passOriginal, saltOriginal, pass))
-                        return true;
+                    {
+                        UserLoggedIn = username;
+                        result = true;
+                    }
                 }
                 else
-                    MessageBox.Show("As informações de login estão incorretas!", "Login incorreto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                conn.Close();
-                conn.Dispose();
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidLogin"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
 
-            return false;
+            return result;
         }
 
         public static bool UserSignUp(string nome, string email, string username, string password)
         {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
             try
             {
-                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
-                var conn = new SqlConnection(connString);
-
                 conn.Open();
 
                 var cmd = new SqlCommand("select Email from Users where Email = @email;", conn);
@@ -117,7 +172,7 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
-                    MessageBox.Show("Já existe um utilizador com este email!", "Email incorreto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -144,33 +199,43 @@ namespace OnExam
                     dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
-                        return true;
+                    {
+                        UserLoggedIn = username;
+                        result = true;
+                    }
                     else
-                        MessageBox.Show("Não foi possível realizar o registo!", "Erro ao registar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantSignUp"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-
-                conn.Close();
-                conn.Dispose();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
 
-            return false;
+            return result;
         }
 
-        public static bool UserGetProfile()
+        public static void UserGetProfile()
         {
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
             try
             {
-                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
-                var conn = new SqlConnection(connString);
-
                 conn.Open();
 
                 var cmd = new SqlCommand("GetUser", conn);
@@ -192,34 +257,41 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            return false;
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
         }
 
         public static bool UserUpdateProfile(string nome, string email, string username)
         {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
             try
             {
-                var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
-                var conn = new SqlConnection(connString);
-
                 conn.Open();
 
                 var cmd = new SqlCommand("select Email from Users where Email = @email and Username != @username;", conn);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@username", UserLoggedIn);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.HasRows)
                 {
-                    MessageBox.Show("Já existe um utilizador com este email!", "Email incorreto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -241,24 +313,78 @@ namespace OnExam
                     dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
-                        return true;
+                        result = true;
                     else
-                        MessageBox.Show("Não foi possível atualizar!", "Erro ao atualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantUpdate"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                conn.Close();
-                conn.Dispose();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
 
-            return false;
+            return result;
+        }
+
+        public static bool UserUpdatePass(string password)
+        {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
+            try
+            {
+                conn.Open();
+
+                var cmd = new SqlCommand("UpdateUserPass", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param = new SqlParameter("@Username", UserLoggedIn);
+                cmd.Parameters.Add(param);
+
+                var pass = HashWithSalt(password);
+
+                param = new SqlParameter("@Password", pass.Hash);
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@Salt", pass.Salt);
+                cmd.Parameters.Add(param);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+                else
+                    MessageBox.Show("Não foi possível atualizar!", error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+
+            return result;
         }
 
         public static HashSalt HashWithSalt(string password)

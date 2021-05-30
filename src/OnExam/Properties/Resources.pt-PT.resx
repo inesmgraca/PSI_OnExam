@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="available" xml:space="preserve">
-    <value>Available!</value>
+    <value>Disponível!</value>
   </data>
   <data name="cantBeEmpty" xml:space="preserve">
-    <value>Can't be empty!</value>
+    <value>Não pode estar vazio!</value>
   </data>
   <data name="cantSignUp" xml:space="preserve">
-    <value>Couldn't sign up!</value>
+    <value>Não foi possível registar!</value>
   </data>
   <data name="cantUpdate" xml:space="preserve">
-    <value>Couldn't update!</value>
+    <value>Não foi possível atualizar!</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>Error!</value>
+    <value>Erro!</value>
   </data>
   <data name="errorDB" xml:space="preserve">
-    <value>Database error!</value>
+    <value>Erro de base de dados!</value>
   </data>
   <data name="errorEmail" xml:space="preserve">
-    <value>There's already a user with this email!</value>
+    <value>Já existe um utilizador com este email!</value>
   </data>
   <data name="errorMessage" xml:space="preserve">
-    <value>Error message: </value>
+    <value>Mensagem de erro: </value>
   </data>
   <data name="fillFields" xml:space="preserve">
-    <value>Fill all fields!</value>
+    <value>Preencha todos os campos!</value>
   </data>
   <data name="invalidLogin" xml:space="preserve">
-    <value>Invalid login!</value>
+    <value>Login inválido!</value>
   </data>
   <data name="noMatch" xml:space="preserve">
-    <value>No match!</value>
+    <value>Palavras-passe não coincidem!</value>
   </data>
   <data name="unavailable" xml:space="preserve">
-    <value>Unavailable!</value>
+    <value>Indisponível!</value>
   </data>
   <data name="verifying" xml:space="preserve">
-    <value>Verifying...</value>
+    <value>A verificar...</value>
   </data>
 </root>

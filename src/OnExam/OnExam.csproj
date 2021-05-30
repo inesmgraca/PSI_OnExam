@@ -84,6 +84,12 @@
     <Compile Include="frmProfilePass.Designer.cs">
       <DependentUpon>frmProfilePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOpts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpts.Designer.cs">
+      <DependentUpon>frmOpts.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,11 +132,26 @@
     <EmbeddedResource Include="frmExam.resx">
       <DependentUpon>frmExam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProfile.en-GB.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfile.pt-PT.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProfilePass.en-GB.resx">
+      <DependentUpon>frmProfilePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfilePass.pt-PT.resx">
+      <DependentUpon>frmProfilePass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProfilePass.resx">
       <DependentUpon>frmProfilePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpts.resx">
+      <DependentUpon>frmOpts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewExams.en-GB.resx">
       <DependentUpon>frmViewExams.cs</DependentUpon>
@@ -140,12 +161,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewExams.resx">
       <DependentUpon>frmViewExams.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.en-GB.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.pt-PT.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -159,6 +182,8 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-GB.resx" />
+    <EmbeddedResource Include="Properties\Resources.pt-PT.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -167,12 +192,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="frmSignUp.en-GB.resx">
       <DependentUpon>frmSignUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSignUp.pt-PT.resx">
       <DependentUpon>frmSignUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSignUp.resx">
       <DependentUpon>frmSignUp.cs</DependentUpon>

@@ -303,31 +303,31 @@
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="btnRegister.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="btnSignUp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="btnRegister.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnSignUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 3</value>
   </data>
-  <data name="btnRegister.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnSignUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 29</value>
   </data>
-  <data name="btnRegister.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnSignUp.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="btnRegister.Text" xml:space="preserve">
+  <data name="btnSignUp.Text" xml:space="preserve">
     <value>Sign Up</value>
   </data>
-  <data name="&gt;&gt;btnRegister.Name" xml:space="preserve">
-    <value>btnRegister</value>
+  <data name="&gt;&gt;btnSignUp.Name" xml:space="preserve">
+    <value>btnSignUp</value>
   </data>
-  <data name="&gt;&gt;btnRegister.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnSignUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnRegister.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnSignUp.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
-  <data name="&gt;&gt;btnRegister.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnSignUp.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -358,7 +358,7 @@
     <value>5</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnRegister" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,60,Percent,20" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnSignUp" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,60,Percent,20" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="lblNoAccount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -478,7 +478,7 @@
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Login</value>
+    <value>frmLogin</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

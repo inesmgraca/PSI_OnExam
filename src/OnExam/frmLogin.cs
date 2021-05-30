@@ -29,29 +29,26 @@ namespace OnExam
             {
                 if (UserLogin(txtUsername.Text, txtPassword.Text))
                 {
-                    UserLoggedIn = txtUsername.Text;
                     var exams = new frmViewExams();
                     exams.Show();
                     Close();
                 }
                 else
-                {
                     txtPassword.Text = string.Empty;
-                }
             }
             else
             {
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, "Não pode estar vazio!");
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
 
                 if (txtPassword.Text == string.Empty)
-                    providerError.SetError(txtPassword, "Não pode estar vazio!");
+                    providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             }
 
             txtUsername.Focus();
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnSignUp_Click(object sender, EventArgs e)
         {
             var signup = new frmSignUp();
             signup.Show();

@@ -143,14 +143,15 @@ namespace OnExam
             this.btnProfile.UseVisualStyleBackColor = true;
             this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // ViewExams
+            // frmViewExams
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ViewExams";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Exams_FormClosed);
+            this.Name = "frmViewExams";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmViewExams_FormClosed);
+            this.Load += new System.EventHandler(this.frmViewExams_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExams)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

@@ -13,72 +13,62 @@ namespace OnExam
 
         private void txtName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtName.Text != "")
+            if (e.KeyCode == Keys.Enter && txtName.Text != string.Empty)
                 txtEmail.Focus();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             if (txtName.Text == string.Empty)
-                providerError.SetError(txtName, "Não pode estar vazio!");
+                providerError.SetError(txtName, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             else
-                providerError.SetError(txtName, "");
+                providerError.SetError(txtName, string.Empty);
         }
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtEmail.Text != "")
+            if (e.KeyCode == Keys.Enter && txtEmail.Text != string.Empty)
                 txtUsername.Focus();
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             if (txtEmail.Text == string.Empty)
-                providerError.SetError(txtEmail, "Não pode estar vazio!");
+                providerError.SetError(txtEmail, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             else
-                providerError.SetError(txtEmail, "");
+                providerError.SetError(txtEmail, string.Empty);
         }
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtUsername.Text != "")
+            if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty)
                 txtPassword.Focus();
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            providerCorrect.SetError(txtUsername, "");
-            providerLoad.SetError(txtUsername, "");
-
             if (txtUsername.Text == string.Empty)
-                providerError.SetError(txtUsername, "Não pode estar vazio!");
+                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             else
-                providerLoad.SetError(txtUsername, "...");
+                providerLoad.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("verifying"));
         }
 
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            providerLoad.SetError(txtUsername, "");
-
             if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty)
-            {
-                providerError.SetError(txtUsername, "");
-                providerCorrect.SetError(txtUsername, "Disponível!");
-            }
+                providerCorrect.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("available"));
             else
             {
-                providerCorrect.SetError(txtUsername, "");
-
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, "Não pode estar vazio!");
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
                 else
-                    providerError.SetError(txtUsername, "Indisponível!");
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("unavailable"));
             }
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && txtPassword.Text != "")
+            if (e.KeyCode == Keys.Enter && txtPassword.Text != string.Empty)
                 txtConfirmPassword.Focus();
         }
 
@@ -86,18 +76,18 @@ namespace OnExam
         {
             if (txtPassword.Text.Equals(txtConfirmPassword.Text) && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
             {
-                providerError.SetError(txtPassword, "");
-                providerError.SetError(txtConfirmPassword, "");
+                providerError.SetError(txtPassword, string.Empty);
+                providerError.SetError(txtConfirmPassword, string.Empty);
             }
             else if (txtPassword.Text == string.Empty && txtConfirmPassword.Text == string.Empty)
             {
-                providerError.SetError(txtPassword, "Não pode estar vazio!");
-                providerError.SetError(txtConfirmPassword, "Não pode estar vazio!");
+                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             }
             else
             {
-                providerError.SetError(txtPassword, "Password não coincide!");
-                providerError.SetError(txtConfirmPassword, "Password não coincide!");
+                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
+                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
             }
         }
 
@@ -105,10 +95,10 @@ namespace OnExam
         {
             if (e.KeyCode == Keys.Enter && txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty
                 && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
-                btnRegister_Click(sender, e);
+                btnSignUp_Click(sender, e);
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
                 && txtConfirmPassword.Text != string.Empty && CheckUsername(txtUsername.Text) && txtPassword.Text.Equals(txtConfirmPassword.Text))
@@ -140,7 +130,7 @@ namespace OnExam
             Close();
         }
 
-        private void Register_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmSignUp_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
                 Application.Exit();

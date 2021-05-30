@@ -76,7 +76,7 @@ namespace OnExam
             resources.ApplyResources(this.btnSignUp, "btnSignUp");
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.UseVisualStyleBackColor = true;
-            this.btnSignUp.Click += new System.EventHandler(this.btnRegister_Click);
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // tableLayoutPanel3
             // 

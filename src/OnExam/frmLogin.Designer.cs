@@ -39,7 +39,7 @@ namespace OnExam
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnSignUp = new System.Windows.Forms.Button();
             this.lblNoAccount = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.providerError = new System.Windows.Forms.ErrorProvider(this.components);
@@ -101,15 +101,15 @@ namespace OnExam
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.btnRegister, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSignUp, 1, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
-            // btnRegister
+            // btnSignUp
             // 
-            resources.ApplyResources(this.btnRegister, "btnRegister");
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            resources.ApplyResources(this.btnSignUp, "btnSignUp");
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // lblNoAccount
             // 
@@ -128,13 +128,13 @@ namespace OnExam
             this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
             // 
-            // Login
+            // frmLogin
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Login";
+            this.Name = "frmLogin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -155,7 +155,7 @@ namespace OnExam
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Label lblNoAccount;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ErrorProvider providerError;

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static OnExam.UserManagement;
 
@@ -16,6 +10,10 @@ namespace OnExam
         public frmProfile()
         {
             InitializeComponent();
+        }
+
+        private void frmProfile_Load(object sender, EventArgs e)
+        {
             UserGetProfile();
             txtName.Text = UserName;
             txtEmail.Text = UserEmail;
@@ -23,38 +21,48 @@ namespace OnExam
             txtPassword.Text = "..........";
         }
 
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && txtName.Text != string.Empty)
+                txtEmail.Focus();
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && txtEmail.Text != string.Empty)
+                txtUsername.Focus();
+        }
+
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            providerCorrect.SetError(txtUsername, "");
-            providerLoad.SetError(txtUsername, "");
-
             if (txtUsername.Text == string.Empty)
-                providerError.SetError(txtUsername, "Não pode estar vazio!");
+                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
             else if (txtUsername.Text.Equals(UserLoggedIn))
-                providerLoad.SetError(txtUsername, "");
+                providerLoad.SetError(txtUsername, string.Empty);
             else
-                providerLoad.SetError(txtUsername, "...");
+                providerLoad.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("verifying"));
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty)
+                btnSave_Click(sender, e);
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
-            providerLoad.SetError(txtUsername, "");
-
-            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty && txtUsername.Text.Equals(UserLoggedIn))
+            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Equals(UserLoggedIn))
             {
-                providerError.SetError(txtUsername, "");
-                providerCorrect.SetError(txtUsername, "Disponível!");
+                providerCorrect.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("available"));
             }
             else
             {
-                providerCorrect.SetError(txtUsername, "");
-
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, "Não pode estar vazio!");
-                else if (txtUsername.Text == UserLoggedIn)
-                    providerError.SetError(txtUsername, "");
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                else if (txtUsername.Text.Equals(UserLoggedIn))
+                    providerError.SetError(txtUsername, string.Empty);
                 else
-                    providerError.SetError(txtUsername, "Indisponível!");
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("unavailable"));
             }
         }
 
@@ -76,9 +84,7 @@ namespace OnExam
                 }
             }
             else
-            {
-                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("fillFields"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void frmProfile_FormClosed(object sender, FormClosedEventArgs e)

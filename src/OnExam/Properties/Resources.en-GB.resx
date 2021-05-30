@@ -148,7 +148,7 @@
     <value>Invalid login!</value>
   </data>
   <data name="noMatch" xml:space="preserve">
-    <value>No match!</value>
+    <value>Passwords don't match!</value>
   </data>
   <data name="unavailable" xml:space="preserve">
     <value>Unavailable!</value>

@@ -117,43 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="available" xml:space="preserve">
-    <value>Available!</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>OnExam - Perfil</value>
   </data>
-  <data name="cantBeEmpty" xml:space="preserve">
-    <value>Can't be empty!</value>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Nome</value>
   </data>
-  <data name="cantSignUp" xml:space="preserve">
-    <value>Couldn't sign up!</value>
+  <data name="lblPassword.Text" xml:space="preserve">
+    <value>Palavra-passe</value>
   </data>
-  <data name="cantUpdate" xml:space="preserve">
-    <value>Couldn't update!</value>
+  <data name="lblEmail.Text" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Error!</value>
+  <data name="lblUsername.Text" xml:space="preserve">
+    <value>Username</value>
   </data>
-  <data name="errorDB" xml:space="preserve">
-    <value>Database error!</value>
+  <data name="btnPassword.Text" xml:space="preserve">
+    <value>Alterar Palavra-passe</value>
   </data>
-  <data name="errorEmail" xml:space="preserve">
-    <value>There's already a user with this email!</value>
-  </data>
-  <data name="errorMessage" xml:space="preserve">
-    <value>Error message: </value>
-  </data>
-  <data name="fillFields" xml:space="preserve">
-    <value>Fill all fields!</value>
-  </data>
-  <data name="invalidLogin" xml:space="preserve">
-    <value>Invalid login!</value>
-  </data>
-  <data name="noMatch" xml:space="preserve">
-    <value>No match!</value>
-  </data>
-  <data name="unavailable" xml:space="preserve">
-    <value>Unavailable!</value>
-  </data>
-  <data name="verifying" xml:space="preserve">
-    <value>Verifying...</value>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Guardar</value>
   </data>
 </root>

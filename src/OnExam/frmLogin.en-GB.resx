@@ -120,4 +120,19 @@
   <data name="$this.Text" xml:space="preserve">
     <value>OnExam - Log In</value>
   </data>
+  <data name="btnBack.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="btnLogin.Text" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="btnSignUp.Text" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="lblNoAccount.Text" xml:space="preserve">
+    <value>No account?</value>
+  </data>
+  <data name="lblPassword.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>

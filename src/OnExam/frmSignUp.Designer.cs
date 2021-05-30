@@ -38,7 +38,7 @@ namespace OnExam
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblAccount = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnSignUp = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -111,15 +111,15 @@ namespace OnExam
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.btnRegister, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnSignUp, 1, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // btnRegister
+            // btnSignUp
             // 
-            resources.ApplyResources(this.btnRegister, "btnRegister");
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            resources.ApplyResources(this.btnSignUp, "btnSignUp");
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // txtPassword
             // 
@@ -200,7 +200,7 @@ namespace OnExam
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmSignUp";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Register_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSignUp_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -220,7 +220,7 @@ namespace OnExam
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblAccount;

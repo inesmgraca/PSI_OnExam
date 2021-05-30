@@ -129,14 +129,14 @@
   <data name="lblAccount.Text" xml:space="preserve">
     <value>Já tem conta?</value>
   </data>
-  <data name="btnRegister.Text" xml:space="preserve">
+  <data name="btnSignUp.Text" xml:space="preserve">
     <value>Registar</value>
   </data>
   <data name="lblPassword.Text" xml:space="preserve">
-    <value>Password </value>
+    <value>Palavra-passe</value>
   </data>
   <data name="lblConfirmPassword.Text" xml:space="preserve">
-    <value>Confirmar Password</value>
+    <value>Confirmar Palavra-passe</value>
   </data>
   <data name="lblEmail.Text" xml:space="preserve">
     <value>Email </value>

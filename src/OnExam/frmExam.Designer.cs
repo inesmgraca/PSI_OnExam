@@ -30,18 +30,51 @@ namespace OnExam
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExam));
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.stripBtnRdb = new System.Windows.Forms.ToolStripButton();
+            this.stripBtnChk = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Exam
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stripBtnRdb,
+            this.stripBtnChk});
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Name = "toolStrip1";
+            // 
+            // stripBtnRdb
+            // 
+            resources.ApplyResources(this.stripBtnRdb, "stripBtnRdb");
+            this.stripBtnRdb.Name = "stripBtnRdb";
+            this.stripBtnRdb.Click += new System.EventHandler(this.stripBtnRdb_Click);
+            // 
+            // stripBtnChk
+            // 
+            resources.ApplyResources(this.stripBtnChk, "stripBtnChk");
+            this.stripBtnChk.Name = "stripBtnChk";
+            this.stripBtnChk.Click += new System.EventHandler(this.stripBtnChk_Click);
+            // 
+            // frmExam
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
-            this.Name = "Exam";
+            this.Name = "frmExam";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton stripBtnRdb;
+        private System.Windows.Forms.ToolStripButton stripBtnChk;
     }
 }

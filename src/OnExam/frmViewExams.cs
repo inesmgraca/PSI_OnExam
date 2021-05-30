@@ -16,8 +16,13 @@ namespace OnExam
         public frmViewExams()
         {
             InitializeComponent();
+        }
+
+        private void frmViewExams_Load(object sender, EventArgs e)
+        {
             var ds = ExamsView();
-            dataGridExams.DataSource = ds.Tables["Results"];
+            if (ds != null)
+                dataGridExams.DataSource = ds.Tables["Results"];
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -42,16 +47,16 @@ namespace OnExam
             }
         }
 
-        private void Exams_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
-                Application.Exit();
-        }
-
         private void btnProfile_Click(object sender, EventArgs e)
         {
             var profile = new frmProfile();
             profile.Show();
+        }
+
+        private void frmViewExams_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+                Application.Exit();
         }
     }
 }

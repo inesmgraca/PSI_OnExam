@@ -12,15 +12,54 @@ namespace OnExam
 {
     public static class ExamManagement
     {
+        private static string _error;
+        public static string error
+        {
+            get
+            {
+                return _error;
+            }
+            set
+            {
+                _error = Properties.Resources.ResourceManager.GetString("error");
+            }
+        }
+
+        private static string _errorDB;
+        public static string errorDB
+        {
+            get
+            {
+                return _errorDB;
+            }
+            set
+            {
+                _errorDB = Properties.Resources.ResourceManager.GetString("errorDB");
+            }
+        }
+
+        private static string _errorMessage;
+        public static string errorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = Properties.Resources.ResourceManager.GetString("errorMessage");
+            }
+        }
+
         public static DataSet ExamsView()
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
-            conn.Open();
-
             try
             {
+                conn.Open();
+
                 var cmd = new SqlCommand("ExamsView", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -37,17 +76,22 @@ namespace OnExam
                     ds.Load(dr, LoadOption.PreserveChanges, ds.Tables["Results"]);
                     return ds;
                 }
-
-                conn.Close();
-                conn.Dispose();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro de Base de dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensagem de erro: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
 
             return null;

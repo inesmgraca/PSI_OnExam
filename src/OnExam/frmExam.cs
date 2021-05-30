@@ -16,5 +16,21 @@ namespace OnExam
         {
             InitializeComponent();
         }
+
+        private void stripBtnRdb_Click(object sender, EventArgs e)
+        {
+            var opts = new frmOpts();
+            opts.MdiParent = this;
+            opts.flowPanelOptions_Fill(frmOpts.OptionType.RadioButtons);
+            opts.Show();
+        }
+
+        private void stripBtnChk_Click(object sender, EventArgs e)
+        {
+            var opts = new frmOpts();
+            opts.MdiParent = this;
+            opts.flowPanelOptions_Fill(frmOpts.OptionType.Checkboxes);
+            opts.Show();
+        }
     }
 }
