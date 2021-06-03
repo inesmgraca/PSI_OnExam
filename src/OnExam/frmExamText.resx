@@ -117,61 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="answer" xml:space="preserve">
-    <value>Answer </value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="available" xml:space="preserve">
-    <value>Available!</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtQuestion.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="cantBeEmpty" xml:space="preserve">
-    <value>Can't be empty!</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtQuestion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 116</value>
   </data>
-  <data name="cantSignUp" xml:space="preserve">
-    <value>Couldn't sign up!</value>
+  <data name="txtQuestion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 21</value>
   </data>
-  <data name="cantUpdate" xml:space="preserve">
-    <value>Couldn't update!</value>
+  <data name="txtQuestion.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Error!</value>
+  <data name="txtQuestion.Text" xml:space="preserve">
+    <value>Question</value>
   </data>
-  <data name="errorDB" xml:space="preserve">
-    <value>Database error!</value>
+  <data name="&gt;&gt;txtQuestion.Name" xml:space="preserve">
+    <value>txtQuestion</value>
   </data>
-  <data name="errorEmail" xml:space="preserve">
-    <value>There's already a user with this email!</value>
+  <data name="&gt;&gt;txtQuestion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="errorMessage" xml:space="preserve">
-    <value>Error message: </value>
+  <data name="&gt;&gt;txtQuestion.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="fillFields" xml:space="preserve">
-    <value>Fill all fields!</value>
+  <data name="&gt;&gt;txtQuestion.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="invalidLogin" xml:space="preserve">
-    <value>Invalid login!</value>
+  <data name="txtNotesAnswer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="invalidUsername" xml:space="preserve">
-    <value>Invalid username!</value>
+  <data name="txtNotesAnswer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 143</value>
   </data>
-  <data name="noMatch" xml:space="preserve">
-    <value>Passwords don't match!</value>
+  <data name="txtNotesAnswer.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="option" xml:space="preserve">
-    <value>Option </value>
+  <data name="txtNotesAnswer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 274</value>
   </data>
-  <data name="saveError" xml:space="preserve">
-    <value>Changes will be lost. Do you still wish to close?</value>
+  <data name="txtNotesAnswer.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="saveSucess" xml:space="preserve">
-    <value>Saved sucessfully!</value>
+  <data name="txtNotesAnswer.Text" xml:space="preserve">
+    <value>Answer notes:</value>
   </data>
-  <data name="success" xml:space="preserve">
-    <value>Success!</value>
+  <data name="&gt;&gt;txtNotesAnswer.Name" xml:space="preserve">
+    <value>txtNotesAnswer</value>
   </data>
-  <data name="unavailable" xml:space="preserve">
-    <value>Unavailable!</value>
+  <data name="&gt;&gt;txtNotesAnswer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="verifying" xml:space="preserve">
-    <value>Verifying...</value>
+  <data name="&gt;&gt;txtNotesAnswer.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;txtNotesAnswer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 561</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtQuestion" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtNotesAnswer" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,15,Percent,70,Percent,15" /&gt;&lt;Rows Styles="Percent,25,Percent,50,Percent,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>884, 561</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 600</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>OnExam</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmExamText</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

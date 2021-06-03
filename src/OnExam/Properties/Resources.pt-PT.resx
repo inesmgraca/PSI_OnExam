@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="answer" xml:space="preserve">
+    <value>Resposta </value>
+  </data>
   <data name="available" xml:space="preserve">
     <value>Disponível!</value>
   </data>
@@ -147,8 +150,23 @@
   <data name="invalidLogin" xml:space="preserve">
     <value>Login inválido!</value>
   </data>
+  <data name="invalidUsername" xml:space="preserve">
+    <value>Username inválido!</value>
+  </data>
   <data name="noMatch" xml:space="preserve">
     <value>Palavras-passe não coincidem!</value>
+  </data>
+  <data name="option" xml:space="preserve">
+    <value>Opção </value>
+  </data>
+  <data name="saveError" xml:space="preserve">
+    <value>As alterações serão perdidas. Pretende ainda assim fechar?</value>
+  </data>
+  <data name="saveSucess" xml:space="preserve">
+    <value>Guardado com sucesso!</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Successo!</value>
   </data>
   <data name="unavailable" xml:space="preserve">
     <value>Indisponível!</value>

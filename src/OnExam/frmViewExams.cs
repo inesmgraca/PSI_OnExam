@@ -27,7 +27,10 @@ namespace OnExam
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            var exam = new frmExam();
 
+            if (exam.frmExam_New())
+                exam.Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -39,7 +42,12 @@ namespace OnExam
         {
             if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
             {
+                var ID = dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString();
+                int.TryParse(ID, out int examID);
+                var exam = new frmExam();
 
+                if (exam.frmExam_Open(examID))
+                    exam.Show();
             }
             else
             {

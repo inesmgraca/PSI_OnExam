@@ -49,18 +49,22 @@ namespace OnExam
         {
             if (txtUsername.Text == string.Empty)
                 providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+            else if (txtUsername.Text.Contains("-") || txtUsername.Text.Contains(" "))
+                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("invalidUsername"));
             else
                 providerLoad.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("verifying"));
         }
 
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty)
+            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" "))
                 providerCorrect.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("available"));
             else
             {
                 if (txtUsername.Text == string.Empty)
                     providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                else if (txtUsername.Text.Contains("-") || txtUsername.Text.Contains(" "))
+                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("invalidUsername"));
                 else
                     providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("unavailable"));
             }
@@ -101,7 +105,7 @@ namespace OnExam
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
-                && txtConfirmPassword.Text != string.Empty && CheckUsername(txtUsername.Text) && txtPassword.Text.Equals(txtConfirmPassword.Text))
+                && CheckUsername(txtUsername.Text) && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" ") && txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
                 if (UserSignUp(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {

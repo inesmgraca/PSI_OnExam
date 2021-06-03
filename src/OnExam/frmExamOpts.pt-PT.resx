@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtQuestion.Text" xml:space="preserve">
+    <value>Questão</value>
+  </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>Eliminar Opção</value>
+  </data>
+  <data name="btnAdd.Text" xml:space="preserve">
+    <value>Adicionar Opção</value>
+  </data>
 </root>

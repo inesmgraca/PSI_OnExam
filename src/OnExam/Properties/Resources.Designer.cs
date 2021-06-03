@@ -61,6 +61,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Answer .
+        /// </summary>
+        internal static string answer {
+            get {
+                return ResourceManager.GetString("answer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available!.
         /// </summary>
         internal static string available {
@@ -151,11 +160,56 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid username!.
+        /// </summary>
+        internal static string invalidUsername {
+            get {
+                return ResourceManager.GetString("invalidUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No match!.
         /// </summary>
         internal static string noMatch {
             get {
                 return ResourceManager.GetString("noMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option .
+        /// </summary>
+        internal static string option {
+            get {
+                return ResourceManager.GetString("option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes will be lost. Do you still wish to close?.
+        /// </summary>
+        internal static string saveError {
+            get {
+                return ResourceManager.GetString("saveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saved sucessfully!.
+        /// </summary>
+        internal static string saveSucess {
+            get {
+                return ResourceManager.GetString("saveSucess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success!.
+        /// </summary>
+        internal static string success {
+            get {
+                return ResourceManager.GetString("success", resourceCulture);
             }
         }
         
