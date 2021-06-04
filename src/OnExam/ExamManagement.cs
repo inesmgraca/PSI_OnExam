@@ -218,6 +218,45 @@ namespace OnExam
             return null;
         }
 
+        public static bool ExamDelete(int examID)
+        {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
+            try
+            {
+                conn.Open();
+
+                var cmd = new SqlCommand("DeleteExam", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param = new SqlParameter("@ExamID", examID);
+                cmd.Parameters.Add(param);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+
+            return result;
+        }
+
         public static List<ExamQuestion> ExamOpenQuestions(int examID)
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
@@ -380,7 +419,7 @@ namespace OnExam
 
                         while (dr.Read())
                         {
-                            int.TryParse(dr["num"].ToString(), out var ID);
+                            int.TryParse(dr["DetalhesPerguntaID"].ToString(), out var ID);
                             detalhesPerguntaIDs.Add(ID);
                         }
 
@@ -408,15 +447,12 @@ namespace OnExam
                             dr.Close();
 
                             if (cmd.ExecuteNonQuery() != 1)
-                            {
-                                result = false;
                                 break;
-                            }
                         }
 
                         if (examQuestion.DetalhesPergunta.Count > detalhesPerguntaIDs.Count)
                         {
-                            for (int i = num - 1; i < examQuestion.DetalhesPergunta.Count; i++)
+                            for (int i = num; i < examQuestion.DetalhesPergunta.Count; i++)
                             {
                                 cmd = new SqlCommand("AddQuestionDetails", conn);
                                 cmd.CommandType = CommandType.StoredProcedure;
@@ -431,18 +467,25 @@ namespace OnExam
                                 cmd.Parameters.Add(param);
 
                                 dr.Close();
+
+                                if (cmd.ExecuteNonQuery() != 1)
+                                    break;
                             }
                         }
                         else if (examQuestion.DetalhesPergunta.Count < detalhesPerguntaIDs.Count)
                         {
-                            for (int i = num - 1; i < detalhesPerguntaIDs.Count; i++)
+                            for (int i = num; i < detalhesPerguntaIDs.Count; i++)
                             {
                                 cmd = new SqlCommand("DeleteQuestionDetails", conn);
                                 cmd.CommandType = CommandType.StoredProcedure;
 
                                 param = new SqlParameter("@DetalhesPerguntaID", detalhesPerguntaIDs[i]);
+                                cmd.Parameters.Add(param);
 
                                 dr.Close();
+
+                                if (cmd.ExecuteNonQuery() != 1)
+                                    break;
                             }
                         }
                     }
@@ -548,6 +591,45 @@ namespace OnExam
 
                     result = true;
                 }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+
+            return result;
+        }
+    
+        public static bool ExamDeleteQuestion(int perguntaID)
+        {
+            var result = false;
+            var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
+            var conn = new SqlConnection(connString);
+
+            try
+            {
+                conn.Open();
+
+                var cmd = new SqlCommand("DeleteQuestion", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param = new SqlParameter("@PerguntaID", perguntaID);
+                cmd.Parameters.Add(param);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
             }
             catch (SqlException ex)
             {

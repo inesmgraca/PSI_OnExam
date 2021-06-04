@@ -126,6 +126,9 @@
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Delete Option</value>
   </data>
+  <data name="btnDeleteQuestion.Text" xml:space="preserve">
+    <value>Delete Question</value>
+  </data>
   <data name="txtQuestion.Text" xml:space="preserve">
     <value>Question</value>
   </data>

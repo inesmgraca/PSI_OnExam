@@ -123,6 +123,9 @@
   <data name="txtNotesAnswer.Text" xml:space="preserve">
     <value>Notas sobre a resposta:</value>
   </data>
+  <data name="btnDeleteQuestion.Text" xml:space="preserve">
+    <value>Eliminar Questão</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>OnExam</value>
   </data>

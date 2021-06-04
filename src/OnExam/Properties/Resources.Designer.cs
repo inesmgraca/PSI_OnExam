@@ -106,6 +106,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleted successfully!.
+        /// </summary>
+        internal static string deleteSuccess {
+            get {
+                return ResourceManager.GetString("deleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error!.
         /// </summary>
         internal static string error {
@@ -178,6 +187,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must select only one exam..
+        /// </summary>
+        internal static string oneExamOnly {
+            get {
+                return ResourceManager.GetString("oneExamOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Option .
         /// </summary>
         internal static string option {
@@ -198,9 +216,18 @@ namespace OnExam.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Saved sucessfully!.
         /// </summary>
-        internal static string saveSucess {
+        internal static string saveSuccess {
             get {
-                return ResourceManager.GetString("saveSucess", resourceCulture);
+                return ResourceManager.GetString("saveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected rows!.
+        /// </summary>
+        internal static string selectedRows {
+            get {
+                return ResourceManager.GetString("selectedRows", resourceCulture);
             }
         }
         

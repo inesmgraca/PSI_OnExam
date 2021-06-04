@@ -132,6 +132,9 @@
   <data name="cantUpdate" xml:space="preserve">
     <value>Não foi possível atualizar!</value>
   </data>
+  <data name="deleteSuccess" xml:space="preserve">
+    <value>Eliminado com sucesso!</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>Erro!</value>
   </data>
@@ -156,14 +159,20 @@
   <data name="noMatch" xml:space="preserve">
     <value>Palavras-passe não coincidem!</value>
   </data>
+  <data name="oneExamOnly" xml:space="preserve">
+    <value>Só pode selecionar um exame.</value>
+  </data>
   <data name="option" xml:space="preserve">
     <value>Opção </value>
   </data>
   <data name="saveError" xml:space="preserve">
     <value>As alterações serão perdidas. Pretende ainda assim fechar?</value>
   </data>
-  <data name="saveSucess" xml:space="preserve">
+  <data name="saveSuccess" xml:space="preserve">
     <value>Guardado com sucesso!</value>
+  </data>
+  <data name="selectedRows" xml:space="preserve">
+    <value>Linhas selecionadas!</value>
   </data>
   <data name="success" xml:space="preserve">
     <value>Successo!</value>

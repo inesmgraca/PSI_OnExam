@@ -35,24 +35,32 @@ namespace OnExam
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
+            {
+                int.TryParse(dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString(), out int examID);
 
+                if (ExamDelete(examID))
+                {
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("deleteSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmViewExams_Load(sender, e);
+                }
+            }
+            else
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("oneExamOnly"), Properties.Resources.ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
             if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
             {
-                var ID = dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString();
-                int.TryParse(ID, out int examID);
+                int.TryParse(dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString(), out int examID);
                 var exam = new frmExam();
 
                 if (exam.frmExam_Open(examID))
                     exam.Show();
             }
             else
-            {
-                MessageBox.Show("You must select only one row.", "Selected rows!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("oneExamOnly"), Properties.Resources.ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnProfile_Click(object sender, EventArgs e)

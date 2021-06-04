@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static OnExam.UserManagement;
 using static OnExam.ExamManagement;
 
 namespace OnExam
@@ -14,6 +15,11 @@ namespace OnExam
             InitializeComponent();
         }
 
+        private void frmExam_Load(object sender, EventArgs e)
+        {
+            Text += $"{UserLoggedIn}-{ExamID}";
+        }
+
         public bool frmExam_New()
         {
             var result = false;
@@ -21,8 +27,8 @@ namespace OnExam
 
             if (examID != 0)
             {
-                txtExamName.Text = examID.ToString();
-                txtDuration.Text = "10";
+                stripTxtExamName.Text = examID.ToString();
+                stripTxtDuration.Text = "10";
                 chkIsRandom.Checked = false;
                 ExamID = examID;
                 result = true;
@@ -38,8 +44,8 @@ namespace OnExam
 
             if (examDetails != null)
             {
-                txtExamName.Text = examDetails.ExamName;
-                txtDuration.Text = examDetails.Duration;
+                stripTxtExamName.Text = examDetails.ExamName;
+                stripTxtDuration.Text = examDetails.Duration;
                 chkIsRandom.Checked = examDetails.isRandom;
                 ExamID = examID;
 
@@ -101,8 +107,8 @@ namespace OnExam
             var close = true;
             var exam = new ExamDetails()
             {
-                ExamName = txtExamName.Text,
-                Duration = txtDuration.Text,
+                ExamName = stripTxtExamName.Text,
+                Duration = stripTxtDuration.Text,
                 isRandom = chkIsRandom.Checked,
                 Perguntas = new List<ExamQuestion>()
             };
@@ -150,13 +156,19 @@ namespace OnExam
             }
 
             if (close)
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("success"), Properties.Resources.ResourceManager.GetString("saveSuccess"), MessageBoxButtons.OK);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK);
             else
             {
                 if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("error"), Properties.Resources.ResourceManager.GetString("saveError"),
                     MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                     e.Cancel = true;
             }
+        }
+
+        private void frmExam_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+                Application.Exit();
         }
     }
 }

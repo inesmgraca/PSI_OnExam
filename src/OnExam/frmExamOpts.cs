@@ -57,6 +57,7 @@ namespace OnExam
         public void flowPanelOptions_Open(ExamQuestion question)
         {
             examQuestion = question;
+            txtQuestion.Text = examQuestion.Enunciado;
             var i = 1;
 
             foreach (var questionDetails in question.DetalhesPergunta)
@@ -92,17 +93,23 @@ namespace OnExam
                 flowPanelOptions.Controls.Add(option);
                 i++;
             }
+
+            if (flowPanelOptions.Controls.Count > 2)
+                btnDelete.Enabled = true;
+            else
+                btnDelete.Enabled = false;
+
+            if (i - 1 < 8)
+                btnAdd.Enabled = true;
+            else
+                btnAdd.Enabled = false;
         }
 
         public ExamQuestion frmExamOpts_Save()
         {
-            examQuestion = new ExamQuestion()
-            {
-                Enunciado = txtQuestion.Text,
-                Notas = "",
-                Tipo = examQuestion.Tipo,
-                DetalhesPergunta = new List<ExamQuestionDetails>()
-            };
+            examQuestion.Enunciado = txtQuestion.Text;
+            examQuestion.Notas = "";
+            examQuestion.DetalhesPergunta = new List<ExamQuestionDetails>();
 
             for (int i = 0; i < flowPanelOptions.Controls.Count; i++)
             {
@@ -187,7 +194,7 @@ namespace OnExam
             if (i - 1 < 8)
                 btnAdd.Enabled = true;
 
-            cmbEdit.Items.Remove(new ItemData(Properties.Resources.ResourceManager.GetString("option") + i));
+            cmbEdit.Items.RemoveAt(cmbEdit.Items.Count - 1);
         }
 
         private void cmbEdit_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,6 +212,20 @@ namespace OnExam
             {
                 if (option.Name == $"option{cmbEdit.SelectedIndex + 1}")
                     option.Text = txtAnswer.Text;
+            }
+        }
+
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (examQuestion.PerguntaID == 0)
+                    Close();
+                else
+                {
+                    if (ExamDeleteQuestion(examQuestion.PerguntaID))
+                        Close();
+                }
             }
         }
     }

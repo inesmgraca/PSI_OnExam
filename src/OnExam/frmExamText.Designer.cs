@@ -33,7 +33,10 @@ namespace OnExam
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtQuestion = new System.Windows.Forms.TextBox();
             this.txtNotesAnswer = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDeleteQuestion = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -41,6 +44,7 @@ namespace OnExam
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.txtQuestion, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNotesAnswer, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // txtQuestion
@@ -53,6 +57,19 @@ namespace OnExam
             resources.ApplyResources(this.txtNotesAnswer, "txtNotesAnswer");
             this.txtNotesAnswer.Name = "txtNotesAnswer";
             // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.btnDeleteQuestion, 1, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // btnDeleteQuestion
+            // 
+            resources.ApplyResources(this.btnDeleteQuestion, "btnDeleteQuestion");
+            this.btnDeleteQuestion.Name = "btnDeleteQuestion";
+            this.btnDeleteQuestion.UseVisualStyleBackColor = true;
+            this.btnDeleteQuestion.Click += new System.EventHandler(this.btnDeleteQuestion_Click);
+            // 
             // frmExamText
             // 
             resources.ApplyResources(this, "$this");
@@ -61,6 +78,7 @@ namespace OnExam
             this.Name = "frmExamText";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -70,5 +88,7 @@ namespace OnExam
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtQuestion;
         private System.Windows.Forms.TextBox txtNotesAnswer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnDeleteQuestion;
     }
 }

@@ -132,6 +132,9 @@
   <data name="cantUpdate" xml:space="preserve">
     <value>Couldn't update!</value>
   </data>
+  <data name="deleteSuccess" xml:space="preserve">
+    <value>Deleted successfully!</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>Error!</value>
   </data>
@@ -156,14 +159,20 @@
   <data name="noMatch" xml:space="preserve">
     <value>Passwords don't match!</value>
   </data>
+  <data name="oneExamOnly" xml:space="preserve">
+    <value>You must select only one exam.</value>
+  </data>
   <data name="option" xml:space="preserve">
     <value>Option </value>
   </data>
   <data name="saveError" xml:space="preserve">
     <value>Changes will be lost. Do you still wish to close?</value>
   </data>
-  <data name="saveSucess" xml:space="preserve">
+  <data name="saveSuccess" xml:space="preserve">
     <value>Saved sucessfully!</value>
+  </data>
+  <data name="selectedRows" xml:space="preserve">
+    <value>Selected rows!</value>
   </data>
   <data name="success" xml:space="preserve">
     <value>Success!</value>

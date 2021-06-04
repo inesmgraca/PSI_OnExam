@@ -39,9 +39,12 @@ namespace OnExam
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbEdit = new System.Windows.Forms.ComboBox();
             this.txtAnswer = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDeleteQuestion = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -51,6 +54,7 @@ namespace OnExam
             this.tableLayoutPanel1.Controls.Add(this.txtQuestion, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // flowPanelOptions
@@ -104,6 +108,19 @@ namespace OnExam
             this.txtAnswer.Name = "txtAnswer";
             this.txtAnswer.TextChanged += new System.EventHandler(this.txtAnswer_TextChanged);
             // 
+            // tableLayoutPanel4
+            // 
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+            this.tableLayoutPanel4.Controls.Add(this.btnDeleteQuestion, 1, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            // 
+            // btnDeleteQuestion
+            // 
+            resources.ApplyResources(this.btnDeleteQuestion, "btnDeleteQuestion");
+            this.btnDeleteQuestion.Name = "btnDeleteQuestion";
+            this.btnDeleteQuestion.UseVisualStyleBackColor = true;
+            this.btnDeleteQuestion.Click += new System.EventHandler(this.btnDeleteQuestion_Click);
+            // 
             // frmExamOpts
             // 
             resources.ApplyResources(this, "$this");
@@ -116,6 +133,7 @@ namespace OnExam
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -131,5 +149,7 @@ namespace OnExam
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ComboBox cmbEdit;
         private System.Windows.Forms.TextBox txtAnswer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button btnDeleteQuestion;
     }
 }

@@ -120,6 +120,9 @@
   <data name="$this.Text" xml:space="preserve">
     <value>OnExam</value>
   </data>
+  <data name="btnDeleteQuestion.Text" xml:space="preserve">
+    <value>Delete Question</value>
+  </data>
   <data name="txtNotesAnswer.Text" xml:space="preserve">
     <value>Answer notes:</value>
   </data>

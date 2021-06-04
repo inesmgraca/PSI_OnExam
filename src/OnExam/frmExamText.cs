@@ -34,5 +34,19 @@ namespace OnExam
             examQuestion.Notas = txtNotesAnswer.Text;
             return examQuestion;
         }
+
+        private void btnDeleteQuestion_Click(object sender, System.EventArgs e)
+        {
+            if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (examQuestion.PerguntaID == 0)
+                    Close();
+                else
+                {
+                    if (ExamDeleteQuestion(examQuestion.PerguntaID))
+                        Close();
+                }
+            }
+        }
     }
 }

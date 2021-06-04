@@ -34,22 +34,28 @@ namespace OnExam
             this.stripBtnRdb = new System.Windows.Forms.ToolStripButton();
             this.stripBtnChk = new System.Windows.Forms.ToolStripButton();
             this.stripBtnTxt = new System.Windows.Forms.ToolStripButton();
-            this.lblExamName = new System.Windows.Forms.Label();
-            this.lblDuration = new System.Windows.Forms.Label();
+            this.stripTxtDuration = new System.Windows.Forms.ToolStripTextBox();
+            this.stripLblDuration = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.stripTxtExamName = new System.Windows.Forms.ToolStripTextBox();
+            this.stripLblExamName = new System.Windows.Forms.ToolStripLabel();
             this.chkIsRandom = new System.Windows.Forms.CheckBox();
-            this.txtExamName = new System.Windows.Forms.TextBox();
-            this.txtDuration = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripBtnRdb,
             this.stripBtnChk,
-            this.stripBtnTxt});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.stripBtnTxt,
+            this.stripTxtDuration,
+            this.stripLblDuration,
+            this.toolStripSeparator1,
+            this.stripTxtExamName,
+            this.stripLblExamName});
             this.toolStrip1.Name = "toolStrip1";
             // 
             // stripBtnRdb
@@ -70,17 +76,35 @@ namespace OnExam
             this.stripBtnTxt.Name = "stripBtnTxt";
             this.stripBtnTxt.Click += new System.EventHandler(this.stripBtnTxt_Click);
             // 
-            // lblExamName
+            // stripTxtDuration
             // 
-            resources.ApplyResources(this.lblExamName, "lblExamName");
-            this.lblExamName.BackColor = System.Drawing.Color.Transparent;
-            this.lblExamName.Name = "lblExamName";
+            resources.ApplyResources(this.stripTxtDuration, "stripTxtDuration");
+            this.stripTxtDuration.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripTxtDuration.Name = "stripTxtDuration";
             // 
-            // lblDuration
+            // stripLblDuration
             // 
-            resources.ApplyResources(this.lblDuration, "lblDuration");
-            this.lblDuration.BackColor = System.Drawing.Color.Transparent;
-            this.lblDuration.Name = "lblDuration";
+            resources.ApplyResources(this.stripLblDuration, "stripLblDuration");
+            this.stripLblDuration.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripLblDuration.Name = "stripLblDuration";
+            // 
+            // toolStripSeparator1
+            // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // stripTxtExamName
+            // 
+            resources.ApplyResources(this.stripTxtExamName, "stripTxtExamName");
+            this.stripTxtExamName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripTxtExamName.Name = "stripTxtExamName";
+            // 
+            // stripLblExamName
+            // 
+            resources.ApplyResources(this.stripLblExamName, "stripLblExamName");
+            this.stripLblExamName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripLblExamName.Name = "stripLblExamName";
             // 
             // chkIsRandom
             // 
@@ -89,29 +113,17 @@ namespace OnExam
             this.chkIsRandom.Name = "chkIsRandom";
             this.chkIsRandom.UseVisualStyleBackColor = false;
             // 
-            // txtExamName
-            // 
-            resources.ApplyResources(this.txtExamName, "txtExamName");
-            this.txtExamName.Name = "txtExamName";
-            // 
-            // txtDuration
-            // 
-            resources.ApplyResources(this.txtDuration, "txtDuration");
-            this.txtDuration.Name = "txtDuration";
-            // 
             // frmExam
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtDuration);
-            this.Controls.Add(this.txtExamName);
             this.Controls.Add(this.chkIsRandom);
-            this.Controls.Add(this.lblDuration);
-            this.Controls.Add(this.lblExamName);
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
             this.Name = "frmExam";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmExam_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmExam_FormClosed);
+            this.Load += new System.EventHandler(this.frmExam_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -124,11 +136,12 @@ namespace OnExam
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton stripBtnRdb;
         private System.Windows.Forms.ToolStripButton stripBtnChk;
-        private System.Windows.Forms.Label lblExamName;
-        private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.CheckBox chkIsRandom;
-        private System.Windows.Forms.TextBox txtExamName;
-        private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.ToolStripButton stripBtnTxt;
+        private System.Windows.Forms.ToolStripTextBox stripTxtDuration;
+        private System.Windows.Forms.ToolStripLabel stripLblDuration;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox stripTxtExamName;
+        private System.Windows.Forms.ToolStripLabel stripLblExamName;
     }
 }
