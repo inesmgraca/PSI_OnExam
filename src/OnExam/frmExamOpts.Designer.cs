@@ -38,7 +38,7 @@ namespace OnExam
             this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbEdit = new System.Windows.Forms.ComboBox();
-            this.txtAnswer = new System.Windows.Forms.TextBox();
+            this.txtText = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDeleteQuestion = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -92,7 +92,7 @@ namespace OnExam
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.cmbEdit, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtAnswer, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtText, 0, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // cmbEdit
@@ -104,9 +104,9 @@ namespace OnExam
             // 
             // txtAnswer
             // 
-            resources.ApplyResources(this.txtAnswer, "txtAnswer");
-            this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.TextChanged += new System.EventHandler(this.txtAnswer_TextChanged);
+            resources.ApplyResources(this.txtText, "txtAnswer");
+            this.txtText.Name = "txtAnswer";
+            this.txtText.TextChanged += new System.EventHandler(this.txtAnswer_TextChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -148,7 +148,7 @@ namespace OnExam
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ComboBox cmbEdit;
-        private System.Windows.Forms.TextBox txtAnswer;
+        private System.Windows.Forms.TextBox txtText;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnDeleteQuestion;
     }

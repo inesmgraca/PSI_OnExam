@@ -11,52 +11,14 @@ namespace OnExam
 {
     public static class UserManagement
     {
-        private static string _error;
-        public static string error
-        {
-            get
-            {
-                return _error;
-            }
-            set
-            {
-                _error = Properties.Resources.ResourceManager.GetString("error");
-            }
-        }
-
-        private static string _errorDB;
-        public static string errorDB
-        {
-            get
-            {
-                return _errorDB;
-            }
-            set
-            {
-                _errorDB = Properties.Resources.ResourceManager.GetString("errorDB");
-            }
-        }
-
-        private static string _errorMessage;
-        public static string errorMessage
-        {
-            get
-            {
-                return _errorMessage;
-            }
-            set
-            {
-                _errorMessage = Properties.Resources.ResourceManager.GetString("errorMessage");
-            }
-        }
-
         public static string UserLoggedIn { get; set; }
+
         public static string UserName { get; set; }
+
         public static string UserEmail { get; set; }
 
         public static bool CheckUsername(string name)
         {
-            var result = false;
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
@@ -73,15 +35,15 @@ namespace OnExam
                 var dr = cmd.ExecuteReader();
 
                 if (!dr.HasRows)
-                    result = true;
+                    return true;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -92,12 +54,11 @@ namespace OnExam
                 }
             }
 
-            return result;
+            return false;
         }
 
         public static bool UserLogin(string name, string pass)
         {
-            var result = false;
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
@@ -129,19 +90,19 @@ namespace OnExam
                     if (PassCompare(passOriginal, saltOriginal, pass))
                     {
                         UserLoggedIn = username;
-                        result = true;
+                        return true;
                     }
                 }
                 else
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidLogin"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidLogin"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -152,12 +113,11 @@ namespace OnExam
                 }
             }
 
-            return result;
+            return false;
         }
 
         public static bool UserSignUp(string nome, string email, string username, string password)
         {
-            var result = false;
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
@@ -172,7 +132,7 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -201,21 +161,21 @@ namespace OnExam
                     if (cmd.ExecuteNonQuery() == 1)
                     {
                         UserLoggedIn = username;
-                        result = true;
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantSignUp"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantSignUp"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -226,10 +186,10 @@ namespace OnExam
                 }
             }
 
-            return result;
+            return false;
         }
 
-        public static void UserGetProfile()
+        public static void UserProfile()
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
@@ -257,11 +217,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -273,9 +233,8 @@ namespace OnExam
             }
         }
 
-        public static bool UserUpdateProfile(string nome, string email, string username)
+        public static bool UserUpdate(string nome, string email, string username)
         {
-            var result = false;
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
@@ -291,7 +250,7 @@ namespace OnExam
 
                 if (dr.HasRows)
                 {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -313,18 +272,18 @@ namespace OnExam
                     dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
-                        result = true;
+                        return true;
                     else
-                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantUpdate"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantUpdate"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -335,12 +294,11 @@ namespace OnExam
                 }
             }
 
-            return result;
+            return false;
         }
 
         public static bool UserUpdatePass(string password)
         {
-            var result = false;
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
 
@@ -363,17 +321,17 @@ namespace OnExam
                 cmd.Parameters.Add(param);
 
                 if (cmd.ExecuteNonQuery() == 1)
-                    result = true;
+                    return true;
                 else
-                    MessageBox.Show("Não foi possível atualizar!", error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Não foi possível atualizar!", Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, errorDB, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(errorMessage + ex.Message, error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -384,7 +342,7 @@ namespace OnExam
                 }
             }
 
-            return result;
+            return false;
         }
 
         public static HashSalt HashWithSalt(string password)

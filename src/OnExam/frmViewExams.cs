@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static OnExam.ExamManagement;
 
@@ -25,6 +18,11 @@ namespace OnExam
                 dataGridExams.DataSource = ds.Tables["Results"];
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            frmViewExams_Load(sender, e);
+        }
+
         private void btnNew_Click(object sender, EventArgs e)
         {
             var exam = new frmExam();
@@ -39,17 +37,20 @@ namespace OnExam
             {
                 int.TryParse(dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString(), out int examID);
 
-                if (ExamDelete(examID))
+                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("verifyDelete"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("deleteSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmViewExams_Load(sender, e);
+                    if (ExamDelete(examID))
+                    {
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("deleteSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmViewExams_Load(sender, e);
+                    }
                 }
             }
             else
                 MessageBox.Show(Properties.Resources.ResourceManager.GetString("oneExamOnly"), Properties.Resources.ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnOpen_Click(object sender, EventArgs e)
+        private void btnView_Click(object sender, EventArgs e)
         {
             if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
             {
@@ -71,7 +72,7 @@ namespace OnExam
 
         private void frmViewExams_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+            if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();
         }
     }

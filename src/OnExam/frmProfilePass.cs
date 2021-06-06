@@ -53,7 +53,7 @@ namespace OnExam
 
         private void frmProfilePass_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+            if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();
         }
     }

@@ -9,17 +9,19 @@ namespace OnExam
     {
         private ExamQuestion examQuestion { get; set; }
 
+        public bool isEdit { get; set; }
+
         public frmExamOpts()
         {
             InitializeComponent();
         }
 
-        public void flowPanelOptions_New(QuestionType optType)
+        public void frmExamOpts_New(QuestionType optType)
         {
             examQuestion = new ExamQuestion()
             {
-                PerguntaID = 0,
-                Tipo = optType
+                QuestionID = 0,
+                Type = optType
             };
 
             for (int i = 1; i <= 4; i++)
@@ -54,26 +56,32 @@ namespace OnExam
             }
         }
 
-        public void flowPanelOptions_Open(ExamQuestion question)
+        public void frmExamOpts_Open(ExamQuestion question)
         {
             examQuestion = question;
-            txtQuestion.Text = examQuestion.Enunciado;
+            txtQuestion.Text = examQuestion.Question;
+            btnAdd.Enabled = isEdit;
+            btnDelete.Enabled = isEdit;
+            btnDeleteQuestion.Enabled = isEdit;
+            txtQuestion.Enabled = isEdit;
+            txtText.Enabled = isEdit;
             var i = 1;
 
-            foreach (var questionDetails in question.DetalhesPergunta)
+            foreach (var questionDetails in question.QuestionDetails)
             {
                 Control option;
 
-                if (question.Tipo == QuestionType.RadioButton)
+                if (question.Type == QuestionType.RadioButton)
                 {
                     option = new RadioButton()
                     {
                         Name = $"option{i}",
                         Tag = i,
-                        Text = questionDetails.Espaco1,
+                        Text = questionDetails.Text,
                         Height = 50,
                         Width = 625,
-                        Checked = questionDetails.isRight
+                        Checked = questionDetails.isRight,
+                        Enabled = isEdit
                     };
                 }
                 else
@@ -82,10 +90,11 @@ namespace OnExam
                     {
                         Name = $"option{i}",
                         Tag = i,
-                        Text = questionDetails.Espaco1,
+                        Text = questionDetails.Text,
                         Height = 50,
                         Width = 625,
-                        Checked = questionDetails.isRight
+                        Checked = questionDetails.isRight,
+                        Enabled = isEdit
                     };
                 }
 
@@ -107,9 +116,9 @@ namespace OnExam
 
         public ExamQuestion frmExamOpts_Save()
         {
-            examQuestion.Enunciado = txtQuestion.Text;
-            examQuestion.Notas = "";
-            examQuestion.DetalhesPergunta = new List<ExamQuestionDetails>();
+            examQuestion.Question = txtQuestion.Text;
+            examQuestion.Notes = "";
+            examQuestion.QuestionDetails = new List<ExamQuestionDetails>();
 
             for (int i = 0; i < flowPanelOptions.Controls.Count; i++)
             {
@@ -119,11 +128,11 @@ namespace OnExam
 
                     var questionDetails = new ExamQuestionDetails
                     {
-                        Espaco1 = option.Text,
+                        Text = option.Text,
                         isRight = option.Checked
                     };
 
-                    examQuestion.DetalhesPergunta.Add(questionDetails);
+                    examQuestion.QuestionDetails.Add(questionDetails);
                 }
                 else
                 {
@@ -131,11 +140,11 @@ namespace OnExam
 
                     var questionDetails = new ExamQuestionDetails
                     {
-                        Espaco1 = option.Text,
+                        Text = option.Text,
                         isRight = option.Checked
                     };
 
-                    examQuestion.DetalhesPergunta.Add(questionDetails);
+                    examQuestion.QuestionDetails.Add(questionDetails);
                 }
             }
 
@@ -147,7 +156,7 @@ namespace OnExam
             Control option;
             var i = flowPanelOptions.Controls.Count + 1;
 
-            if (examQuestion.Tipo == QuestionType.RadioButton)
+            if (examQuestion.Type == QuestionType.RadioButton)
             {
                 option = new RadioButton()
                 {
@@ -202,7 +211,7 @@ namespace OnExam
             foreach (Control option in flowPanelOptions.Controls)
             {
                 if (option.Name == $"option{cmbEdit.SelectedIndex + 1}")
-                    txtAnswer.Text = option.Text;
+                    txtText.Text = option.Text;
             }
         }
 
@@ -211,7 +220,7 @@ namespace OnExam
             foreach (Control option in flowPanelOptions.Controls)
             {
                 if (option.Name == $"option{cmbEdit.SelectedIndex + 1}")
-                    option.Text = txtAnswer.Text;
+                    option.Text = txtText.Text;
             }
         }
 
@@ -219,11 +228,11 @@ namespace OnExam
         {
             if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                if (examQuestion.PerguntaID == 0)
+                if (examQuestion.QuestionID == 0)
                     Close();
                 else
                 {
-                    if (ExamDeleteQuestion(examQuestion.PerguntaID))
+                    if (ExamDeleteQuestion(examQuestion.QuestionID))
                         Close();
                 }
             }

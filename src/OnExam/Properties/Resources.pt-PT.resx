@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="activateExam" xml:space="preserve">
+    <value>Alterações serão guardadas e desativadas. Ativar exame?</value>
+  </data>
   <data name="answer" xml:space="preserve">
     <value>Resposta </value>
   </data>
+  <data name="areYouSure" xml:space="preserve">
+    <value>Tem a certeza?</value>
+  </data>
   <data name="available" xml:space="preserve">
     <value>Disponível!</value>
+  </data>
+  <data name="btnCloseExam" xml:space="preserve">
+    <value>Fechar Exame</value>
+  </data>
+  <data name="btnExamClosed" xml:space="preserve">
+    <value>Exame Fechado</value>
   </data>
   <data name="cantBeEmpty" xml:space="preserve">
     <value>Não pode estar vazio!</value>
@@ -131,6 +143,9 @@
   </data>
   <data name="cantUpdate" xml:space="preserve">
     <value>Não foi possível atualizar!</value>
+  </data>
+  <data name="closeExam" xml:space="preserve">
+    <value>Sessões abertas continuarão a funcionar mas novas entradas serão desativadas. Fechar exame?</value>
   </data>
   <data name="deleteSuccess" xml:space="preserve">
     <value>Eliminado com sucesso!</value>
@@ -147,14 +162,26 @@
   <data name="errorMessage" xml:space="preserve">
     <value>Mensagem de erro: </value>
   </data>
+  <data name="examAlreadyDone" xml:space="preserve">
+    <value>Não é possível eliminar um exame já realizado.</value>
+  </data>
   <data name="fillFields" xml:space="preserve">
     <value>Preencha todos os campos!</value>
+  </data>
+  <data name="invalidExam" xml:space="preserve">
+    <value>Exame inválido!</value>
   </data>
   <data name="invalidLogin" xml:space="preserve">
     <value>Login inválido!</value>
   </data>
+  <data name="invalidName" xml:space="preserve">
+    <value>Nome inválido, já existe.</value>
+  </data>
   <data name="invalidUsername" xml:space="preserve">
     <value>Username inválido!</value>
+  </data>
+  <data name="invalidValue" xml:space="preserve">
+    <value>Valor de duração inválido!</value>
   </data>
   <data name="noMatch" xml:space="preserve">
     <value>Palavras-passe não coincidem!</value>
@@ -179,6 +206,9 @@
   </data>
   <data name="unavailable" xml:space="preserve">
     <value>Indisponível!</value>
+  </data>
+  <data name="verifyDelete" xml:space="preserve">
+    <value>Está prestes a eliminar este exame. Continuar?</value>
   </data>
   <data name="verifying" xml:space="preserve">
     <value>A verificar...</value>

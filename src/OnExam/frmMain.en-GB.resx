@@ -123,7 +123,7 @@
   <data name="btnSignUp.Text" xml:space="preserve">
     <value>Sign Up</value>
   </data>
-  <data name="btnTakeExam.Text" xml:space="preserve">
+  <data name="btnTakeExamInfo.Text" xml:space="preserve">
     <value>Go</value>
   </data>
   <data name="lblEvaluators.Text" xml:space="preserve">

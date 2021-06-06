@@ -120,7 +120,7 @@
   <data name="txtQuestion.Text" xml:space="preserve">
     <value>Questão</value>
   </data>
-  <data name="txtNotesAnswer.Text" xml:space="preserve">
+  <data name="txtNotes.Text" xml:space="preserve">
     <value>Notas sobre a resposta:</value>
   </data>
   <data name="btnDeleteQuestion.Text" xml:space="preserve">

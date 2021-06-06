@@ -7,6 +7,8 @@ namespace OnExam
     {
         private ExamQuestion examQuestion { get; set; }
 
+        public bool isEdit { get; set; }
+
         public frmExamText()
         {
             InitializeComponent();
@@ -16,22 +18,24 @@ namespace OnExam
         {
             examQuestion = new ExamQuestion()
             {
-                PerguntaID = 0,
-                Tipo = QuestionType.Text
+                QuestionID = 0,
+                Type = QuestionType.Text
             };
         }
 
         public void frmExamText_Open(ExamQuestion question)
         {
             examQuestion = question;
-            txtQuestion.Text = question.Enunciado;
-            txtNotesAnswer.Text = question.Notas;
+            txtQuestion.Text = question.Question;
+            txtNotes.Text = question.Notes;
+            btnDeleteQuestion.Enabled = isEdit;
+            txtQuestion.Enabled = isEdit;
         }
 
         public ExamQuestion frmExamText_Save()
         {
-            examQuestion.Enunciado = txtQuestion.Text;
-            examQuestion.Notas = txtNotesAnswer.Text;
+            examQuestion.Question = txtQuestion.Text;
+            examQuestion.Notes = txtNotes.Text;
             return examQuestion;
         }
 
@@ -39,11 +43,11 @@ namespace OnExam
         {
             if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                if (examQuestion.PerguntaID == 0)
+                if (examQuestion.QuestionID == 0)
                     Close();
                 else
                 {
-                    if (ExamDeleteQuestion(examQuestion.PerguntaID))
+                    if (ExamDeleteQuestion(examQuestion.QuestionID))
                         Close();
                 }
             }

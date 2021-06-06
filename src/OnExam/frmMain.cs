@@ -24,27 +24,11 @@ namespace OnExam
             Hide();
         }
 
-        private void btnTakeExam_Click(object sender, EventArgs e)
+        private void btnTakeExamInfo_Click(object sender, EventArgs e)
         {
-            var takeExam = new frmTakeExam();
-            takeExam.Show();
+            var takeExamInfo = new frmTakeExamInfo();
+            takeExamInfo.Show();
             Hide();
-        }
-    }
-
-    public class MainForm
-    {
-        private static frmMain _mainForm;
-
-        public static frmMain mainForm
-        {
-            get
-            {
-                if (_mainForm == null)
-                    _mainForm = new frmMain();
-
-                return _mainForm;
-            }
         }
     }
 }

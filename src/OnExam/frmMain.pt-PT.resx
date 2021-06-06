@@ -129,7 +129,7 @@
   <data name="lblTakeExam.Text" xml:space="preserve">
     <value>Realizar um exame</value>
   </data>
-  <data name="btnTakeExam.Text" xml:space="preserve">
+  <data name="btnTakeExamInfo.Text" xml:space="preserve">
     <value>Entrar</value>
   </data>
 </root>

@@ -10,6 +10,8 @@ namespace OnExam
     {
         private int ExamID { get; set; }
 
+        private State State { get; set; }
+
         public frmExam()
         {
             InitializeComponent();
@@ -22,43 +24,65 @@ namespace OnExam
 
         public bool frmExam_New()
         {
-            var result = false;
-            var examID = ExamAdd(10, false);
+            var examID = ExamAdd(10, false, State.Inactive);
 
             if (examID != 0)
             {
                 stripTxtExamName.Text = examID.ToString();
-                stripTxtDuration.Text = "10";
+                nudDuration.Value = 10;
                 chkIsRandom.Checked = false;
                 ExamID = examID;
-                result = true;
+                return true;
             }
 
-            return result;
+            return false;
         }
 
         public bool frmExam_Open(int examID)
         {
-            var result = false;
             var examDetails = ExamOpen(examID);
 
             if (examDetails != null)
             {
                 stripTxtExamName.Text = examDetails.ExamName;
-                stripTxtDuration.Text = examDetails.Duration;
+                nudDuration.Value = examDetails.Duration;
                 chkIsRandom.Checked = examDetails.isRandom;
                 ExamID = examID;
 
-                var examQuestions = ExamOpenQuestions(ExamID);
+                State = examDetails.State;
 
-                if (examQuestions != null)
+                if (State != State.Inactive)
                 {
-                    foreach (var examQuestion in examQuestions)
+                    stripBtnChk.Enabled = false;
+                    stripBtnRdb.Enabled = false;
+                    stripBtnTxt.Enabled = false;
+                    stripTxtExamName.Enabled = false;
+                    nudDuration.Enabled = false;
+                    chkIsRandom.Enabled = false;
+
+                    if (State == State.Active)
+                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnCloseExam");
+                    else
                     {
-                        if (examQuestion.Tipo == QuestionType.Text)
+                        stripBtnActivate.Enabled = false;
+                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnExamClosed");
+                    }
+                }
+
+                if (examDetails.Questions != null)
+                {
+                    foreach (var examQuestion in examDetails.Questions)
+                    {
+                        if (examQuestion.Type == QuestionType.Text)
                         {
                             var examText = new frmExamText();
                             examText.MdiParent = this;
+
+                            if (State != State.Inactive)
+                                examText.isEdit = false;
+                            else
+                                examText.isEdit = true;
+
                             examText.frmExamText_Open(examQuestion);
                             examText.Show();
                         }
@@ -66,23 +90,29 @@ namespace OnExam
                         {
                             var examOpts = new frmExamOpts();
                             examOpts.MdiParent = this;
-                            examOpts.flowPanelOptions_Open(examQuestion);
+
+                            if (State != State.Inactive)
+                                examOpts.isEdit = false;
+                            else
+                                examOpts.isEdit = true;
+
+                            examOpts.frmExamOpts_Open(examQuestion);
                             examOpts.Show();
                         }
                     }
                 }
 
-                result = true;
+                return true;
             }
-
-            return result;
+            else
+                return false;
         }
 
         private void stripBtnRdb_Click(object sender, EventArgs e)
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.flowPanelOptions_New(QuestionType.RadioButton);
+            examOpts.frmExamOpts_New(QuestionType.RadioButton);
             examOpts.Show();
         }
 
@@ -90,7 +120,7 @@ namespace OnExam
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.flowPanelOptions_New(QuestionType.Checkbox);
+            examOpts.frmExamOpts_New(QuestionType.Checkbox);
             examOpts.Show();
         }
 
@@ -102,72 +132,104 @@ namespace OnExam
             examText.Show();
         }
 
-        private void frmExam_FormClosing(object sender, FormClosingEventArgs e)
+        private void stripBtnActivate_Click(object sender, EventArgs e)
         {
-            var close = true;
-            var exam = new ExamDetails()
+            if (State == State.Inactive)
             {
-                ExamName = stripTxtExamName.Text,
-                Duration = stripTxtDuration.Text,
-                isRandom = chkIsRandom.Checked,
-                Perguntas = new List<ExamQuestion>()
-            };
-
-            if (MdiChildren.Length > 0)
-            {
-                for (int i = 0; i < MdiChildren.Length; i++)
+                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("activateExam"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    if (MdiChildren[i] is frmExamText)
-                    {
-                        var frmQuestion = (frmExamText)MdiChildren[i];
-                        var examQuestion = frmQuestion.frmExamText_Save();
-
-                        if (examQuestion.PerguntaID != 0)
-                        {
-                            if (!ExamUpdateQuestion(examQuestion))
-                            {
-                                close = false;
-                                break;
-                            }
-                        }
-                        else
-                            exam.Perguntas.Add(examQuestion);
-                    }
-                    else
-                    {
-                        var frmQuestion = (frmExamOpts)MdiChildren[i];
-                        var examQuestion = frmQuestion.frmExamOpts_Save();
-
-                        if (examQuestion.PerguntaID != 0)
-                        {
-                            if (!ExamUpdateQuestion(examQuestion))
-                            {
-                                close = false;
-                                break;
-                            }
-                        }
-                        else
-                            exam.Perguntas.Add(examQuestion);
-                    }
-                }                
-
-                if (!ExamUpdateExam(ExamID, exam))
-                    close = false;
+                    if (ExamUpdateState(ExamID, State.Active))
+                        Close();
+                }
             }
-
-            if (close)
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK);
             else
             {
-                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("error"), Properties.Resources.ResourceManager.GetString("saveError"),
-                    MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-                    e.Cancel = true;
+                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("closeExam"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    if (ExamUpdateState(ExamID, State.Closed))
+                    {
+                        State = State.Closed;
+                        stripBtnActivate.Enabled = false;
+                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnExamClosed");
+                    }
+                }
+            }
+        }
+
+        private void frmExam_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (State == State.Inactive && Convert.ToInt32(nudDuration.Value) != 0)
+            {
+                var close = true;
+                var exam = new ExamDetails()
+                {
+                    ExamName = stripTxtExamName.Text.Trim(),
+                    Duration = Convert.ToInt32(nudDuration.Value),
+                    isRandom = chkIsRandom.Checked,
+                    Questions = new List<ExamQuestion>()
+                };
+
+                if (MdiChildren.Length > 0)
+                {
+                    for (int i = 0; i < MdiChildren.Length; i++)
+                    {
+                        if (MdiChildren[i] is frmExamText)
+                        {
+                            var frmQuestion = (frmExamText)MdiChildren[i];
+                            var examQuestion = frmQuestion.frmExamText_Save();
+
+                            if (examQuestion.QuestionID != 0)
+                            {
+                                if (!ExamUpdateQuestion(examQuestion))
+                                {
+                                    close = false;
+                                    break;
+                                }
+                            }
+                            else
+                                exam.Questions.Add(examQuestion);
+                        }
+                        else
+                        {
+                            var frmQuestion = (frmExamOpts)MdiChildren[i];
+                            var examQuestion = frmQuestion.frmExamOpts_Save();
+
+                            if (examQuestion.QuestionID != 0)
+                            {
+                                if (!ExamUpdateQuestion(examQuestion))
+                                {
+                                    close = false;
+                                    break;
+                                }
+                            }
+                            else
+                                exam.Questions.Add(examQuestion);
+                        }
+                    }
+                }
+
+                if (!ExamUpdate(ExamID, exam))
+                    close = false;
+
+                if (close)
+                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK);
+                else
+                {
+                    if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveError"), Properties.Resources.ResourceManager.GetString("error"),
+                        MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                        e.Cancel = true;
+                }
+            }
+            else if (Convert.ToInt32(nudDuration.Value) == 0)
+            {
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidValue"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
             }
         }
 
         private void frmExam_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+            if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();
         }
     }

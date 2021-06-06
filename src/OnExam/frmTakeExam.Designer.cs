@@ -31,13 +31,20 @@ namespace OnExam
         {
             this.SuspendLayout();
             // 
-            // TakeExam
+            // frmTakeExam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "TakeExam";
-            this.Text = "OnExam - Take Exam";
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(933, 519);
+            this.Font = new System.Drawing.Font("Arial", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmTakeExam";
+            this.Text = "frmTakeExam";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

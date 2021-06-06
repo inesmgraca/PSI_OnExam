@@ -14,7 +14,7 @@ namespace OnExam
 
         private void frmProfile_Load(object sender, EventArgs e)
         {
-            UserGetProfile();
+            UserProfile();
             txtName.Text = UserName;
             txtEmail.Text = UserEmail;
             txtUsername.Text = UserLoggedIn;
@@ -77,19 +77,19 @@ namespace OnExam
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty
                 && (CheckUsername(txtUsername.Text) || txtUsername.Text.Equals(UserLoggedIn)))
             {
-                if (UserUpdateProfile(txtName.Text, txtEmail.Text, txtUsername.Text))
+                if (UserUpdate(txtName.Text, txtEmail.Text, txtUsername.Text))
                 {
                     UserLoggedIn = txtUsername.Text;
                     Close();
                 }
             }
             else
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("fillFields"), error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Properties.Resources.ResourceManager.GetString("fillFields"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void frmProfile_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!MainForm.mainForm.Visible && Application.OpenForms.Count == 1)
+            if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();
         }
     }

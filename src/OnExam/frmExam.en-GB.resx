@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>OnExam: Exam </value>
+    <value>OnExam - </value>
   </data>
   <data name="chkIsRandom.Text" xml:space="preserve">
     <value>Random</value>
+  </data>
+  <data name="stripBtnActivate.Text" xml:space="preserve">
+    <value>Activate Exam</value>
   </data>
   <data name="stripBtnChk.Text" xml:space="preserve">
     <value>Multiple options</value>
@@ -133,7 +136,7 @@
     <value>Text</value>
   </data>
   <data name="stripLblDuration.Text" xml:space="preserve">
-    <value>Duration</value>
+    <value>Exam Duration</value>
   </data>
   <data name="stripLblExamName.Text" xml:space="preserve">
     <value>Exam Name</value>

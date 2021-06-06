@@ -61,6 +61,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes will be saved and locked. Activate exam?.
+        /// </summary>
+        internal static string activateExam {
+            get {
+                return ResourceManager.GetString("activateExam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Answer .
         /// </summary>
         internal static string answer {
@@ -70,11 +79,38 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        internal static string areYouSure {
+            get {
+                return ResourceManager.GetString("areYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available!.
         /// </summary>
         internal static string available {
             get {
                 return ResourceManager.GetString("available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close Exam.
+        /// </summary>
+        internal static string btnCloseExam {
+            get {
+                return ResourceManager.GetString("btnCloseExam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exam Closed.
+        /// </summary>
+        internal static string btnExamClosed {
+            get {
+                return ResourceManager.GetString("btnExamClosed", resourceCulture);
             }
         }
         
@@ -102,6 +138,15 @@ namespace OnExam.Properties {
         internal static string cantUpdate {
             get {
                 return ResourceManager.GetString("cantUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open sessions will still work but entries will be disabled. Close exam?.
+        /// </summary>
+        internal static string closeExam {
+            get {
+                return ResourceManager.GetString("closeExam", resourceCulture);
             }
         }
         
@@ -151,11 +196,29 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t delete an exam already done..
+        /// </summary>
+        internal static string examAlreadyDone {
+            get {
+                return ResourceManager.GetString("examAlreadyDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill all fields!.
         /// </summary>
         internal static string fillFields {
             get {
                 return ResourceManager.GetString("fillFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid exam!.
+        /// </summary>
+        internal static string invalidExam {
+            get {
+                return ResourceManager.GetString("invalidExam", resourceCulture);
             }
         }
         
@@ -169,11 +232,29 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid name, it already exists..
+        /// </summary>
+        internal static string invalidName {
+            get {
+                return ResourceManager.GetString("invalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username!.
         /// </summary>
         internal static string invalidUsername {
             get {
                 return ResourceManager.GetString("invalidUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid duration value!.
+        /// </summary>
+        internal static string invalidValue {
+            get {
+                return ResourceManager.GetString("invalidValue", resourceCulture);
             }
         }
         
@@ -246,6 +327,15 @@ namespace OnExam.Properties {
         internal static string unavailable {
             get {
                 return ResourceManager.GetString("unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re about to delete this exam. Continue?.
+        /// </summary>
+        internal static string verifyDelete {
+            get {
+                return ResourceManager.GetString("verifyDelete", resourceCulture);
             }
         }
         

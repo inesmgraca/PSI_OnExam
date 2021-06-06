@@ -37,7 +37,7 @@ namespace OnExam
             this.btnSignUp = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTakeExam = new System.Windows.Forms.Label();
-            this.btnTakeExam = new System.Windows.Forms.Button();
+            this.btnTakeExamInfo = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -83,7 +83,7 @@ namespace OnExam
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.lblTakeExam, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnTakeExam, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.btnTakeExamInfo, 1, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
             // lblTakeExam
@@ -91,20 +91,20 @@ namespace OnExam
             resources.ApplyResources(this.lblTakeExam, "lblTakeExam");
             this.lblTakeExam.Name = "lblTakeExam";
             // 
-            // btnTakeExam
+            // btnTakeExamInfo
             // 
-            resources.ApplyResources(this.btnTakeExam, "btnTakeExam");
-            this.btnTakeExam.Name = "btnTakeExam";
-            this.btnTakeExam.UseVisualStyleBackColor = true;
-            this.btnTakeExam.Click += new System.EventHandler(this.btnTakeExam_Click);
+            resources.ApplyResources(this.btnTakeExamInfo, "btnTakeExamInfo");
+            this.btnTakeExamInfo.Name = "btnTakeExamInfo";
+            this.btnTakeExamInfo.UseVisualStyleBackColor = true;
+            this.btnTakeExamInfo.Click += new System.EventHandler(this.btnTakeExamInfo_Click);
             // 
-            // Main
+            // frmMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Main";
+            this.Name = "frmMain";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -122,7 +122,7 @@ namespace OnExam
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblTakeExam;
-        private System.Windows.Forms.Button btnTakeExam;
+        private System.Windows.Forms.Button btnTakeExamInfo;
     }
 }
 

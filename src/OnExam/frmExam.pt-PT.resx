@@ -185,7 +185,7 @@
     <value>51, 22</value>
   </data>
   <data name="stripLblDuration.Text" xml:space="preserve">
-    <value>Duração</value>
+    <value>Duração do Exame</value>
   </data>
   <data name="stripLblExamName.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 22</value>
@@ -197,6 +197,9 @@
     <value>Aleatório</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>OnExam: Exame </value>
+    <value>OnExam - </value>
+  </data>
+  <data name="stripBtnActivate.Text" xml:space="preserve">
+    <value>Ativar Exame</value>
   </data>
 </root>
