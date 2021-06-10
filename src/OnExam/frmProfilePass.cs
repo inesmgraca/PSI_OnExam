@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 
 namespace OnExam
@@ -26,13 +27,13 @@ namespace OnExam
             }
             else if (txtPassword.Text == string.Empty && txtConfirmPassword.Text == string.Empty)
             {
-                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
-                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtPassword, ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtConfirmPassword, ResourceManager.GetString("cantBeEmpty"));
             }
             else
             {
-                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
-                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
+                providerError.SetError(txtPassword, ResourceManager.GetString("noMatch"));
+                providerError.SetError(txtConfirmPassword, ResourceManager.GetString("noMatch"));
             }
         }
 

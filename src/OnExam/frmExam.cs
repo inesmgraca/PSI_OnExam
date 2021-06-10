@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 using static OnExam.ExamManagement;
 
@@ -83,7 +84,7 @@ namespace OnExam
                             else
                                 examText.isEdit = true;
 
-                            examText.frmExamText_Open(examQuestion);
+                            examText.Open(examQuestion);
                             examText.Show();
                         }
                         else
@@ -96,7 +97,7 @@ namespace OnExam
                             else
                                 examOpts.isEdit = true;
 
-                            examOpts.frmExamOpts_Open(examQuestion);
+                            examOpts.Open(examQuestion);
                             examOpts.Show();
                         }
                     }
@@ -112,7 +113,7 @@ namespace OnExam
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.frmExamOpts_New(QuestionType.RadioButton);
+            examOpts.New(QuestionType.RadioButton);
             examOpts.Show();
         }
 
@@ -120,7 +121,7 @@ namespace OnExam
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.frmExamOpts_New(QuestionType.Checkbox);
+            examOpts.New(QuestionType.Checkbox);
             examOpts.Show();
         }
 
@@ -128,7 +129,7 @@ namespace OnExam
         {
             var examText = new frmExamText();
             examText.MdiParent = this;
-            examText.frmExamText_New();
+            examText.New();
             examText.Show();
         }
 
@@ -136,7 +137,7 @@ namespace OnExam
         {
             if (State == State.Inactive)
             {
-                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("activateExam"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show(ResourceManager.GetString("activateExam"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     if (ExamUpdateState(ExamID, State.Active))
                         Close();
@@ -144,13 +145,13 @@ namespace OnExam
             }
             else
             {
-                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("closeExam"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show(ResourceManager.GetString("closeExam"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     if (ExamUpdateState(ExamID, State.Closed))
                     {
                         State = State.Closed;
                         stripBtnActivate.Enabled = false;
-                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnExamClosed");
+                        stripBtnActivate.Text = ResourceManager.GetString("btnExamClosed");
                     }
                 }
             }
@@ -176,7 +177,7 @@ namespace OnExam
                         if (MdiChildren[i] is frmExamText)
                         {
                             var frmQuestion = (frmExamText)MdiChildren[i];
-                            var examQuestion = frmQuestion.frmExamText_Save();
+                            var examQuestion = frmQuestion.Save();
 
                             if (examQuestion.QuestionID != 0)
                             {
@@ -192,7 +193,7 @@ namespace OnExam
                         else
                         {
                             var frmQuestion = (frmExamOpts)MdiChildren[i];
-                            var examQuestion = frmQuestion.frmExamOpts_Save();
+                            var examQuestion = frmQuestion.Save();
 
                             if (examQuestion.QuestionID != 0)
                             {
@@ -208,21 +209,21 @@ namespace OnExam
                     }
                 }
 
-                if (!ExamUpdate(ExamID, exam))
+                if (!close && !ExamUpdate(ExamID, exam))
                     close = false;
 
                 if (close)
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK);
+                    MessageBox.Show(ResourceManager.GetString("saveSuccess"), ResourceManager.GetString("success"), MessageBoxButtons.OK);
                 else
                 {
-                    if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("saveError"), Properties.Resources.ResourceManager.GetString("error"),
+                    if (MessageBox.Show(ResourceManager.GetString("saveError"), ResourceManager.GetString("error"),
                         MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                         e.Cancel = true;
                 }
             }
             else if (Convert.ToInt32(nudDuration.Value) == 0)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidValue"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("invalidValue"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
             }
         }

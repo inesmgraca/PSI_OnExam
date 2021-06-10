@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 
 namespace OnExam
@@ -39,10 +40,10 @@ namespace OnExam
             else
             {
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
 
                 if (txtPassword.Text == string.Empty)
-                    providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                    providerError.SetError(txtPassword, ResourceManager.GetString("cantBeEmpty"));
             }
 
             txtUsername.Focus();

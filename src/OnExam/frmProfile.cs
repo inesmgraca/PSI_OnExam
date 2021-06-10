@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 
 namespace OnExam
@@ -36,11 +37,11 @@ namespace OnExam
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             if (txtUsername.Text == string.Empty)
-                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
             else if (txtUsername.Text.Equals(UserLoggedIn))
                 providerLoad.SetError(txtUsername, string.Empty);
             else
-                providerLoad.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("verifying"));
+                providerLoad.SetError(txtUsername, ResourceManager.GetString("verifying"));
         }
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
@@ -51,18 +52,18 @@ namespace OnExam
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
-            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Equals(UserLoggedIn))
+            if (UserSearch(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Equals(UserLoggedIn))
             {
-                providerCorrect.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("available"));
+                providerCorrect.SetError(txtUsername, ResourceManager.GetString("available"));
             }
             else
             {
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
                 else if (txtUsername.Text.Equals(UserLoggedIn))
                     providerError.SetError(txtUsername, string.Empty);
                 else
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("unavailable"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("unavailable"));
             }
         }
 
@@ -75,7 +76,7 @@ namespace OnExam
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty
-                && (CheckUsername(txtUsername.Text) || txtUsername.Text.Equals(UserLoggedIn)))
+                && (UserSearch(txtUsername.Text) || txtUsername.Text.Equals(UserLoggedIn)))
             {
                 if (UserUpdate(txtName.Text, txtEmail.Text, txtUsername.Text))
                 {
@@ -84,7 +85,7 @@ namespace OnExam
                 }
             }
             else
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("fillFields"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("fillFields"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void frmProfile_FormClosed(object sender, FormClosedEventArgs e)

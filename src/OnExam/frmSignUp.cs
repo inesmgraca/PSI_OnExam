@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 
 namespace OnExam
@@ -20,7 +21,7 @@ namespace OnExam
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             if (txtName.Text == string.Empty)
-                providerError.SetError(txtName, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtName, ResourceManager.GetString("cantBeEmpty"));
             else
                 providerError.SetError(txtName, string.Empty);
         }
@@ -34,7 +35,7 @@ namespace OnExam
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             if (txtEmail.Text == string.Empty)
-                providerError.SetError(txtEmail, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtEmail, ResourceManager.GetString("cantBeEmpty"));
             else
                 providerError.SetError(txtEmail, string.Empty);
         }
@@ -48,25 +49,25 @@ namespace OnExam
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             if (txtUsername.Text == string.Empty)
-                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
             else if (txtUsername.Text.Contains("-") || txtUsername.Text.Contains(" "))
-                providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("invalidUsername"));
+                providerError.SetError(txtUsername, ResourceManager.GetString("invalidUsername"));
             else
-                providerLoad.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("verifying"));
+                providerLoad.SetError(txtUsername, ResourceManager.GetString("verifying"));
         }
 
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (CheckUsername(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" "))
-                providerCorrect.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("available"));
+            if (UserSearch(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" "))
+                providerCorrect.SetError(txtUsername, ResourceManager.GetString("available"));
             else
             {
                 if (txtUsername.Text == string.Empty)
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
                 else if (txtUsername.Text.Contains("-") || txtUsername.Text.Contains(" "))
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("invalidUsername"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("invalidUsername"));
                 else
-                    providerError.SetError(txtUsername, Properties.Resources.ResourceManager.GetString("unavailable"));
+                    providerError.SetError(txtUsername, ResourceManager.GetString("unavailable"));
             }
         }
 
@@ -85,13 +86,13 @@ namespace OnExam
             }
             else if (txtPassword.Text == string.Empty && txtConfirmPassword.Text == string.Empty)
             {
-                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
-                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtPassword, ResourceManager.GetString("cantBeEmpty"));
+                providerError.SetError(txtConfirmPassword, ResourceManager.GetString("cantBeEmpty"));
             }
             else
             {
-                providerError.SetError(txtPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
-                providerError.SetError(txtConfirmPassword, Properties.Resources.ResourceManager.GetString("noMatch"));
+                providerError.SetError(txtPassword, ResourceManager.GetString("noMatch"));
+                providerError.SetError(txtConfirmPassword, ResourceManager.GetString("noMatch"));
             }
         }
 
@@ -105,7 +106,7 @@ namespace OnExam
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
-                && CheckUsername(txtUsername.Text) && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" ") && txtPassword.Text.Equals(txtConfirmPassword.Text))
+                && UserSearch(txtUsername.Text) && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" ") && txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
                 if (UserSignUp(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
