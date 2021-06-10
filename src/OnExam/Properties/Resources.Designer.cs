@@ -61,6 +61,24 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;re about to close the exam. Continue?.
+        /// </summary>
+        internal static string aboutToClose {
+            get {
+                return ResourceManager.GetString("aboutToClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re about to start the exam. Continue?.
+        /// </summary>
+        internal static string aboutToStart {
+            get {
+                return ResourceManager.GetString("aboutToStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changes will be saved and locked. Activate exam?.
         /// </summary>
         internal static string activateExam {
@@ -313,6 +331,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error saving, contact your evaluator..
+        /// </summary>
+        internal static string sessionSaveError {
+            get {
+                return ResourceManager.GetString("sessionSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success!.
         /// </summary>
         internal static string success {
@@ -345,6 +372,15 @@ namespace OnExam.Properties {
         internal static string verifying {
             get {
                 return ResourceManager.GetString("verifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start exam?.
+        /// </summary>
+        internal static string verifyStart {
+            get {
+                return ResourceManager.GetString("verifyStart", resourceCulture);
             }
         }
     }

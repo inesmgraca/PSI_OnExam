@@ -26,8 +26,8 @@ namespace OnExam
 
         private void btnTakeExamInfo_Click(object sender, EventArgs e)
         {
-            var takeExamInfo = new frmTakeExamInfo();
-            takeExamInfo.Show();
+            var takeExam = new frmTakeExam();
+            takeExam.Show();
             Hide();
         }
     }

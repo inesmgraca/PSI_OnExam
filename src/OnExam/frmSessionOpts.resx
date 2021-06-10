@@ -117,112 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aboutToClose" xml:space="preserve">
-    <value>You're about to close the exam. Continue?</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="aboutToStart" xml:space="preserve">
-    <value>You're about to start the exam. Continue?</value>
+  <data name="lblQuestion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="activateExam" xml:space="preserve">
-    <value>Changes will be saved and locked. Activate exam?</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblQuestion.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="answer" xml:space="preserve">
-    <value>Answer </value>
+  <data name="lblQuestion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="areYouSure" xml:space="preserve">
-    <value>Are you sure?</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblQuestion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 0</value>
   </data>
-  <data name="available" xml:space="preserve">
-    <value>Available!</value>
+  <data name="lblQuestion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 112</value>
   </data>
-  <data name="btnCloseExam" xml:space="preserve">
-    <value>Close Exam</value>
+  <data name="lblQuestion.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="btnExamClosed" xml:space="preserve">
-    <value>Exam Closed</value>
+  <data name="lblQuestion.Text" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="cantBeEmpty" xml:space="preserve">
-    <value>Can't be empty!</value>
+  <data name="lblQuestion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
-  <data name="cantSignUp" xml:space="preserve">
-    <value>Couldn't sign up!</value>
+  <data name="&gt;&gt;lblQuestion.Name" xml:space="preserve">
+    <value>lblQuestion</value>
   </data>
-  <data name="cantUpdate" xml:space="preserve">
-    <value>Couldn't update!</value>
+  <data name="&gt;&gt;lblQuestion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="closeExam" xml:space="preserve">
-    <value>Open sessions will still work but entries will be disabled. Close exam?</value>
+  <data name="&gt;&gt;lblQuestion.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="deleteSuccess" xml:space="preserve">
-    <value>Deleted successfully!</value>
+  <data name="&gt;&gt;lblQuestion.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Error!</value>
+  <data name="flowPanelOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="errorDB" xml:space="preserve">
-    <value>Database error!</value>
+  <data name="flowPanelOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 115</value>
   </data>
-  <data name="errorEmail" xml:space="preserve">
-    <value>There's already a user with this email!</value>
+  <data name="flowPanelOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 330</value>
   </data>
-  <data name="errorMessage" xml:space="preserve">
-    <value>Error message: </value>
+  <data name="flowPanelOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="examAlreadyDone" xml:space="preserve">
-    <value>Can't delete an exam already done.</value>
+  <data name="&gt;&gt;flowPanelOptions.Name" xml:space="preserve">
+    <value>flowPanelOptions</value>
   </data>
-  <data name="fillFields" xml:space="preserve">
-    <value>Fill all fields!</value>
+  <data name="&gt;&gt;flowPanelOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="invalidExam" xml:space="preserve">
-    <value>Invalid exam!</value>
+  <data name="&gt;&gt;flowPanelOptions.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="invalidLogin" xml:space="preserve">
-    <value>Invalid login!</value>
+  <data name="&gt;&gt;flowPanelOptions.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="invalidName" xml:space="preserve">
-    <value>Invalid name, it already exists.</value>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="invalidUsername" xml:space="preserve">
-    <value>Invalid username!</value>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="invalidValue" xml:space="preserve">
-    <value>Invalid duration value!</value>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="noMatch" xml:space="preserve">
-    <value>Passwords don't match!</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 561</value>
   </data>
-  <data name="oneExamOnly" xml:space="preserve">
-    <value>You must select only one exam.</value>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="option" xml:space="preserve">
-    <value>Option </value>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="saveError" xml:space="preserve">
-    <value>Changes will be lost. Do you still wish to close?</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="saveSuccess" xml:space="preserve">
-    <value>Saved sucessfully!</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="selectedRows" xml:space="preserve">
-    <value>Selected rows!</value>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="sessionSaveError" xml:space="preserve">
-    <value>There was an error saving, contact your evaluator.</value>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblQuestion" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="flowPanelOptions" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,15,Percent,70,Percent,15" /&gt;&lt;Rows Styles="Percent,20,Percent,60,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="success" xml:space="preserve">
-    <value>Success!</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
   </data>
-  <data name="unavailable" xml:space="preserve">
-    <value>Unavailable!</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>884, 561</value>
   </data>
-  <data name="verifyDelete" xml:space="preserve">
-    <value>You're about to delete this exam. Continue?</value>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
-  <data name="verifying" xml:space="preserve">
-    <value>Verifying...</value>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 600</value>
   </data>
-  <data name="verifyStart" xml:space="preserve">
-    <value>Start exam?</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Question </value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmTakeExamOpts</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

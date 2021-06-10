@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.ExamManagement;
 
 namespace OnExam
@@ -37,17 +38,17 @@ namespace OnExam
             {
                 int.TryParse(dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString(), out int examID);
 
-                if (MessageBox.Show(Properties.Resources.ResourceManager.GetString("verifyDelete"), Properties.Resources.ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show(ResourceManager.GetString("verifyDelete"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     if (ExamDelete(examID))
                     {
-                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("deleteSuccess"), Properties.Resources.ResourceManager.GetString("success"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(ResourceManager.GetString("deleteSuccess"), ResourceManager.GetString("success"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmViewExams_Load(sender, e);
                     }
                 }
             }
             else
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("oneExamOnly"), Properties.Resources.ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ResourceManager.GetString("oneExamOnly"), ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -61,7 +62,7 @@ namespace OnExam
                     exam.Show();
             }
             else
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("oneExamOnly"), Properties.Resources.ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ResourceManager.GetString("oneExamOnly"), ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnProfile_Click(object sender, EventArgs e)

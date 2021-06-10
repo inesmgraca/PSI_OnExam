@@ -7,6 +7,17 @@ namespace OnExam
 {
     public partial class frmExamOpts : Form
     {
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
         private ExamQuestion examQuestion { get; set; }
 
         public bool isEdit { get; set; }
@@ -16,7 +27,7 @@ namespace OnExam
             InitializeComponent();
         }
 
-        public void frmExamOpts_New(QuestionType optType)
+        public void New(QuestionType optType)
         {
             examQuestion = new ExamQuestion()
             {
@@ -56,7 +67,7 @@ namespace OnExam
             }
         }
 
-        public void frmExamOpts_Open(ExamQuestion question)
+        public void Open(ExamQuestion question)
         {
             examQuestion = question;
             txtQuestion.Text = examQuestion.Question;
@@ -114,7 +125,7 @@ namespace OnExam
                 btnAdd.Enabled = false;
         }
 
-        public ExamQuestion frmExamOpts_Save()
+        public ExamQuestion Save()
         {
             examQuestion.Question = txtQuestion.Text;
             examQuestion.Notes = "";

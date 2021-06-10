@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.UserManagement;
 
 namespace OnExam
@@ -36,8 +37,7 @@ namespace OnExam
                 var cmd = new SqlCommand("ExamsView", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Username", UserLoggedIn);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
 
                 var dr = cmd.ExecuteReader();
 
@@ -52,11 +52,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -79,20 +79,13 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("AddExam", conn);
+                var cmd = new SqlCommand("ExamAdd", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Username", UserLoggedIn);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@Duration", duration);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@isRandom", isRandom);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@State", state);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
+                cmd.Parameters.AddWithValue("@Duration", duration);
+                cmd.Parameters.AddWithValue("@isRandom", isRandom);
+                cmd.Parameters.AddWithValue("@State", state);
 
                 var dr = cmd.ExecuteReader();
 
@@ -106,17 +99,15 @@ namespace OnExam
                     return ExamID;
                 }
                 else
-                {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show(ResourceManager.GetString("errorMessage"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -139,14 +130,11 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("OpenExam", conn);
+                var cmd = new SqlCommand("ExamOpen", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Username", UserLoggedIn);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@ExamID", examID);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
+                cmd.Parameters.AddWithValue("@ExamID", examID);
 
                 var dr = cmd.ExecuteReader();
 
@@ -156,23 +144,15 @@ namespace OnExam
                 {
                     examDetails.ExamID = examID;
                     examDetails.ExamName = dr["ExamName"].ToString();
-                    int.TryParse(dr["Duration"].ToString(), out int duration);
-                    examDetails.Duration = duration;
-
-                    if (dr["isRandom"].ToString().Equals("False"))
-                        examDetails.isRandom = false;
-                    else
-                        examDetails.isRandom = true;
-
-                    int.TryParse(dr["State"].ToString(), out int state);
-                    examDetails.State = (State)state;
+                    examDetails.Duration = (int)dr["Duration"];
+                    examDetails.isRandom = (bool)dr["isRandom"];
+                    examDetails.State = (State)((int)dr["State"]);
                 }
 
-                cmd = new SqlCommand("OpenQuestions", conn);
+                cmd = new SqlCommand("QuestionsOpen", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                param = new SqlParameter("@ExamID", examDetails.ExamID);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@ExamID", examDetails.ExamID);
 
                 dr.Close();
                 dr = cmd.ExecuteReader();
@@ -183,15 +163,12 @@ namespace OnExam
 
                     while (dr.Read())
                     {
-                        int.TryParse(dr["PerguntaID"].ToString(), out int perguntaID);
-                        int.TryParse(dr["Tipo"].ToString(), out int tipo);
-
                         var question = new ExamQuestion()
                         {
-                            QuestionID = perguntaID,
-                            Type = (QuestionType)tipo,
-                            Question = dr["Enunciado"].ToString(),
-                            Notes = dr["Notas"].ToString()
+                            QuestionID = (int)dr["QuestionID"],
+                            Type = (QuestionType)((int)dr["Type"]),
+                            Question = dr["Question"].ToString(),
+                            Notes = dr["Notes"].ToString()
                         };
 
                         examDetails.Questions.Add(question);
@@ -203,11 +180,10 @@ namespace OnExam
                         {
                             question.QuestionDetails = new List<ExamQuestionDetails>();
 
-                            cmd = new SqlCommand("OpenQuestionDetails", conn);
+                            cmd = new SqlCommand("QuestionDetailsOpen", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            param = new SqlParameter("@PerguntaID", question.QuestionID);
-                            cmd.Parameters.Add(param);
+                            cmd.Parameters.AddWithValue("@QuestionID", question.QuestionID);
 
                             dr.Close();
                             dr = cmd.ExecuteReader();
@@ -216,13 +192,9 @@ namespace OnExam
                             {
                                 var questionDetails = new ExamQuestionDetails
                                 {
-                                    Text = dr["Espaco1"].ToString()
+                                    isRight = (bool)dr["isRight"],
+                                    Text = dr["Text"].ToString()
                                 };
-
-                                if (dr["isRight"].ToString().Equals("False"))
-                                    questionDetails.isRight = false;
-                                else
-                                    questionDetails.isRight = true;
 
                                 question.QuestionDetails.Add(questionDetails);
                             }
@@ -234,11 +206,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -268,14 +240,11 @@ namespace OnExam
                 var state = State.Inactive;
 
                 while (dr.Read())
-                {
-                    int.TryParse(dr["State"].ToString(), out int i);
-                    state = (State)i;
-                }
+                    state = (State)((int)dr["State"]);
 
                 if (state == State.Inactive)
                 {
-                    cmd = new SqlCommand("select PerguntaID from Perguntas where ExamID = @ExamID;", conn);
+                    cmd = new SqlCommand("select QuestionID from Questions where ExamID = @ExamID;", conn);
                     cmd.Parameters.AddWithValue("@ExamID", examID);
 
                     dr.Close();
@@ -283,47 +252,42 @@ namespace OnExam
 
                     if (dr.HasRows)
                     {
-                        var perguntaIDs = new List<int>();
+                        var questionsID = new List<int>();
 
                         while (dr.Read())
-                        {
-                            int.TryParse(dr["PerguntaID"].ToString(), out int ID);
-                            perguntaIDs.Add(ID);
-                        }
+                            questionsID.Add((int)dr["QuestionID"]);
 
                         dr.Close();
 
-                        for (int i = 0; i < perguntaIDs.Count; i++)
+                        for (int i = 0; i < questionsID.Count; i++)
                         {
-                            cmd = new SqlCommand("DeleteQuestion", conn);
+                            cmd = new SqlCommand("QuestionDelete", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            var parameter = new SqlParameter("@PerguntaID", perguntaIDs[i]);
-                            cmd.Parameters.Add(parameter);
+                            cmd.Parameters.AddWithValue("@QuestionID", questionsID[i]);
 
                             cmd.ExecuteNonQuery();
                         }
                     }
 
-                    cmd = new SqlCommand("DeleteExam", conn);
+                    cmd = new SqlCommand("ExamDelete", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    var param = new SqlParameter("@ExamID", examID);
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@ExamID", examID);
 
                     if (cmd.ExecuteNonQuery() == 1)
                         return true;
                 }
                 else
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("examAlreadyDone"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ResourceManager.GetString("examAlreadyDone"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -346,54 +310,41 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("UpdateQuestion", conn);
+                var cmd = new SqlCommand("QuestionUpdate", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@PerguntaID", examQuestion.QuestionID);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@Enunciado", examQuestion.Question);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@Notas", examQuestion.Notes);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@QuestionID", examQuestion.QuestionID);
+                cmd.Parameters.AddWithValue("@Question", examQuestion.Question);
+                cmd.Parameters.AddWithValue("@Notes", examQuestion.Notes);
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     if (examQuestion.Type != QuestionType.Text)
                     {
-                        cmd = new SqlCommand("select DetalhesPerguntaID from DetalhesPergunta where PerguntaID = @PerguntaID;", conn);
-                        cmd.Parameters.AddWithValue("@PerguntaID", examQuestion.QuestionID);
+                        cmd = new SqlCommand("select QuestionDetailsID from QuestionDetails where QuestionID = @QuestionID;", conn);
+                        cmd.Parameters.AddWithValue("@QuestionID", examQuestion.QuestionID);
 
                         var dr = cmd.ExecuteReader();
-                        var detalhesPerguntaIDs = new List<int>();
+                        var questionDetailsID = new List<int>();
 
                         while (dr.Read())
-                        {
-                            int.TryParse(dr["DetalhesPerguntaID"].ToString(), out var ID);
-                            detalhesPerguntaIDs.Add(ID);
-                        }
+                            questionDetailsID.Add((int)dr["QuestionDetailsID"]);
 
                         var num = 0;
 
-                        if (examQuestion.QuestionDetails.Count > detalhesPerguntaIDs.Count)
-                            num = detalhesPerguntaIDs.Count;
+                        if (examQuestion.QuestionDetails.Count > questionDetailsID.Count)
+                            num = questionDetailsID.Count;
                         else
                             num = examQuestion.QuestionDetails.Count;
 
                         for (int i = 0; i < num; i++)
                         {
-                            cmd = new SqlCommand("UpdateQuestionDetails", conn);
+                            cmd = new SqlCommand("QuestionDetailsUpdate", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            param = new SqlParameter("@DetalhesPerguntaID", detalhesPerguntaIDs[i]);
-                            cmd.Parameters.Add(param);
-
-                            param = new SqlParameter("@isRight", examQuestion.QuestionDetails[i].isRight);
-                            cmd.Parameters.Add(param);
-
-                            param = new SqlParameter("@Espaco1", examQuestion.QuestionDetails[i].Text);
-                            cmd.Parameters.Add(param);
+                            cmd.Parameters.AddWithValue("@QuestionDetailsID", questionDetailsID[i]);
+                            cmd.Parameters.AddWithValue("@isRight", examQuestion.QuestionDetails[i].isRight);
+                            cmd.Parameters.AddWithValue("@Text", examQuestion.QuestionDetails[i].Text);
 
                             dr.Close();
 
@@ -401,21 +352,16 @@ namespace OnExam
                                 break;
                         }
 
-                        if (examQuestion.QuestionDetails.Count > detalhesPerguntaIDs.Count)
+                        if (examQuestion.QuestionDetails.Count > questionDetailsID.Count)
                         {
                             for (int i = num; i < examQuestion.QuestionDetails.Count; i++)
                             {
-                                cmd = new SqlCommand("AddQuestionDetails", conn);
+                                cmd = new SqlCommand("QuestionDetailsAdd", conn);
                                 cmd.CommandType = CommandType.StoredProcedure;
 
-                                param = new SqlParameter("@PerguntaID", examQuestion.QuestionID);
-                                cmd.Parameters.Add(param);
-
-                                param = new SqlParameter("@isRight", examQuestion.QuestionDetails[i].isRight);
-                                cmd.Parameters.Add(param);
-
-                                param = new SqlParameter("@Espaco1", examQuestion.QuestionDetails[i].Text);
-                                cmd.Parameters.Add(param);
+                                cmd.Parameters.AddWithValue("@QuestionID", examQuestion.QuestionID);
+                                cmd.Parameters.AddWithValue("@isRight", examQuestion.QuestionDetails[i].isRight);
+                                cmd.Parameters.AddWithValue("@Text", examQuestion.QuestionDetails[i].Text);
 
                                 dr.Close();
 
@@ -423,15 +369,14 @@ namespace OnExam
                                     break;
                             }
                         }
-                        else if (examQuestion.QuestionDetails.Count < detalhesPerguntaIDs.Count)
+                        else if (examQuestion.QuestionDetails.Count < questionDetailsID.Count)
                         {
-                            for (int i = num; i < detalhesPerguntaIDs.Count; i++)
+                            for (int i = num; i < questionDetailsID.Count; i++)
                             {
-                                cmd = new SqlCommand("DeleteQuestionDetails", conn);
+                                cmd = new SqlCommand("QuestionDetailsDelete", conn);
                                 cmd.CommandType = CommandType.StoredProcedure;
 
-                                param = new SqlParameter("@DetalhesPerguntaID", detalhesPerguntaIDs[i]);
-                                cmd.Parameters.Add(param);
+                                cmd.Parameters.AddWithValue("@QuestionDetailsID", questionDetailsID[i]);
 
                                 dr.Close();
 
@@ -446,11 +391,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -483,20 +428,13 @@ namespace OnExam
 
                 if (!dr.HasRows)
                 {
-                    cmd = new SqlCommand("UpdateExam", conn);
+                    cmd = new SqlCommand("ExamUpdate", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    var param = new SqlParameter("@ExamID", examID);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@ExamName", exam.ExamName);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@Duration", exam.Duration);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@isRandom", exam.isRandom);
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@ExamID", examID);
+                    cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
+                    cmd.Parameters.AddWithValue("@Duration", exam.Duration);
+                    cmd.Parameters.AddWithValue("@isRandom", exam.isRandom);
 
                     dr.Close();
 
@@ -504,46 +442,34 @@ namespace OnExam
                     {
                         for (int i = 0; i < exam.Questions.Count; i++)
                         {
-                            cmd = new SqlCommand("AddQuestion", conn);
+                            cmd = new SqlCommand("QuestionAdd", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            param = new SqlParameter("@ExamID", examID);
-                            cmd.Parameters.Add(param);
-
-                            param = new SqlParameter("@Tipo", (int)exam.Questions[i].Type);
-                            cmd.Parameters.Add(param);
-
-                            param = new SqlParameter("@Enunciado", exam.Questions[i].Question);
-                            cmd.Parameters.Add(param);
-
-                            param = new SqlParameter("@Notas", exam.Questions[i].Notes);
-                            cmd.Parameters.Add(param);
+                            cmd.Parameters.AddWithValue("@ExamID", examID);
+                            cmd.Parameters.AddWithValue("@Type", (int)exam.Questions[i].Type);
+                            cmd.Parameters.AddWithValue("@Question", exam.Questions[i].Question);
+                            cmd.Parameters.AddWithValue("@Notes", exam.Questions[i].Notes);
 
                             dr.Close();
                             dr = cmd.ExecuteReader();
 
                             if (dr.HasRows)
                             {
-                                var PerguntaID = 0;
+                                var questionID = 0;
 
                                 while (dr.Read())
-                                    int.TryParse(dr["PerguntaID"].ToString(), out PerguntaID);
+                                    int.TryParse(dr["QuestionID"].ToString(), out questionID);
 
                                 if (exam.Questions[i].Type != QuestionType.Text)
                                 {
                                     for (int j = 0; j < exam.Questions[i].QuestionDetails.Count; j++)
                                     {
-                                        cmd = new SqlCommand("AddQuestionDetails", conn);
+                                        cmd = new SqlCommand("QuestionDetailsAdd", conn);
                                         cmd.CommandType = CommandType.StoredProcedure;
 
-                                        param = new SqlParameter("@PerguntaID", PerguntaID);
-                                        cmd.Parameters.Add(param);
-
-                                        param = new SqlParameter("@isRight", exam.Questions[i].QuestionDetails[j].isRight);
-                                        cmd.Parameters.Add(param);
-
-                                        param = new SqlParameter("@Espaco1", exam.Questions[i].QuestionDetails[j].Text);
-                                        cmd.Parameters.Add(param);
+                                        cmd.Parameters.AddWithValue("@QuestionID", questionID);
+                                        cmd.Parameters.AddWithValue("@isRight", exam.Questions[i].QuestionDetails[j].isRight);
+                                        cmd.Parameters.AddWithValue("@Text", exam.Questions[i].QuestionDetails[j].Text);
 
                                         dr.Close();
                                         cmd.ExecuteNonQuery();
@@ -556,15 +482,15 @@ namespace OnExam
                     return true;
                 }
                 else
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidName"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ResourceManager.GetString("invalidName"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -587,25 +513,22 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("UpdateExamState", conn);
+                var cmd = new SqlCommand("ExamUpdateState", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@ExamID", examID);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@State", (int)state);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@ExamID", examID);
+                cmd.Parameters.AddWithValue("@State", (int)state);
 
                 if (cmd.ExecuteNonQuery() == 1)
                     return true;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -628,22 +551,21 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("DeleteQuestion", conn);
+                var cmd = new SqlCommand("QuestionDelete", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@PerguntaID", perguntaID);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@QuestionID", perguntaID);
 
                 if (cmd.ExecuteNonQuery() == 1)
                     return true;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -666,6 +588,7 @@ namespace OnExam
         public bool isRandom { get; set; }
         public ExamManagement.State State { get; set; }
         public List<ExamQuestion> Questions { get; set; }
+        public string ExamOwner { get; set; }
     }
 
     public class ExamQuestion

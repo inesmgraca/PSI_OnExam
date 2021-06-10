@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="aboutToClose" xml:space="preserve">
+    <value>You're about to close the exam. Continue?</value>
+  </data>
+  <data name="aboutToStart" xml:space="preserve">
+    <value>You're about to start the exam. Continue?</value>
+  </data>
   <data name="activateExam" xml:space="preserve">
     <value>Changes will be saved and locked. Activate exam?</value>
   </data>
@@ -201,6 +207,9 @@
   <data name="selectedRows" xml:space="preserve">
     <value>Selected rows!</value>
   </data>
+  <data name="sessionSaveError" xml:space="preserve">
+    <value>There was an error saving, contact your evaluator.</value>
+  </data>
   <data name="success" xml:space="preserve">
     <value>Success!</value>
   </data>
@@ -212,5 +221,8 @@
   </data>
   <data name="verifying" xml:space="preserve">
     <value>Verifying...</value>
+  </data>
+  <data name="verifyStart" xml:space="preserve">
+    <value>Start exam?</value>
   </data>
 </root>

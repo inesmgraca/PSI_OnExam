@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 
 namespace OnExam
 {
@@ -17,7 +18,7 @@ namespace OnExam
 
         public static string UserEmail { get; set; }
 
-        public static bool CheckUsername(string name)
+        public static bool UserSearch(string name)
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
@@ -26,11 +27,10 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("SearchUser", conn);
+                var cmd = new SqlCommand("UserSearch", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Name", name);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Name", name);
 
                 var dr = cmd.ExecuteReader();
 
@@ -39,11 +39,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -66,11 +66,10 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("SearchUser", conn);
+                var cmd = new SqlCommand("UserSearch", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Name", name);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Name", name);
 
                 var dr = cmd.ExecuteReader();
 
@@ -94,15 +93,15 @@ namespace OnExam
                     }
                 }
                 else
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("invalidLogin"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ResourceManager.GetString("invalidLogin"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -116,7 +115,7 @@ namespace OnExam
             return false;
         }
 
-        public static bool UserSignUp(string nome, string email, string username, string password)
+        public static bool UserSignUp(string name, string email, string username, string password)
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
@@ -125,36 +124,27 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select Email from Users where Email = @email;", conn);
-                cmd.Parameters.AddWithValue("@email", email);
+                var cmd = new SqlCommand("select Email from Users where Email = @Email;", conn);
+                cmd.Parameters.AddWithValue("@Email", email);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.HasRows)
                 {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ResourceManager.GetString("errorEmail"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    cmd = new SqlCommand("AddUser", conn);
+                    cmd = new SqlCommand("UserAdd", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    var param = new SqlParameter("@Name", nome);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@Email", email);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@Username", username);
-                    cmd.Parameters.Add(param);
 
                     var pass = HashWithSalt(password);
 
-                    param = new SqlParameter("@Password", pass.Hash);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@Salt", pass.Salt);
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", pass.Hash);
+                    cmd.Parameters.AddWithValue("@Salt", pass.Salt);
 
                     dr.Close();
 
@@ -165,17 +155,17 @@ namespace OnExam
                     }
                     else
                     {
-                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantSignUp"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ResourceManager.GetString("cantSignUp"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -198,11 +188,10 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("GetUser", conn);
+                var cmd = new SqlCommand("UserOpen", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                var param = new SqlParameter("@Username", UserLoggedIn);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
 
                 var dr = cmd.ExecuteReader();
 
@@ -217,11 +206,11 @@ namespace OnExam
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -233,7 +222,7 @@ namespace OnExam
             }
         }
 
-        public static bool UserUpdate(string nome, string email, string username)
+        public static bool UserUpdate(string name, string email, string username)
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
             var conn = new SqlConnection(connString);
@@ -242,48 +231,39 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select Email from Users where Email = @email and Username != @username;", conn);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@username", UserLoggedIn);
+                var cmd = new SqlCommand("select Email from Users where Email = @Email and Username != @Username;", conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.HasRows)
-                {
-                    MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorEmail"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show(ResourceManager.GetString("errorEmail"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    cmd = new SqlCommand("UpdateUser", conn);
+                    cmd = new SqlCommand("UserUpdate", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    var param = new SqlParameter("@Name", nome);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@Email", email);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@UsernameOld", UserLoggedIn);
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter("@UsernameNew", username);
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@UsernameOld", UserLoggedIn);
+                    cmd.Parameters.AddWithValue("@UsernameNew", username);
 
                     dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
                         return true;
                     else
-                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("cantUpdate"), Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ResourceManager.GetString("cantUpdate"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -306,32 +286,27 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("UpdateUserPass", conn);
+                var cmd = new SqlCommand("UserUpdatePass", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                var param = new SqlParameter("@Username", UserLoggedIn);
-                cmd.Parameters.Add(param);
 
                 var pass = HashWithSalt(password);
 
-                param = new SqlParameter("@Password", pass.Hash);
-                cmd.Parameters.Add(param);
-
-                param = new SqlParameter("@Salt", pass.Salt);
-                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
+                cmd.Parameters.AddWithValue("@Password", pass.Hash);
+                cmd.Parameters.AddWithValue("@Salt", pass.Salt);
 
                 if (cmd.ExecuteNonQuery() == 1)
                     return true;
                 else
-                    MessageBox.Show("Não foi possível atualizar!", Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ResourceManager.GetString("cantUpdate"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("errorDB"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.Resources.ResourceManager.GetString("errorMessage") + ex.Message, Properties.Resources.ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("errorMessage") + ex.Message, ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

@@ -96,11 +96,23 @@
     <Compile Include="frmExamOpts.Designer.cs">
       <DependentUpon>frmExamOpts.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTakeExam.cs">
+    <Compile Include="frmSession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTakeExam.Designer.cs">
-      <DependentUpon>frmTakeExam.cs</DependentUpon>
+    <Compile Include="frmSession.Designer.cs">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSessionText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSessionText.Designer.cs">
+      <DependentUpon>frmSessionText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSessionOpts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSessionOpts.Designer.cs">
+      <DependentUpon>frmSessionOpts.cs</DependentUpon>
     </Compile>
     <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
@@ -128,13 +140,13 @@
     <Compile Include="frmSignUp.Designer.cs">
       <DependentUpon>frmSignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTakeExamInfo.cs">
+    <Compile Include="frmTakeExam.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTakeExamInfo.Designer.cs">
-      <DependentUpon>frmTakeExamInfo.cs</DependentUpon>
+    <Compile Include="frmTakeExam.Designer.cs">
+      <DependentUpon>frmTakeExam.cs</DependentUpon>
     </Compile>
-    <Compile Include="TakeExamManagement.cs" />
+    <Compile Include="SessionManagement.cs" />
     <Compile Include="UserManagement.cs" />
     <EmbeddedResource Include="frmExam.en-GB.resx">
       <DependentUpon>frmExam.cs</DependentUpon>
@@ -182,14 +194,32 @@
     <EmbeddedResource Include="frmExamOpts.resx">
       <DependentUpon>frmExamOpts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTakeExam.resx">
+    <EmbeddedResource Include="frmSession.resx">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTakeExam.en-GB.resx">
       <DependentUpon>frmTakeExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTakeExamInfo.en-GB.resx">
-      <DependentUpon>frmTakeExamInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmTakeExam.pt-PT.resx">
+      <DependentUpon>frmTakeExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTakeExamInfo.pt-PT.resx">
-      <DependentUpon>frmTakeExamInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmSessionOpts.en-GB.resx">
+      <DependentUpon>frmSessionOpts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionOpts.pt-PT.resx">
+      <DependentUpon>frmSessionOpts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionText.en-GB.resx">
+      <DependentUpon>frmSessionText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionText.pt-PT.resx">
+      <DependentUpon>frmSessionText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionText.resx">
+      <DependentUpon>frmSessionText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionOpts.resx">
+      <DependentUpon>frmSessionOpts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewExams.en-GB.resx">
       <DependentUpon>frmViewExams.cs</DependentUpon>
@@ -222,8 +252,12 @@
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en-GB.resx" />
-    <EmbeddedResource Include="Properties\Resources.pt-PT.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-GB.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.pt-PT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -245,8 +279,8 @@
     <EmbeddedResource Include="frmSignUp.resx">
       <DependentUpon>frmSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTakeExamInfo.resx">
-      <DependentUpon>frmTakeExamInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmTakeExam.resx">
+      <DependentUpon>frmTakeExam.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
