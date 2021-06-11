@@ -9,12 +9,46 @@ namespace OnExam
 {
     public partial class frmSession : Form
     {
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_ACTIVATEAPP = 0x001C;
+
+            if (m.Msg == WM_ACTIVATEAPP)
+            {
+                if (m.WParam.ToInt64() == 0) /* Being deactivated */
+                {
+                    var isWarningOpened = false;
+                    ExamExits++;
+                    Enabled = false;
+
+                    foreach (var form in MdiChildren)
+                    {
+                        if (form is frmSessionWarning)
+                        {
+                            isWarningOpened = true;
+                            break;
+                        }
+                    }
+
+                    if (!isWarningOpened)
+                    {
+                        Enabled = false;
+                        var warning = new frmSessionWarning();
+                        warning.MdiParent = this;
+                        warning.Show();
+                    }
+                }
+            }
+
+            base.WndProc(ref m);
+        }
+
         public frmSession()
         {
             InitializeComponent();
         }
 
-        private void frmTakeExam_Load(object sender, EventArgs e)
+        private void frmSession_Load(object sender, EventArgs e)
         {
             Text += DetailsExam.ExamName;
             Enabled = false;
@@ -52,7 +86,7 @@ namespace OnExam
                 Close();
         }
 
-        private void stripBtnClose_Click(object sender, EventArgs e)
+        private void stripBtnExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(ResourceManager.GetString("aboutToClose"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Close();
@@ -64,7 +98,7 @@ namespace OnExam
             Close();
         }
 
-        private void frmTakeExam_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmSession_FormClosing(object sender, FormClosingEventArgs e)
         {
             var close = true;
             var examAnswers = new List<ExamAnswer>();
@@ -108,7 +142,7 @@ namespace OnExam
                 e.Cancel = true;
         }
 
-        private void frmTakeExam_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmSession_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();

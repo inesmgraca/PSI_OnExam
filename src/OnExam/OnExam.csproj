@@ -114,6 +114,12 @@
     <Compile Include="frmSessionOpts.Designer.cs">
       <DependentUpon>frmSessionOpts.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSessionWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSessionWarning.Designer.cs">
+      <DependentUpon>frmSessionWarning.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,8 +200,23 @@
     <EmbeddedResource Include="frmExamOpts.resx">
       <DependentUpon>frmExamOpts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSession.en-GB.resx">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSession.pt-PT.resx">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSession.resx">
       <DependentUpon>frmSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionWarning.en-GB.resx">
+      <DependentUpon>frmSessionWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionWarning.pt-PT.resx">
+      <DependentUpon>frmSessionWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionWarning.resx">
+      <DependentUpon>frmSessionWarning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTakeExam.en-GB.resx">
       <DependentUpon>frmTakeExam.cs</DependentUpon>

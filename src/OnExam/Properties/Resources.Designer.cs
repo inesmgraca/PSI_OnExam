@@ -124,11 +124,11 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exam Closed.
+        ///   Looks up a localized string similar to View Results.
         /// </summary>
-        internal static string btnExamClosed {
+        internal static string btnViewResults {
             get {
-                return ResourceManager.GetString("btnExamClosed", resourceCulture);
+                return ResourceManager.GetString("btnViewResults", resourceCulture);
             }
         }
         

@@ -60,7 +60,7 @@ namespace OnExam
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmTakeExamOpts";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Load += new System.EventHandler(this.frmTakeExamOpts_Load);
+            this.Load += new System.EventHandler(this.frmSessionOpts_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

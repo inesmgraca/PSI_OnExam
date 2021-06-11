@@ -23,7 +23,7 @@ namespace OnExam
             InitializeComponent();
         }
 
-        private void frmTakeExamText_Load(object sender, EventArgs e)
+        private void frmSessionText_Load(object sender, EventArgs e)
         {
             lblQuestion.Text = QuestionExam.Question;
         }

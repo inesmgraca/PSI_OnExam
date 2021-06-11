@@ -72,7 +72,7 @@ namespace OnExam
             Close();
         }
 
-        private void frmTakeExamInfo_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmTakeExam_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Application.OpenForms.Count == 1 && Application.OpenForms[0] is frmMain && !Application.OpenForms[0].Visible)
                 Application.Exit();

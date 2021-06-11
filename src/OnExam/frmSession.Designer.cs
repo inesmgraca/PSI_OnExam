@@ -33,7 +33,7 @@ namespace OnExam
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSession));
             this.timerExam = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.stripBtnClose = new System.Windows.Forms.ToolStripButton();
+            this.stripBtnExit = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,42 +44,34 @@ namespace OnExam
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripBtnClose});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.stripBtnExit});
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(933, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
             // 
-            // stripBtnClose
+            // stripBtnExit
             // 
-            this.stripBtnClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.stripBtnClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.stripBtnClose.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnClose.Image")));
-            this.stripBtnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stripBtnClose.Name = "stripBtnClose";
-            this.stripBtnClose.Size = new System.Drawing.Size(72, 22);
-            this.stripBtnClose.Text = "Close Exam";
-            this.stripBtnClose.Click += new System.EventHandler(this.stripBtnClose_Click);
+            this.stripBtnExit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripBtnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.stripBtnExit, "stripBtnExit");
+            this.stripBtnExit.Name = "stripBtnExit";
+            this.stripBtnExit.Click += new System.EventHandler(this.stripBtnExit_Click);
             // 
             // frmSession
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(933, 519);
+            this.ControlBox = false;
             this.Controls.Add(this.toolStrip1);
-            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSession";
-            this.Text = "frmTakeExam";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTakeExam_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTakeExam_FormClosed);
-            this.Load += new System.EventHandler(this.frmTakeExam_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSession_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSession_FormClosed);
+            this.Load += new System.EventHandler(this.frmSession_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -91,6 +83,6 @@ namespace OnExam
 
         private System.Windows.Forms.Timer timerExam;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton stripBtnClose;
+        private System.Windows.Forms.ToolStripButton stripBtnExit;
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace OnExam
 {
-    partial class frmSessionText
+    partial class frmSessionWarning
     {
         /// <summary>
         /// Required designer variable.
@@ -29,41 +29,53 @@ namespace OnExam
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSessionText));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSessionWarning));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtAnswer = new System.Windows.Forms.TextBox();
-            this.lblQuestion = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.txtAnswer, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblQuestion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblWarning, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // txtAnswer
+            // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.txtAnswer, "txtAnswer");
-            this.txtAnswer.Name = "txtAnswer";
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.btnOK, 1, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // lblQuestion
+            // btnOK
             // 
-            resources.ApplyResources(this.lblQuestion, "lblQuestion");
-            this.lblQuestion.Name = "lblQuestion";
+            resources.ApplyResources(this.btnOK, "btnOK");
+            this.btnOK.Name = "btnOK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // frmTakeExamText
+            // lblWarning
+            // 
+            resources.ApplyResources(this.lblWarning, "lblWarning");
+            this.lblWarning.Name = "lblWarning";
+            // 
+            // frmSessionWarning
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frmTakeExamText";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Load += new System.EventHandler(this.frmSessionText_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "frmSessionWarning";
+            this.Load += new System.EventHandler(this.frmSessionWarning_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -71,7 +83,8 @@ namespace OnExam
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtAnswer;
-        private System.Windows.Forms.Label lblQuestion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Label lblWarning;
     }
 }

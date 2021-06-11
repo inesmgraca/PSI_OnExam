@@ -135,7 +135,7 @@ namespace OnExam
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmLogin";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

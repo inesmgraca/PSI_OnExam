@@ -15,6 +15,8 @@ namespace OnExam
 
         public static int SessionID { get; set; }
 
+        public static int ExamExits { get; set; }
+
         public static bool TakeExam(int examID, string examName, string examOwner)
         {
             var connString = ConfigurationManager.ConnectionStrings["OnExamDB"].ConnectionString;
@@ -147,6 +149,8 @@ namespace OnExam
                     while (dr.Read())
                         SessionID = (int)dr["SessionID"];
 
+                    ExamExits = 0;
+
                     return true;
                 }
                 else
@@ -222,6 +226,17 @@ namespace OnExam
                         }
                     }
                 }
+
+                if (ExamExits != 0)
+                {
+                    var cmd = new SqlCommand("SessionUpdate", conn);
+
+                    cmd.Parameters.AddWithValue("@ExamExits", ExamExits);
+
+                    if (cmd.ExecuteNonQuery() != 1)
+                        success = false;
+                }
+
 
                 if (success)
                     return true;

@@ -113,6 +113,7 @@ namespace OnExam
             // stripBtnActivate
             // 
             this.stripBtnActivate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stripBtnActivate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.stripBtnActivate, "stripBtnActivate");
             this.stripBtnActivate.Name = "stripBtnActivate";
             this.stripBtnActivate.Click += new System.EventHandler(this.stripBtnActivate_Click);

@@ -138,8 +138,8 @@
   <data name="btnCloseExam" xml:space="preserve">
     <value>Close Exam</value>
   </data>
-  <data name="btnExamClosed" xml:space="preserve">
-    <value>Exam Closed</value>
+  <data name="btnViewResults" xml:space="preserve">
+    <value>View Results</value>
   </data>
   <data name="cantBeEmpty" xml:space="preserve">
     <value>Can't be empty!</value>

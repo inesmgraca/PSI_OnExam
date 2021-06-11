@@ -25,7 +25,7 @@ namespace OnExam
             InitializeComponent();
         }
 
-        private void frmTakeExamOpts_Load(object sender, EventArgs e)
+        private void frmSessionOpts_Load(object sender, EventArgs e)
         {
             lblQuestion.Text = QuestionExam.Question;
             var i = 1;

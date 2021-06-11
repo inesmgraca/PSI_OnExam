@@ -62,12 +62,9 @@ namespace OnExam
                     chkIsRandom.Enabled = false;
 
                     if (State == State.Active)
-                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnCloseExam");
+                        stripBtnActivate.Text = ResourceManager.GetString("btnCloseExam");
                     else
-                    {
-                        stripBtnActivate.Enabled = false;
-                        stripBtnActivate.Text = Properties.Resources.ResourceManager.GetString("btnExamClosed");
-                    }
+                        stripBtnActivate.Text = ResourceManager.GetString("btnViewResults");
                 }
 
                 if (examDetails.Questions != null)
@@ -143,17 +140,20 @@ namespace OnExam
                         Close();
                 }
             }
-            else
+            else if (State == State.Active)
             {
                 if (MessageBox.Show(ResourceManager.GetString("closeExam"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     if (ExamUpdateState(ExamID, State.Closed))
                     {
                         State = State.Closed;
-                        stripBtnActivate.Enabled = false;
-                        stripBtnActivate.Text = ResourceManager.GetString("btnExamClosed");
+                        stripBtnActivate.Text = ResourceManager.GetString("btnViewResults");
                     }
                 }
+            }
+            else
+            {
+                // ver results
             }
         }
 
