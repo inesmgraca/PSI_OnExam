@@ -18,21 +18,23 @@ namespace OnExam
                 if (m.WParam.ToInt64() == 0) /* Being deactivated */
                 {
                     var isWarningOpened = false;
-                    ExamExits++;
-                    Enabled = false;
+                    SessionExits++;
 
                     foreach (var form in MdiChildren)
                     {
                         if (form is frmSessionWarning)
                         {
                             isWarningOpened = true;
+                            form.Focus();
                             break;
                         }
+
+                        if (form is frmSessionOpts || form is frmSessionText)
+                            form.Enabled = false;
                     }
 
                     if (!isWarningOpened)
                     {
-                        Enabled = false;
                         var warning = new frmSessionWarning();
                         warning.MdiParent = this;
                         warning.Show();
@@ -54,26 +56,29 @@ namespace OnExam
             Enabled = false;
             var i = 1;
 
-            foreach (var examQuestion in DetailsExam.Questions)
+            if (DetailsExam.Questions != null)
             {
-                if (examQuestion.Type == QuestionType.Text)
+                foreach (var Question in DetailsExam.Questions)
                 {
-                    var examText = new frmSessionText();
-                    examText.MdiParent = this;
-                    examText.Text += i;
-                    examText.QuestionExam = examQuestion;
-                    examText.Show();
-                }
-                else
-                {
-                    var examOpts = new frmSessionOpts();
-                    examOpts.MdiParent = this;
-                    examOpts.Text += i;
-                    examOpts.QuestionExam = examQuestion;
-                    examOpts.Show();
-                }
+                    if (Question.Type == QuestionType.Text)
+                    {
+                        var sessionText = new frmSessionText();
+                        sessionText.MdiParent = this;
+                        sessionText.Text += i;
+                        sessionText.QuestionExam = Question;
+                        sessionText.Show();
+                    }
+                    else
+                    {
+                        var sessionOpts = new frmSessionOpts();
+                        sessionOpts.MdiParent = this;
+                        sessionOpts.Text += i;
+                        sessionOpts.QuestionExam = Question;
+                        sessionOpts.Show();
+                    }
 
-                i++;
+                    i++;
+                }
             }
 
             if (MessageBox.Show(ResourceManager.GetString("aboutToStart"), ResourceManager.GetString("verifyStart"), MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -94,7 +99,7 @@ namespace OnExam
 
         private void timerExam_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show(ResourceManager.GetString("examEnded"), ResourceManager.GetString("timeEnded"), MessageBoxButtons.OK);
+            MessageBox.Show(ResourceManager.GetString("timeEnded"), ResourceManager.GetString("examEnded"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 
@@ -118,7 +123,7 @@ namespace OnExam
                         break;
                     }
                 }
-                else
+                else if (MdiChildren[i] is frmSessionOpts)
                 {
                     var frmQuestion = (frmSessionOpts)MdiChildren[i];
                     var examAnswer = frmQuestion.Save();
@@ -133,7 +138,7 @@ namespace OnExam
                 }
             }
 
-            if (!close && !SessionClose(examAnswers))
+            if (!SessionClose(examAnswers))
                 close = false;
 
             if (close)

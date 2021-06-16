@@ -138,7 +138,7 @@
   <data name="State.ToolTipText" xml:space="preserve">
     <value>0 - Inativo
 1 - Ativo
-2 - Realizado</value>
+2 - Fechado</value>
   </data>
   <data name="btnNew.Text" xml:space="preserve">
     <value>Novo</value>
@@ -157,5 +157,8 @@
   </data>
   <data name="btnUpdate.Text" xml:space="preserve">
     <value>Atualizar</value>
+  </data>
+  <data name="btnExit.Text" xml:space="preserve">
+    <value>Sair</value>
   </data>
 </root>

@@ -109,13 +109,13 @@ namespace OnExam
             resources.ApplyResources(this.txtInfo, "txtInfo");
             this.txtInfo.Name = "txtInfo";
             // 
-            // frmTakeExamInfo
+            // frmTakeExam
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frmTakeExamInfo";
+            this.Name = "frmTakeExam";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTakeExam_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

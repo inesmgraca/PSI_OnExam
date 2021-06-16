@@ -44,9 +44,9 @@ namespace OnExam
                 if (dr.HasRows)
                 {
                     var ds = new DataSet();
-                    var dataTable = new DataTable("Results");
+                    var dataTable = new DataTable("Exams");
                     ds.Tables.Add(dataTable);
-                    ds.Load(dr, LoadOption.PreserveChanges, ds.Tables["Results"]);
+                    ds.Load(dr, LoadOption.PreserveChanges, ds.Tables["Exams"]);
                     return ds;
                 }
             }
@@ -233,8 +233,11 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select State from Exams where ExamID = @ExamID;", conn);
+                var cmd = new SqlCommand("ExamOpen", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                
                 cmd.Parameters.AddWithValue("@ExamID", examID);
+                cmd.Parameters.AddWithValue("Username", UserLoggedIn);
 
                 var dr = cmd.ExecuteReader();
                 var state = State.Inactive;
@@ -244,7 +247,9 @@ namespace OnExam
 
                 if (state == State.Inactive)
                 {
-                    cmd = new SqlCommand("select QuestionID from Questions where ExamID = @ExamID;", conn);
+                    cmd = new SqlCommand("QuestionsOpen", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
                     cmd.Parameters.AddWithValue("@ExamID", examID);
 
                     dr.Close();
@@ -321,7 +326,9 @@ namespace OnExam
                 {
                     if (examQuestion.Type != QuestionType.Text)
                     {
-                        cmd = new SqlCommand("select QuestionDetailsID from QuestionDetails where QuestionID = @QuestionID;", conn);
+                        cmd = new SqlCommand("QuestionDetailsOpen", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        
                         cmd.Parameters.AddWithValue("@QuestionID", examQuestion.QuestionID);
 
                         var dr = cmd.ExecuteReader();
@@ -418,7 +425,8 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select ExamID from Exams e join Users u on u.UserID = e.UserID where ExamID != @ExamID and e.Name = @ExamName and Username = @Username", conn);
+                var cmd = new SqlCommand("ExamNameSearch", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@ExamID", examID);
                 cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);

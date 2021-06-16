@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static OnExam.Properties.Resources;
+using static OnExam.UserManagement;
 using static OnExam.ExamManagement;
 
 namespace OnExam
@@ -16,7 +18,30 @@ namespace OnExam
         {
             var ds = ExamsView();
             if (ds != null)
-                dataGridExams.DataSource = ds.Tables["Results"];
+                dataGridExams.DataSource = ds.Tables["Exams"];
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            var frms = new List<Form>();
+
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (!(frm is frmMain) && !(frm is frmViewExams))
+                    frms.Add(frm);
+            }
+            
+            foreach (var frm in frms)
+                frm.Close();
+
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm is frmMain)
+                    frm.Show();
+            }
+
+            UserLoggedIn = string.Empty;
+            Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -27,9 +52,7 @@ namespace OnExam
         private void btnNew_Click(object sender, EventArgs e)
         {
             var exam = new frmExam();
-
-            if (exam.frmExam_New())
-                exam.Show();
+            exam.Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -55,11 +78,9 @@ namespace OnExam
         {
             if (dataGridExams.Rows.GetRowCount(DataGridViewElementStates.Selected) == 1)
             {
-                int.TryParse(dataGridExams.SelectedRows[0].Cells["ExamID"].Value.ToString(), out int examID);
                 var exam = new frmExam();
-
-                if (exam.frmExam_Open(examID))
-                    exam.Show();
+                exam.ExamID = (int)dataGridExams.SelectedRows[0].Cells["ExamID"].Value;
+                exam.Show();
             }
             else
                 MessageBox.Show(ResourceManager.GetString("oneExamOnly"), ResourceManager.GetString("selectedRows"), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -67,8 +88,23 @@ namespace OnExam
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            var profile = new frmProfile();
-            profile.Show();
+            var isOpen = false;
+
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm is frmProfile)
+                {
+                    frm.Focus();
+                    isOpen = true;
+                    break;
+                }
+            }
+
+            if (!isOpen)
+            {
+                var profile = new frmProfile();
+                profile.Show();
+            }
         }
 
         private void frmViewExams_FormClosed(object sender, FormClosedEventArgs e)

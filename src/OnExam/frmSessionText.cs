@@ -18,6 +18,8 @@ namespace OnExam
 
         public ExamQuestion QuestionExam { get; set; }
 
+        public ExamAnswer Answer { get; set; }
+
         public frmSessionText()
         {
             InitializeComponent();
@@ -26,6 +28,12 @@ namespace OnExam
         private void frmSessionText_Load(object sender, EventArgs e)
         {
             lblQuestion.Text = QuestionExam.Question;
+
+            if (Answer != null)
+            {
+                txtAnswer.Text = Answer.AnswerText;
+                txtAnswer.Enabled = false;
+            }
         }
 
         public ExamAnswer Save()

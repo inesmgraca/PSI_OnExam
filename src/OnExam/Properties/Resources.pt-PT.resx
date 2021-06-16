@@ -138,8 +138,8 @@
   <data name="btnCloseExam" xml:space="preserve">
     <value>Fechar Exame</value>
   </data>
-  <data name="btnViewResults" xml:space="preserve">
-    <value>Ver Resultados</value>
+  <data name="btnViewAnswers" xml:space="preserve">
+    <value>Ver Respostas</value>
   </data>
   <data name="cantBeEmpty" xml:space="preserve">
     <value>Não pode estar vazio!</value>
@@ -171,6 +171,15 @@
   <data name="examAlreadyDone" xml:space="preserve">
     <value>Não é possível eliminar um exame já realizado.</value>
   </data>
+  <data name="examEnded" xml:space="preserve">
+    <value>O exame terminou.</value>
+  </data>
+  <data name="examNotActive" xml:space="preserve">
+    <value>Este exame não está ativo!</value>
+  </data>
+  <data name="examNotSubmitted" xml:space="preserve">
+    <value>O exame não foi submetido!</value>
+  </data>
   <data name="fillFields" xml:space="preserve">
     <value>Preencha todos os campos!</value>
   </data>
@@ -188,6 +197,9 @@
   </data>
   <data name="invalidValue" xml:space="preserve">
     <value>Valor de duração inválido!</value>
+  </data>
+  <data name="newExam" xml:space="preserve">
+    <value>Novo</value>
   </data>
   <data name="noMatch" xml:space="preserve">
     <value>Palavras-passe não coincidem!</value>
@@ -212,6 +224,9 @@
   </data>
   <data name="success" xml:space="preserve">
     <value>Successo!</value>
+  </data>
+  <data name="timeEnded" xml:space="preserve">
+    <value>O tempo para o exame terminou. O exame irá guardar e fechar.</value>
   </data>
   <data name="unavailable" xml:space="preserve">
     <value>Indisponível!</value>

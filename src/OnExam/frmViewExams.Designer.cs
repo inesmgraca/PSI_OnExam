@@ -32,17 +32,18 @@ namespace OnExam
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewExams));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridExams = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnProfile = new System.Windows.Forms.Button();
             this.ExamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isRandom = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnProfile = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExams)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -53,8 +54,9 @@ namespace OnExam
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.dataGridExams, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnUpdate, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnProfile, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnUpdate, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExit, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // dataGridExams
@@ -73,49 +75,6 @@ namespace OnExam
             this.dataGridExams.ReadOnly = true;
             this.dataGridExams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
-            // tableLayoutPanel2
-            // 
-            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.btnNew, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnView, 4, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            // 
-            // btnNew
-            // 
-            resources.ApplyResources(this.btnNew, "btnNew");
-            this.btnNew.Name = "btnNew";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnDelete
-            // 
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnView
-            // 
-            resources.ApplyResources(this.btnView, "btnView");
-            this.btnView.Name = "btnView";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
-            // btnUpdate
-            // 
-            resources.ApplyResources(this.btnUpdate, "btnUpdate");
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnProfile
-            // 
-            resources.ApplyResources(this.btnProfile, "btnProfile");
-            this.btnProfile.Name = "btnProfile";
-            this.btnProfile.UseVisualStyleBackColor = true;
-            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
-            // 
             // ExamID
             // 
             this.ExamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -126,6 +85,7 @@ namespace OnExam
             // 
             // ExamName
             // 
+            this.ExamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ExamName.DataPropertyName = "ExamName";
             resources.ApplyResources(this.ExamName, "ExamName");
             this.ExamName.Name = "ExamName";
@@ -158,6 +118,56 @@ namespace OnExam
             this.State.ReadOnly = true;
             this.State.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.btnNew, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnView, 4, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // btnNew
+            // 
+            resources.ApplyResources(this.btnNew, "btnNew");
+            this.btnNew.Name = "btnNew";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnDelete
+            // 
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnView
+            // 
+            resources.ApplyResources(this.btnView, "btnView");
+            this.btnView.Name = "btnView";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // btnProfile
+            // 
+            resources.ApplyResources(this.btnProfile, "btnProfile");
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.UseVisualStyleBackColor = true;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
+            // btnUpdate
+            // 
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnExit
+            // 
+            resources.ApplyResources(this.btnExit, "btnExit");
+            this.btnExit.Name = "btnExit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmViewExams
             // 
             resources.ApplyResources(this, "$this");
@@ -189,5 +199,6 @@ namespace OnExam
         private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isRandom;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.Button btnExit;
     }
 }

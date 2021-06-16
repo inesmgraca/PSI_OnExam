@@ -16,7 +16,7 @@ namespace OnExam
             }
         }
 
-        private ExamQuestion examQuestion { get; set; }
+        public ExamQuestion QuestionExam { get; set; }
 
         public bool isEdit { get; set; }
 
@@ -25,40 +25,41 @@ namespace OnExam
             InitializeComponent();
         }
 
-        public void New()
+        private void frmExamText_Load(object sender, System.EventArgs e)
         {
-            examQuestion = new ExamQuestion()
+            if (QuestionExam == null)
             {
-                QuestionID = 0,
-                Type = QuestionType.Text
-            };
-        }
-
-        public void Open(ExamQuestion question)
-        {
-            examQuestion = question;
-            txtQuestion.Text = question.Question;
-            txtNotes.Text = question.Notes;
-            btnDeleteQuestion.Enabled = isEdit;
-            txtQuestion.Enabled = isEdit;
+                QuestionExam = new ExamQuestion()
+                {
+                    QuestionID = 0,
+                    Type = QuestionType.Text
+                };
+            }
+            else
+            {
+                txtQuestion.Text = QuestionExam.Question;
+                txtNotes.Text = QuestionExam.Notes;
+                btnDeleteQuestion.Enabled = isEdit;
+                txtQuestion.Enabled = isEdit;
+            }
         }
 
         public ExamQuestion Save()
         {
-            examQuestion.Question = txtQuestion.Text;
-            examQuestion.Notes = txtNotes.Text;
-            return examQuestion;
+            QuestionExam.Question = txtQuestion.Text;
+            QuestionExam.Notes = txtNotes.Text;
+            return QuestionExam;
         }
 
         private void btnDeleteQuestion_Click(object sender, System.EventArgs e)
         {
             if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                if (examQuestion.QuestionID == 0)
+                if (QuestionExam.QuestionID == 0)
                     Close();
                 else
                 {
-                    if (ExamDeleteQuestion(examQuestion.QuestionID))
+                    if (ExamDeleteQuestion(QuestionExam.QuestionID))
                         Close();
                 }
             }

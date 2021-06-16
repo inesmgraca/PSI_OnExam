@@ -89,6 +89,7 @@ namespace OnExam
             // 
             this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
+            resources.ApplyResources(this.providerError, "providerError");
             // 
             // frmProfilePass
             // 

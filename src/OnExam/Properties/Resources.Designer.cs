@@ -126,9 +126,9 @@ namespace OnExam.Properties {
         /// <summary>
         ///   Looks up a localized string similar to View Results.
         /// </summary>
-        internal static string btnViewResults {
+        internal static string btnViewAnswers {
             get {
-                return ResourceManager.GetString("btnViewResults", resourceCulture);
+                return ResourceManager.GetString("btnViewAnswers", resourceCulture);
             }
         }
         
@@ -223,11 +223,78 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exam ended..
+        /// </summary>
+        internal static string examEnded {
+            get {
+                return ResourceManager.GetString("examEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This exam is not active!.
+        /// </summary>
+        internal static string examNotActive {
+            get {
+                return ResourceManager.GetString("examNotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The exam wasn&apos;t submitted!.
+        /// </summary>
+        internal static string examNotSubmitted {
+            get {
+                return ResourceManager.GetString("examNotSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill all fields!.
         /// </summary>
         internal static string fillFields {
             get {
                 return ResourceManager.GetString("fillFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_OnExam {
+            get {
+                object obj = ResourceManager.GetObject("img_OnExam", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_stripBtnChk {
+            get {
+                object obj = ResourceManager.GetObject("img_stripBtnChk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_stripBtnRdb {
+            get {
+                object obj = ResourceManager.GetObject("img_stripBtnRdb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_stripBtnTxt {
+            get {
+                object obj = ResourceManager.GetObject("img_stripBtnTxt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -273,6 +340,15 @@ namespace OnExam.Properties {
         internal static string invalidValue {
             get {
                 return ResourceManager.GetString("invalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string newExam {
+            get {
+                return ResourceManager.GetString("newExam", resourceCulture);
             }
         }
         
@@ -345,6 +421,15 @@ namespace OnExam.Properties {
         internal static string success {
             get {
                 return ResourceManager.GetString("success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time for the exam ended. The exam will close and save..
+        /// </summary>
+        internal static string timeEnded {
+            get {
+                return ResourceManager.GetString("timeEnded", resourceCulture);
             }
         }
         

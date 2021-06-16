@@ -20,6 +20,8 @@ namespace OnExam
 
         public ExamQuestion QuestionExam { get; set; }
 
+        public ExamAnswer Answer { get; internal set; }
+
         public frmSessionOpts()
         {
             InitializeComponent();
@@ -30,35 +32,91 @@ namespace OnExam
             lblQuestion.Text = QuestionExam.Question;
             var i = 1;
 
-            foreach (var questionDetails in QuestionExam.QuestionDetails)
+            if (Answer == null)
             {
-                Control option;
-
-                if (QuestionExam.Type == QuestionType.RadioButton)
+                foreach (var questionDetails in QuestionExam.QuestionDetails)
                 {
-                    option = new RadioButton()
-                    {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = questionDetails.Text,
-                        Height = 50,
-                        Width = 625
-                    };
-                }
-                else
-                {
-                    option = new CheckBox()
-                    {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = questionDetails.Text,
-                        Height = 50,
-                        Width = 625
-                    };
-                }
+                    Control option;
 
-                flowPanelOptions.Controls.Add(option);
-                i++;
+                    if (QuestionExam.Type == QuestionType.RadioButton)
+                    {
+                        option = new RadioButton()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625
+                        };
+                    }
+                    else
+                    {
+                        option = new CheckBox()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625
+                        };
+                    }
+
+                    flowPanelOptions.Controls.Add(option);
+                    i++;
+                }
+            }
+            else
+            {
+                foreach (var questionDetails in QuestionExam.QuestionDetails)
+                {
+                    Control option;
+                    var selected = false;
+
+                    if (QuestionExam.Type == QuestionType.RadioButton)
+                    {
+                        if (Answer.AnswerRdb == questionDetails.QuestionDetailsID)
+                            selected = true;
+
+                        option = new RadioButton()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625,
+                            Checked = selected,
+                            Enabled = false
+                        };
+                    }
+                    else
+                    {
+                        foreach (var answer in Answer.AnswerChk)
+                        {
+                            if (answer == questionDetails.QuestionDetailsID)
+                                selected = true;
+                        }
+
+                        option = new CheckBox()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625,
+                            Checked = selected,
+                            Enabled = false
+                        };
+                    }
+
+                    if (questionDetails.isRight)
+                    {
+                        option.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
+                        option.ForeColor = System.Drawing.Color.LimeGreen;
+                    }
+
+                    flowPanelOptions.Controls.Add(option);
+                    i++;
+                }
             }
         }
 

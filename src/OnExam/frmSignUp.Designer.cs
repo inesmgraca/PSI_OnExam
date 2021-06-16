@@ -183,16 +183,19 @@ namespace OnExam
             // 
             this.providerError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerError.ContainerControl = this;
+            resources.ApplyResources(this.providerError, "providerError");
             // 
             // providerLoad
             // 
             this.providerLoad.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerLoad.ContainerControl = this;
+            resources.ApplyResources(this.providerLoad, "providerLoad");
             // 
             // providerCorrect
             // 
             this.providerCorrect.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.providerCorrect.ContainerControl = this;
+            resources.ApplyResources(this.providerCorrect, "providerCorrect");
             // 
             // frmSignUp
             // 

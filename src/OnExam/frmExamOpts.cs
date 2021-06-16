@@ -18,7 +18,9 @@ namespace OnExam
             }
         }
 
-        private ExamQuestion examQuestion { get; set; }
+        public QuestionType TypeQuestion { get; set; }
+
+        public ExamQuestion QuestionExam { get; set; }
 
         public bool isEdit { get; set; }
 
@@ -27,109 +29,116 @@ namespace OnExam
             InitializeComponent();
         }
 
-        public void New(QuestionType optType)
+        private void frmExamOpts_Load(object sender, EventArgs e)
         {
-            examQuestion = new ExamQuestion()
+            if (QuestionExam == null)
             {
-                QuestionID = 0,
-                Type = optType
-            };
-
-            for (int i = 1; i <= 4; i++)
-            {
-                Control option;
-
-                if (optType == QuestionType.RadioButton)
+                QuestionExam = new ExamQuestion()
                 {
-                    option = new RadioButton()
-                    {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = Properties.Resources.ResourceManager.GetString("answer") + i.ToString(),
-                        Height = 50,
-                        Width = 625
-                    };
-                }
-                else
-                {
-                    option = new CheckBox()
-                    {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = Properties.Resources.ResourceManager.GetString("answer") + i.ToString(),
-                        Height = 50,
-                        Width = 625
-                    };
-                }
+                    QuestionID = 0,
+                    Type = TypeQuestion
+                };
 
-                cmbEdit.Items.Add(new ItemData(Properties.Resources.ResourceManager.GetString("option") + i));
-                flowPanelOptions.Controls.Add(option);
+                for (int i = 1; i <= 4; i++)
+                {
+                    Control option;
+
+                    if (QuestionExam.Type == QuestionType.RadioButton)
+                    {
+                        option = new RadioButton()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = Properties.Resources.ResourceManager.GetString("answer") + i.ToString(),
+                            Height = 50,
+                            Width = 625
+                        };
+                    }
+                    else
+                    {
+                        option = new CheckBox()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = Properties.Resources.ResourceManager.GetString("answer") + i.ToString(),
+                            Height = 50,
+                            Width = 625
+                        };
+                    }
+
+                    cmbEdit.Items.Add(new ItemData(Properties.Resources.ResourceManager.GetString("option") + i));
+                    flowPanelOptions.Controls.Add(option);
+                }
             }
-        }
-
-        public void Open(ExamQuestion question)
-        {
-            examQuestion = question;
-            txtQuestion.Text = examQuestion.Question;
-            btnAdd.Enabled = isEdit;
-            btnDelete.Enabled = isEdit;
-            btnDeleteQuestion.Enabled = isEdit;
-            txtQuestion.Enabled = isEdit;
-            txtText.Enabled = isEdit;
-            var i = 1;
-
-            foreach (var questionDetails in question.QuestionDetails)
+            else
             {
-                Control option;
+                txtQuestion.Text = QuestionExam.Question;
+                btnAdd.Enabled = isEdit;
+                btnDelete.Enabled = isEdit;
+                btnDeleteQuestion.Enabled = isEdit;
+                txtQuestion.Enabled = isEdit;
+                txtText.Enabled = isEdit;
+                var i = 1;
 
-                if (question.Type == QuestionType.RadioButton)
+                foreach (var questionDetails in QuestionExam.QuestionDetails)
                 {
-                    option = new RadioButton()
+                    Control option;
+
+                    if (QuestionExam.Type == QuestionType.RadioButton)
                     {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = questionDetails.Text,
-                        Height = 50,
-                        Width = 625,
-                        Checked = questionDetails.isRight,
-                        Enabled = isEdit
-                    };
+                        option = new RadioButton()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625,
+                            Checked = questionDetails.isRight,
+                            Enabled = isEdit
+                        };
+                    }
+                    else
+                    {
+                        option = new CheckBox()
+                        {
+                            Name = $"option{i}",
+                            Tag = i,
+                            Text = questionDetails.Text,
+                            Height = 50,
+                            Width = 625,
+                            Checked = questionDetails.isRight,
+                            Enabled = isEdit
+                        };
+                    }
+
+                    cmbEdit.Items.Add(new ItemData(Properties.Resources.ResourceManager.GetString("option") + i));
+                    flowPanelOptions.Controls.Add(option);
+                    i++;
                 }
+
+                if (flowPanelOptions.Controls.Count > 2)
+                    btnDelete.Enabled = true;
                 else
+                    btnDelete.Enabled = false;
+
+                if (i - 1 < 6)
+                    btnAdd.Enabled = true;
+                else
+                    btnAdd.Enabled = false;
+
+                if (!isEdit)
                 {
-                    option = new CheckBox()
-                    {
-                        Name = $"option{i}",
-                        Tag = i,
-                        Text = questionDetails.Text,
-                        Height = 50,
-                        Width = 625,
-                        Checked = questionDetails.isRight,
-                        Enabled = isEdit
-                    };
+                    btnAdd.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
-
-                cmbEdit.Items.Add(new ItemData(Properties.Resources.ResourceManager.GetString("option") + i));
-                flowPanelOptions.Controls.Add(option);
-                i++;
             }
-
-            if (flowPanelOptions.Controls.Count > 2)
-                btnDelete.Enabled = true;
-            else
-                btnDelete.Enabled = false;
-
-            if (i - 1 < 8)
-                btnAdd.Enabled = true;
-            else
-                btnAdd.Enabled = false;
         }
 
         public ExamQuestion Save()
         {
-            examQuestion.Question = txtQuestion.Text;
-            examQuestion.Notes = "";
-            examQuestion.QuestionDetails = new List<ExamQuestionDetails>();
+            QuestionExam.Question = txtQuestion.Text;
+            QuestionExam.Notes = "";
+            QuestionExam.QuestionDetails = new List<ExamQuestionDetails>();
 
             for (int i = 0; i < flowPanelOptions.Controls.Count; i++)
             {
@@ -143,7 +152,7 @@ namespace OnExam
                         isRight = option.Checked
                     };
 
-                    examQuestion.QuestionDetails.Add(questionDetails);
+                    QuestionExam.QuestionDetails.Add(questionDetails);
                 }
                 else
                 {
@@ -155,11 +164,11 @@ namespace OnExam
                         isRight = option.Checked
                     };
 
-                    examQuestion.QuestionDetails.Add(questionDetails);
+                    QuestionExam.QuestionDetails.Add(questionDetails);
                 }
             }
 
-            return examQuestion;
+            return QuestionExam;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -167,7 +176,7 @@ namespace OnExam
             Control option;
             var i = flowPanelOptions.Controls.Count + 1;
 
-            if (examQuestion.Type == QuestionType.RadioButton)
+            if (QuestionExam.Type == QuestionType.RadioButton)
             {
                 option = new RadioButton()
                 {
@@ -211,7 +220,7 @@ namespace OnExam
 
             if (i - 1 == 2)
                 btnDelete.Enabled = false;
-            if (i - 1 < 8)
+            if (i - 1 < 6)
                 btnAdd.Enabled = true;
 
             cmbEdit.Items.RemoveAt(cmbEdit.Items.Count - 1);
@@ -239,11 +248,11 @@ namespace OnExam
         {
             if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                if (examQuestion.QuestionID == 0)
+                if (QuestionExam.QuestionID == 0)
                     Close();
                 else
                 {
-                    if (ExamDeleteQuestion(examQuestion.QuestionID))
+                    if (ExamDeleteQuestion(QuestionExam.QuestionID))
                         Close();
                 }
             }

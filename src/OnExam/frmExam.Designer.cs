@@ -64,18 +64,21 @@ namespace OnExam
             // 
             // stripBtnRdb
             // 
+            this.stripBtnRdb.Image = global::OnExam.Properties.Resources.img_stripBtnRdb;
             resources.ApplyResources(this.stripBtnRdb, "stripBtnRdb");
             this.stripBtnRdb.Name = "stripBtnRdb";
             this.stripBtnRdb.Click += new System.EventHandler(this.stripBtnRdb_Click);
             // 
             // stripBtnChk
             // 
+            this.stripBtnChk.Image = global::OnExam.Properties.Resources.img_stripBtnChk;
             resources.ApplyResources(this.stripBtnChk, "stripBtnChk");
             this.stripBtnChk.Name = "stripBtnChk";
             this.stripBtnChk.Click += new System.EventHandler(this.stripBtnChk_Click);
             // 
             // stripBtnTxt
             // 
+            this.stripBtnTxt.Image = global::OnExam.Properties.Resources.img_stripBtnTxt;
             resources.ApplyResources(this.stripBtnTxt, "stripBtnTxt");
             this.stripBtnTxt.Name = "stripBtnTxt";
             this.stripBtnTxt.Click += new System.EventHandler(this.stripBtnTxt_Click);

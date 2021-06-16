@@ -1,3 +1,6 @@
+
+-- Script Database --
+
 create table Users(
 UserID int identity not null constraint Pk_Users_UserID primary key,
 Name varchar(100) not null,
@@ -35,7 +38,8 @@ create table Sessions(
 SessionID int identity not null constraint Pk_Sessions_SessionID primary key,
 ExamID int not null constraint Fk_Sessions_Exams references Exams (ExamID),
 Name varchar(100) not null,
-Info varchar(500) not null
+Info varchar(500) not null,
+SessionExits int default 0
 );
 
 create table Answers(

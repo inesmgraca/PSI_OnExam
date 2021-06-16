@@ -161,4 +161,7 @@
 1 - Active
 2 - Closed</value>
   </data>
+  <data name="btnExit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
 </root>

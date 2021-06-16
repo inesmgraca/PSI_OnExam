@@ -53,12 +53,12 @@ namespace OnExam
             resources.ApplyResources(this.flowPanelOptions, "flowPanelOptions");
             this.flowPanelOptions.Name = "flowPanelOptions";
             // 
-            // frmTakeExamOpts
+            // frmSessionOpts
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frmTakeExamOpts";
+            this.Name = "frmSessionOpts";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmSessionOpts_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

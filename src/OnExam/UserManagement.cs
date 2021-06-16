@@ -124,15 +124,16 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select Email from Users where Email = @Email;", conn);
+                var cmd = new SqlCommand("UserEmailSearch", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Username", string.Empty);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.HasRows)
-                {
                     MessageBox.Show(ResourceManager.GetString("errorEmail"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
                 else
                 {
                     cmd = new SqlCommand("UserAdd", conn);
@@ -231,7 +232,9 @@ namespace OnExam
             {
                 conn.Open();
 
-                var cmd = new SqlCommand("select Email from Users where Email = @Email and Username != @Username;", conn);
+                var cmd = new SqlCommand("UserEmailSearch", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Username", UserLoggedIn);
 

@@ -102,10 +102,10 @@ namespace OnExam
             this.cmbEdit.Name = "cmbEdit";
             this.cmbEdit.SelectedIndexChanged += new System.EventHandler(this.cmbEdit_SelectedIndexChanged);
             // 
-            // txtAnswer
+            // txtText
             // 
-            resources.ApplyResources(this.txtText, "txtAnswer");
-            this.txtText.Name = "txtAnswer";
+            resources.ApplyResources(this.txtText, "txtText");
+            this.txtText.Name = "txtText";
             this.txtText.TextChanged += new System.EventHandler(this.txtAnswer_TextChanged);
             // 
             // tableLayoutPanel4
@@ -128,6 +128,7 @@ namespace OnExam
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmExamOpts";
+            this.Load += new System.EventHandler(this.frmExamOpts_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

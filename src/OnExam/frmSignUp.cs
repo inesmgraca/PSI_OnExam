@@ -48,6 +48,10 @@ namespace OnExam
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
+            providerCorrect.SetError(txtUsername, string.Empty);
+            providerError.SetError(txtUsername, string.Empty);
+            providerLoad.SetError(txtUsername, string.Empty);
+
             if (txtUsername.Text == string.Empty)
                 providerError.SetError(txtUsername, ResourceManager.GetString("cantBeEmpty"));
             else if (txtUsername.Text.Contains("-") || txtUsername.Text.Contains(" "))
@@ -58,6 +62,10 @@ namespace OnExam
 
         private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            providerCorrect.SetError(txtUsername, string.Empty);
+            providerError.SetError(txtUsername, string.Empty);
+            providerLoad.SetError(txtUsername, string.Empty);
+
             if (UserSearch(txtUsername.Text) && txtUsername.Text != string.Empty && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" "))
                 providerCorrect.SetError(txtUsername, ResourceManager.GetString("available"));
             else

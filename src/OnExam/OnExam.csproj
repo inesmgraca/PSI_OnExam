@@ -65,6 +65,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAnswers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAnswers.Designer.cs">
+      <DependentUpon>frmAnswers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmExam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,12 @@
     <Compile Include="frmSessionWarning.Designer.cs">
       <DependentUpon>frmSessionWarning.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmViewSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewSessions.Designer.cs">
+      <DependentUpon>frmViewSessions.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewExams.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +166,15 @@
     </Compile>
     <Compile Include="SessionManagement.cs" />
     <Compile Include="UserManagement.cs" />
+    <EmbeddedResource Include="frmAnswers.en-GB.resx">
+      <DependentUpon>frmAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAnswers.pt-PT.resx">
+      <DependentUpon>frmAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAnswers.resx">
+      <DependentUpon>frmAnswers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmExam.en-GB.resx">
       <DependentUpon>frmExam.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -163,6 +184,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmExam.resx">
       <DependentUpon>frmExam.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExamOpts.en-GB.resx">
       <DependentUpon>frmExamOpts.cs</DependentUpon>
@@ -241,6 +263,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSessionOpts.resx">
       <DependentUpon>frmSessionOpts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewSessions.en-GB.resx">
+      <DependentUpon>frmViewSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewSessions.pt-PT.resx">
+      <DependentUpon>frmViewSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewSessions.resx">
+      <DependentUpon>frmViewSessions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewExams.en-GB.resx">
       <DependentUpon>frmViewExams.cs</DependentUpon>
@@ -316,6 +348,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\img_stripBtnRdb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\img_stripBtnChk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\img_stripBtnTxt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\img_OnExam.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

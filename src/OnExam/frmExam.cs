@@ -9,7 +9,7 @@ namespace OnExam
 {
     public partial class frmExam : Form
     {
-        private int ExamID { get; set; }
+        public int ExamID { get; set; }
 
         private State State { get; set; }
 
@@ -20,97 +20,88 @@ namespace OnExam
 
         private void frmExam_Load(object sender, EventArgs e)
         {
-            Text += $"{UserLoggedIn}-{ExamID}";
-        }
-
-        public bool frmExam_New()
-        {
-            var examID = ExamAdd(10, false, State.Inactive);
-
-            if (examID != 0)
+            if (ExamID != 0)
             {
-                stripTxtExamName.Text = examID.ToString();
-                nudDuration.Value = 10;
-                chkIsRandom.Checked = false;
-                ExamID = examID;
-                return true;
-            }
+                Text += $"{UserLoggedIn}-{ExamID}";
+                var examDetails = ExamOpen(ExamID);
 
-            return false;
-        }
-
-        public bool frmExam_Open(int examID)
-        {
-            var examDetails = ExamOpen(examID);
-
-            if (examDetails != null)
-            {
-                stripTxtExamName.Text = examDetails.ExamName;
-                nudDuration.Value = examDetails.Duration;
-                chkIsRandom.Checked = examDetails.isRandom;
-                ExamID = examID;
-
-                State = examDetails.State;
-
-                if (State != State.Inactive)
+                if (examDetails != null)
                 {
-                    stripBtnChk.Enabled = false;
-                    stripBtnRdb.Enabled = false;
-                    stripBtnTxt.Enabled = false;
-                    stripTxtExamName.Enabled = false;
-                    nudDuration.Enabled = false;
-                    chkIsRandom.Enabled = false;
+                    stripTxtExamName.Text = examDetails.ExamName;
+                    nudDuration.Value = examDetails.Duration;
+                    chkIsRandom.Checked = examDetails.isRandom;
 
-                    if (State == State.Active)
-                        stripBtnActivate.Text = ResourceManager.GetString("btnCloseExam");
-                    else
-                        stripBtnActivate.Text = ResourceManager.GetString("btnViewResults");
-                }
+                    State = examDetails.State;
 
-                if (examDetails.Questions != null)
-                {
-                    foreach (var examQuestion in examDetails.Questions)
+                    if (State != State.Inactive)
                     {
-                        if (examQuestion.Type == QuestionType.Text)
-                        {
-                            var examText = new frmExamText();
-                            examText.MdiParent = this;
+                        stripBtnChk.Enabled = false;
+                        stripBtnRdb.Enabled = false;
+                        stripBtnTxt.Enabled = false;
+                        stripTxtExamName.Enabled = false;
+                        nudDuration.Enabled = false;
+                        chkIsRandom.Enabled = false;
 
-                            if (State != State.Inactive)
-                                examText.isEdit = false;
-                            else
-                                examText.isEdit = true;
-
-                            examText.Open(examQuestion);
-                            examText.Show();
-                        }
+                        if (State == State.Active)
+                            stripBtnActivate.Text = ResourceManager.GetString("btnCloseExam");
                         else
+                            stripBtnActivate.Text = ResourceManager.GetString("btnViewAnswers");
+                    }
+
+                    if (examDetails.Questions != null)
+                    {
+                        foreach (var examQuestion in examDetails.Questions)
                         {
-                            var examOpts = new frmExamOpts();
-                            examOpts.MdiParent = this;
+                            if (examQuestion.Type == QuestionType.Text)
+                            {
+                                var examText = new frmExamText();
+                                examText.MdiParent = this;
+                                examText.QuestionExam = examQuestion;
 
-                            if (State != State.Inactive)
-                                examOpts.isEdit = false;
+                                if (State != State.Inactive)
+                                    examText.isEdit = false;
+                                else
+                                    examText.isEdit = true;
+
+                                examText.Show();
+                            }
                             else
-                                examOpts.isEdit = true;
+                            {
+                                var examOpts = new frmExamOpts();
+                                examOpts.MdiParent = this;
+                                examOpts.QuestionExam = examQuestion;
 
-                            examOpts.Open(examQuestion);
-                            examOpts.Show();
+                                if (State != State.Inactive)
+                                    examOpts.isEdit = false;
+                                else
+                                    examOpts.isEdit = true;
+
+                                examOpts.Show();
+                            }
                         }
                     }
                 }
-
-                return true;
             }
             else
-                return false;
+            {
+                Text += ResourceManager.GetString("newExam");
+                var examID = ExamAdd(10, false, State.Inactive);
+
+                if (examID != 0)
+                {
+                    stripTxtExamName.Text = examID.ToString();
+                    nudDuration.Value = 10;
+                    chkIsRandom.Checked = false;
+                    ExamID = examID;
+                }
+            }
         }
 
         private void stripBtnRdb_Click(object sender, EventArgs e)
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.New(QuestionType.RadioButton);
+            examOpts.TypeQuestion = QuestionType.RadioButton;
             examOpts.Show();
         }
 
@@ -118,7 +109,7 @@ namespace OnExam
         {
             var examOpts = new frmExamOpts();
             examOpts.MdiParent = this;
-            examOpts.New(QuestionType.Checkbox);
+            examOpts.TypeQuestion = QuestionType.Checkbox;
             examOpts.Show();
         }
 
@@ -126,7 +117,6 @@ namespace OnExam
         {
             var examText = new frmExamText();
             examText.MdiParent = this;
-            examText.New();
             examText.Show();
         }
 
@@ -147,13 +137,36 @@ namespace OnExam
                     if (ExamUpdateState(ExamID, State.Closed))
                     {
                         State = State.Closed;
-                        stripBtnActivate.Text = ResourceManager.GetString("btnViewResults");
+                        stripBtnActivate.Text = ResourceManager.GetString("btnViewAnswers");
                     }
                 }
             }
             else
             {
-                // ver results
+                var isOpen = false;
+
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm is frmViewSessions)
+                    {
+                        var viewSessions = (frmViewSessions)frm;
+
+                        if (viewSessions.ExamID == ExamID)
+                        {
+                            frm.Focus();
+                            isOpen = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!isOpen)
+                {
+                    var viewSessions = new frmViewSessions();
+                    viewSessions.ExamID = ExamID;
+                    viewSessions.ExamName = $"{UserLoggedIn}-{stripTxtExamName}";
+                    viewSessions.Show();
+                }
             }
         }
 
@@ -209,7 +222,7 @@ namespace OnExam
                     }
                 }
 
-                if (!close && !ExamUpdate(ExamID, exam))
+                if (!ExamUpdate(ExamID, exam))
                     close = false;
 
                 if (close)

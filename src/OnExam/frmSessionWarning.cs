@@ -18,7 +18,13 @@ namespace OnExam
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            MdiParent.Enabled = true;
+            foreach (var form in MdiParent.MdiChildren)
+            {
+                if (form is frmSessionOpts || form is frmSessionText)
+                    form.Enabled = true;
+            }
+
+            Close();
         }
     }
 }

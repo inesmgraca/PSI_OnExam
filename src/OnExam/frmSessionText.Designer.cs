@@ -53,13 +53,13 @@ namespace OnExam
             resources.ApplyResources(this.lblQuestion, "lblQuestion");
             this.lblQuestion.Name = "lblQuestion";
             // 
-            // frmTakeExamText
+            // frmSessionText
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frmTakeExamText";
+            this.Name = "frmSessionText";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmSessionText_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
