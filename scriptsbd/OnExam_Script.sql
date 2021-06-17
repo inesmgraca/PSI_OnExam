@@ -193,6 +193,11 @@ go
 create procedure ExamDelete
 @ExamID int as
 begin
+delete from QuestionDetails
+where QuestionID in (select QuestionID
+from Questions where ExamID = @ExamID);
+delete from Questions
+where ExamID = @ExamID;
 delete from Exams
 where ExamID = @ExamID;
 end

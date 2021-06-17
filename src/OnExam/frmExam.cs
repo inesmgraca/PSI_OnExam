@@ -100,6 +100,8 @@ namespace OnExam
                     chkIsRandom.Checked = false;
                     ExamID = examID;
                 }
+                else
+                    Close();
             }
         }
 

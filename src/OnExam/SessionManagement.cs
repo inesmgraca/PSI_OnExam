@@ -161,7 +161,7 @@ namespace OnExam
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Info", info);
 
-                var sessionID = (int)cmd.ExecuteScalar();
+                var sessionID = Convert.ToInt32(cmd.ExecuteScalar());
 
                 if (sessionID != 0)
                 {

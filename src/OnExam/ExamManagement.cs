@@ -87,7 +87,7 @@ namespace OnExam
                 cmd.Parameters.AddWithValue("@isRandom", isRandom);
                 cmd.Parameters.AddWithValue("@State", state);
 
-                var examID = (int)cmd.ExecuteScalar();
+                var examID = Convert.ToInt32(cmd.ExecuteScalar());
 
                 if (examID != 0)
                     return examID;
@@ -240,38 +240,12 @@ namespace OnExam
 
                 if (state == State.Inactive)
                 {
-                    cmd = new SqlCommand("QuestionsOpen", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    
-                    cmd.Parameters.AddWithValue("@ExamID", examID);
-
-                    dr.Close();
-                    dr = cmd.ExecuteReader();
-
-                    if (dr.HasRows)
-                    {
-                        var questionsID = new List<int>();
-
-                        while (dr.Read())
-                            questionsID.Add((int)dr["QuestionID"]);
-
-                        dr.Close();
-
-                        for (int i = 0; i < questionsID.Count; i++)
-                        {
-                            cmd = new SqlCommand("QuestionDelete", conn);
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            cmd.Parameters.AddWithValue("@QuestionID", questionsID[i]);
-
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-
                     cmd = new SqlCommand("ExamDelete", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@ExamID", examID);
+
+                    dr.Close();
 
                     if (cmd.ExecuteNonQuery() == 1)
                         return true;
@@ -451,7 +425,7 @@ namespace OnExam
                             cmd.Parameters.AddWithValue("@Question", exam.Questions[i].Question);
                             cmd.Parameters.AddWithValue("@Notes", exam.Questions[i].Notes);
 
-                            var questionID = (int)cmd.ExecuteScalar();
+                            var questionID = Convert.ToInt32(cmd.ExecuteScalar());
 
                             if (questionID != 0)
                             {
