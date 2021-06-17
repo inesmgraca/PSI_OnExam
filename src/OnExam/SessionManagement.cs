@@ -161,15 +161,12 @@ namespace OnExam
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Info", info);
 
-                var dr = cmd.ExecuteReader();
+                var sessionID = (int)cmd.ExecuteScalar();
 
-                if (dr.HasRows)
+                if (sessionID != 0)
                 {
-                    while (dr.Read())
-                        SessionID = (int)dr["SessionID"];
-
+                    SessionID = sessionID;
                     SessionExits = 0;
-
                     return true;
                 }
                 else

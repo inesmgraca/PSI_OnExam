@@ -130,6 +130,6 @@
     <value>Eliminar Questão</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>OnExam</value>
+    <value>Questão </value>
   </data>
 </root>

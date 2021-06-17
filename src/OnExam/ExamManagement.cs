@@ -87,17 +87,10 @@ namespace OnExam
                 cmd.Parameters.AddWithValue("@isRandom", isRandom);
                 cmd.Parameters.AddWithValue("@State", state);
 
-                var dr = cmd.ExecuteReader();
+                var examID = (int)cmd.ExecuteScalar();
 
-                if (dr.HasRows)
-                {
-                    var ExamID = 0;
-
-                    while (dr.Read())
-                        int.TryParse(dr["ExamID"].ToString(), out ExamID);
-
-                    return ExamID;
-                }
+                if (examID != 0)
+                    return examID;
                 else
                     MessageBox.Show(ResourceManager.GetString("errorMessage"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -458,13 +451,10 @@ namespace OnExam
                             cmd.Parameters.AddWithValue("@Question", exam.Questions[i].Question);
                             cmd.Parameters.AddWithValue("@Notes", exam.Questions[i].Notes);
 
-                            dr.Close();
-                            dr = cmd.ExecuteReader();
+                            var questionID = (int)cmd.ExecuteScalar();
 
-                            if (dr.HasRows)
+                            if (questionID != 0)
                             {
-                                var questionID = 0;
-
                                 while (dr.Read())
                                     int.TryParse(dr["QuestionID"].ToString(), out questionID);
 

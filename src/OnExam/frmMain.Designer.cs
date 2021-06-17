@@ -38,9 +38,11 @@ namespace OnExam
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTakeExam = new System.Windows.Forms.Label();
             this.btnTakeExamInfo = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -48,6 +50,7 @@ namespace OnExam
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // tableLayoutPanel2
@@ -98,6 +101,13 @@ namespace OnExam
             this.btnTakeExamInfo.UseVisualStyleBackColor = true;
             this.btnTakeExamInfo.Click += new System.EventHandler(this.btnTakeExamInfo_Click);
             // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Image = global::OnExam.Properties.Resources.img_OnExam;
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMain
             // 
             resources.ApplyResources(this, "$this");
@@ -109,6 +119,7 @@ namespace OnExam
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,6 +134,7 @@ namespace OnExam
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblTakeExam;
         private System.Windows.Forms.Button btnTakeExamInfo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

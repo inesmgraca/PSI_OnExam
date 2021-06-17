@@ -40,7 +40,7 @@ namespace OnExam
         private void txtConfirmPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
-                btnSave_Click(sender, e);
+                btnSave.PerformClick();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

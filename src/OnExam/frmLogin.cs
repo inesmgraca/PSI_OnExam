@@ -21,7 +21,7 @@ namespace OnExam
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty)
-                btnLogin_Click(sender, e);
+                btnLogin.PerformClick();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

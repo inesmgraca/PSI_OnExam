@@ -108,13 +108,13 @@ namespace OnExam
         {
             if (e.KeyCode == Keys.Enter && txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty
                 && txtPassword.Text != string.Empty && txtConfirmPassword.Text != string.Empty)
-                btnSignUp_Click(sender, e);
+                btnSignUp.PerformClick();
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtUsername.Text != string.Empty && txtPassword.Text != string.Empty
-                && UserSearch(txtUsername.Text) && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" ") && txtPassword.Text.Equals(txtConfirmPassword.Text))
+                && !txtUsername.Text.Contains("-") && !txtUsername.Text.Contains(" ") && txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
                 if (UserSignUp(txtName.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
                 {
@@ -125,9 +125,7 @@ namespace OnExam
                 }
             }
             else
-            {
                 MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

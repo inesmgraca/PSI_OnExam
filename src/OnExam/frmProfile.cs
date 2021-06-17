@@ -51,7 +51,7 @@ namespace OnExam
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && txtUsername.Text != string.Empty)
-                btnSave_Click(sender, e);
+                btnSave.PerformClick();
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)

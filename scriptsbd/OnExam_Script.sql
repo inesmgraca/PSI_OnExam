@@ -1,5 +1,57 @@
 
--- Stored Procedures --
+-- Script: Tables --
+
+create table Users(
+UserID int identity not null constraint Pk_Users_UserID primary key,
+Name varchar(100) not null,
+Email varchar(100) not null,
+Username varchar(50) not null constraint Uk_Users_Username unique,
+Password varchar(100) not null,
+Salt varchar(50) not null
+);
+
+create table Exams(
+ExamID int identity not null constraint Pk_Exams_ExamID primary key,
+UserID int not null constraint Fk_Exams_Users references Users (UserID),
+Name varchar(20) null,
+Duration int not null,
+isRandom bit not null,
+State int not null
+);
+
+create table Questions(
+QuestionID int identity not null constraint Pk_Questions_QuestionID primary key,
+ExamID int not null constraint Fk_Questions_Exams references Exams (ExamID),
+Type int not null,
+Question varchar(1000) not null,
+Notes varchar(500) not null
+);
+
+create table QuestionDetails(
+QuestionDetailsID int identity not null constraint Pk_QuestionDetails_QuestionDetailsID primary key,
+QuestionID int not null constraint Fk_QuestionDetails_Questions references Questions (QuestionID),
+isRight bit not null,
+Text varchar(500) not null
+);
+
+create table Sessions(
+SessionID int identity not null constraint Pk_Sessions_SessionID primary key,
+ExamID int not null constraint Fk_Sessions_Exams references Exams (ExamID),
+Name varchar(100) not null,
+Info varchar(500) not null,
+SessionExits int default 0
+);
+
+create table Answers(
+AnswerID int identity not null constraint Pk_Answers_AnswerID primary key,
+SessionID int not null constraint Fk_Answers_Sessions references Sessions (SessionID),
+QuestionID int not null constraint Fk_Answers_Questions references Questions (QuestionID),
+QuestionDetailsID int constraint Fk_Answers_QuestionDetails references QuestionDetails (QuestionDetailsID),
+Text varchar(500)
+);
+go
+
+-- Script: Stored Procedures --
 
 -- UserManagement --
 create procedure UserSearch
@@ -9,6 +61,7 @@ select Username, Password, Salt
 from Users
 where Username = @Name or Email = @Name;
 end
+go
 
 create procedure UserEmailSearch
 @Email varchar(100),
@@ -18,6 +71,7 @@ select Email
 from Users
 where Email = @Email and Username not like @Username;
 end
+go
 
 create procedure UserAdd
 @Name varchar(100),
@@ -29,6 +83,7 @@ begin
 insert into Users
 values (@Name, @Email, @Username, @Password, @Salt);
 end
+go
 
 create procedure UserOpen
 @Username varchar(50) as
@@ -37,6 +92,7 @@ select Name, Email
 from Users
 where Username = @Username;
 end
+go
 
 create procedure UserUpdate
 @Name varchar(100),
@@ -50,6 +106,7 @@ Email = @Email,
 Username = @UsernameNew
 where Username = @UsernameOld;
 end
+go
 
 create procedure UserUpdatePass
 @Username varchar(50),
@@ -61,6 +118,7 @@ Password = @Password,
 Salt = @Salt
 where Username = @Username;
 end
+go
 
 -- ExamManagement --
 create procedure ExamsView
@@ -71,6 +129,7 @@ from Exams e join Users u
 on u.UserID = e.UserID
 where Username = @Username;
 end
+go
 
 create procedure ExamNameSearch
 @ExamID int,
@@ -82,6 +141,7 @@ from Exams e join Users u
 on u.UserID = e.UserID
 where ExamID != @ExamID and e.Name = @ExamName and Username = @Username
 end
+go
 
 create procedure ExamAdd
 @Username varchar(50),
@@ -91,11 +151,9 @@ create procedure ExamAdd
 begin
 insert into Exams (UserID, Duration, isRandom, State)
 values ((select UserID from Users where Username=@Username), @Duration, @isRandom, @State);
-select max(ExamID) as ExamID
-from Exams e join Users u
-on u.UserID = e.UserID
-where Username = @Username;
+select scope_identity();
 end
+go
 
 create procedure ExamOpen
 @Username varchar(50),
@@ -106,6 +164,7 @@ from Exams e join Users u
 on u.UserID = e.UserID
 where Username = @Username and ExamID = @ExamID;
 end
+go
 
 create procedure ExamUpdate
 @ExamID int,
@@ -119,6 +178,7 @@ Duration = @Duration,
 isRandom = @isRandom
 where ExamID = @ExamID;
 end
+go
 
 create procedure ExamUpdateState
 @ExamID int,
@@ -128,6 +188,7 @@ update Exams set
 State = @State
 where ExamID = @ExamID;
 end
+go
 
 create procedure ExamDelete
 @ExamID int as
@@ -135,6 +196,7 @@ begin
 delete from Exams
 where ExamID = @ExamID;
 end
+go
 
 create procedure QuestionAdd
 @ExamID int,
@@ -144,10 +206,9 @@ create procedure QuestionAdd
 begin
 insert into Questions (ExamID, Type, Question, Notes)
 values (@ExamID, @Type, @Question, @Notes);
-select max(QuestionID) as QuestionID
-from Questions
-where ExamID = @ExamID;
+select scope_identity();
 end
+go
 
 create procedure QuestionsOpen
 @ExamID int as
@@ -156,6 +217,7 @@ select QuestionID, Type, Question, Notes
 from Questions
 where ExamID = @ExamID;
 end
+go
 
 create procedure QuestionsOpenRandom
 @ExamID int as
@@ -165,6 +227,7 @@ from Questions
 where ExamID = @ExamID
 order by newID();
 end
+go
 
 create procedure QuestionUpdate
 @QuestionID int,
@@ -176,6 +239,7 @@ Question = @Question,
 Notes = @Notes
 where QuestionID = @QuestionID;
 end
+go
 
 create procedure QuestionDelete
 @QuestionID int as
@@ -185,6 +249,7 @@ where QuestionID = @QuestionID;
 delete from Questions
 where QuestionID = @QuestionID;
 end
+go
 
 create procedure QuestionDetailsAdd
 @QuestionID int,
@@ -194,6 +259,7 @@ begin
 insert into QuestionDetails (QuestionID, isRight, Text)
 values (@QuestionID, @isRight, @Text);
 end
+go
 
 create procedure QuestionDetailsOpen
 @QuestionID int as
@@ -202,6 +268,7 @@ select QuestionDetailsID, isRight, Text
 from QuestionDetails
 where QuestionID = @QuestionID;
 end
+go
 
 create procedure QuestionDetailsUpdate
 @QuestionDetailsID int,
@@ -213,6 +280,7 @@ isRight = @isRight,
 Text = @Text
 where QuestionDetailsID = @QuestionDetailsID;
 end
+go
 
 create procedure QuestionDetailsDelete
 @QuestionDetailsID int as
@@ -220,6 +288,7 @@ begin
 delete from QuestionDetails
 where QuestionDetailsID = @QuestionDetailsID;
 end
+go
 
 -- SessionManagement --
 create procedure ExamSearch
@@ -232,6 +301,7 @@ from Exams e join Users u
 on u.UserID = e.UserID
 where (ExamID = @ExamID or e.Name = @ExamName) and Username like '%';
 end
+go
 
 create procedure SessionsView
 @ExamID int as
@@ -240,6 +310,7 @@ select SessionID, Name, Info, SessionExits
 from Sessions
 where ExamID = @ExamID;
 end
+go
 
 create procedure SessionAdd
 @ExamID int,
@@ -248,10 +319,9 @@ create procedure SessionAdd
 begin
 insert into Sessions (ExamID, Name, Info)
 values (@ExamID, @Name, @Info);
-select max(SessionID) as SessionID
-from Sessions
-where ExamID = @ExamID and Name = @Name and Info = @Info;
+select scope_identity();
 end
+go
 
 create procedure SessionUpdate
 @SessionID int,
@@ -261,6 +331,7 @@ update Sessions set
 SessionExits = @SessionExits
 where SessionID = @SessionID;
 end
+go
 
 create procedure AnswerAdd
 @SessionID int,
@@ -271,6 +342,7 @@ begin
 insert into Answers (SessionID, QuestionID, QuestionDetailsID, Text)
 values (@SessionID, @QuestionID, @QuestionDetailsID, @Text);
 end
+go
 
 create procedure SessionOpen
 @SessionID int as
@@ -279,6 +351,7 @@ select count(AnswerID)
 from Answers
 where SessionID = @SessionID;
 end
+go
 
 create procedure SessionQuestionsOpen
 @SessionID int as
@@ -288,6 +361,7 @@ from Questions q join Sessions s
 on q.ExamID = s.ExamID
 where SessionID = @SessionID;
 end
+go
 
 create procedure SessionAnswersOpen
 @SessionID int,
@@ -297,3 +371,4 @@ select QuestionDetailsID, Text
 from Answers
 where SessionID = @SessionID and QuestionID = @QuestionID;
 end
+go

@@ -48,6 +48,8 @@ namespace OnExam
                             stripBtnActivate.Text = ResourceManager.GetString("btnViewAnswers");
                     }
 
+                    var i = 1;
+
                     if (examDetails.Questions != null)
                     {
                         foreach (var examQuestion in examDetails.Questions)
@@ -56,6 +58,7 @@ namespace OnExam
                             {
                                 var examText = new frmExamText();
                                 examText.MdiParent = this;
+                                examText.Text += i;
                                 examText.QuestionExam = examQuestion;
 
                                 if (State != State.Inactive)
@@ -69,6 +72,7 @@ namespace OnExam
                             {
                                 var examOpts = new frmExamOpts();
                                 examOpts.MdiParent = this;
+                                examOpts.Text += i;
                                 examOpts.QuestionExam = examQuestion;
 
                                 if (State != State.Inactive)
@@ -78,6 +82,8 @@ namespace OnExam
 
                                 examOpts.Show();
                             }
+
+                            i++;
                         }
                     }
                 }

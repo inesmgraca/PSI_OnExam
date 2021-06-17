@@ -86,7 +86,7 @@ namespace OnExam
                         saltOriginal = dr["Salt"].ToString();
                     }
 
-                    if (PassCompare(passOriginal, saltOriginal, pass))
+                    if (PassCmp(passOriginal, saltOriginal, pass))
                     {
                         UserLoggedIn = username;
                         return true;
@@ -339,7 +339,7 @@ namespace OnExam
             return new HashSalt(Convert.ToBase64String(salt), Convert.ToBase64String(hash));
         }
 
-        public static bool PassCompare(string passOrig, string saltOrig, string password)
+        public static bool PassCmp(string passOrig, string saltOrig, string password)
         {
             var salt = Convert.FromBase64String(saltOrig);
             var pass = Encoding.UTF8.GetBytes(password);
