@@ -429,9 +429,6 @@ namespace OnExam
 
                             if (questionID != 0)
                             {
-                                while (dr.Read())
-                                    int.TryParse(dr["QuestionID"].ToString(), out questionID);
-
                                 if (exam.Questions[i].Type != QuestionType.Text)
                                 {
                                     for (int j = 0; j < exam.Questions[i].QuestionDetails.Count; j++)

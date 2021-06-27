@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static OnExam.Properties.Resources;
 using static OnExam.ExamManagement;
 
 namespace OnExam
@@ -246,7 +247,7 @@ namespace OnExam
 
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show(ResourceManager.GetString("deleteQuestion"), ResourceManager.GetString("areYouSure"), MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 if (QuestionExam.QuestionID == 0)
                     Close();

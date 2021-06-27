@@ -153,6 +153,9 @@
   <data name="closeExam" xml:space="preserve">
     <value>Sessões abertas continuarão a funcionar mas novas entradas serão desativadas. Fechar exame?</value>
   </data>
+  <data name="deleteQuestion" xml:space="preserve">
+    <value>Está prestes a eliminar esta questão. Continuar?</value>
+  </data>
   <data name="deleteSuccess" xml:space="preserve">
     <value>Eliminado com sucesso!</value>
   </data>

@@ -153,6 +153,9 @@
   <data name="closeExam" xml:space="preserve">
     <value>Open sessions will still work but entries will be disabled. Close exam?</value>
   </data>
+  <data name="deleteQuestion" xml:space="preserve">
+    <value>You're about to delete this question. Continue?</value>
+  </data>
   <data name="deleteSuccess" xml:space="preserve">
     <value>Deleted successfully!</value>
   </data>

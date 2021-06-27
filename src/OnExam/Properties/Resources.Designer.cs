@@ -169,6 +169,15 @@ namespace OnExam.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;re about to delete this question. Continue?.
+        /// </summary>
+        internal static string deleteQuestion {
+            get {
+                return ResourceManager.GetString("deleteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted successfully!.
         /// </summary>
         internal static string deleteSuccess {

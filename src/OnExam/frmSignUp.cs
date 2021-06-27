@@ -125,7 +125,7 @@ namespace OnExam
                 }
             }
             else
-                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ResourceManager.GetString("fillFields"), ResourceManager.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
